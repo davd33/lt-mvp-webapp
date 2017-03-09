@@ -1,0 +1,72 @@
+$primary-color: #ffcc00;
+$second-color: black;
+$third-color: white;
+$logo-font: 'Monofett', cursive;
+$app-title-font: 'Monofett', cursive;
+$titles-font: 'Noto Serif', serif;
+$primary-font: 'Noto Sans', sans-serif;
+
+.top-section {
+  height: 100%;
+  background: $primary-color;
+  padding-top: 3%;
+}
+
+.gp-logo {
+  position: relative;
+}
+
+.gp-logo-g {
+  float: left;
+  padding-left: 3%;
+  font-size: 4em;
+  font-family: $logo-font;
+  text-shadow:
+    1px 1px 0 $third-color,
+    2px 2px 0 $third-color,
+    3px 3px 0 $third-color;
+}
+
+.gp-logo-p {
+  color: $third-color;
+  font-size: 3em;
+  position: absolute;
+  left: 0.9em;
+  top: -.25em;
+  padding-left: 0em;
+  text-shadow:
+    1px 1px 0 $third-color,
+    2px 2px 0 $third-color,
+    3px 3px 0 $third-color;
+}
+
+.title {
+  margin: 0 auto;
+  padding-left: 12%;
+  width: 50%;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 2.5em;
+  font-family: $app-title-font;
+  text-shadow:
+    1px 1px 0 $third-color,
+    2px 2px 0 $third-color,
+    3px 3px 0 $third-color;
+}
+
+.lt-container {
+  margin-top: 15%;
+  padding: 5%;
+  font-size: 2em;
+  font-family: $primary-font;
+  line-height: 2em;
+  text-shadow: 0px 1px 1px white;
+}
+
+.lt-container input[type='text'] {
+  border: 0;
+  font-size: 1em;
+  background: transparent;
+  border-bottom: 1px solid white;
+  display: inline-block;
+}
