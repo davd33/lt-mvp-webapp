@@ -1,6 +1,16 @@
 <!--LUCKEN TEST-->
-<div *ngIf="displayTest" [@fadeOut]="''">
-  <app-lt (ltSuccess)="toggleDisplayTest()"></app-lt>
+<div *ngIf="displayTest" [@lt]="''">
+  <app-lt (ltSuccess)="toggleDisplayTest($event)"></app-lt>
 </div>
 
 <!--SUCCESS-->
+<div *ngIf="!displayTest" [@success]="''">
+  <div class="wrap">
+    <div class="circle">
+      <span class="text"><i class="fa fa-check" aria-hidden="true"></i></span>
+    </div>
+  </div>
+  <div class="sign-up">
+    <a href="#">Sign up!</a>
+  </div>
+</div>

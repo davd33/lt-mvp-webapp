@@ -41,6 +41,8 @@ $primary-font: 'Noto Sans', sans-serif;
 }
 
 .title {
+  position: relative;
+  z-index: 10;
   margin: 0 auto;
   padding-left: 12%;
   width: 50%;

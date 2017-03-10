@@ -33,34 +33,3 @@ $primary-font: 'Noto Sans', sans-serif;
   bottom: 0;
   background: $third-color;
 }
-
-.lt-container input[type='text']::before:hover {
-}
-
-@keyframes border {
-  0% {
-    box-shadow:
-      60px -60px 0 2px #E94E3D, -60px -60px 0 2px #E94E3D,
-      -60px 60px 0 2px #E94E3D, 60px 60px 0 2px #E94E3D, 0 0 0 2px #E94E3D;
-  }
-  25% {
-    box-shadow:
-      0 -125px 0 2px #E94E3D, -60px -60px 0 2px #E94E3D,
-      -60px 60px 0 2px #E94E3D, 60px 60px 0 2px #E94E3D, 0 0 0 2px #fff;
-  }
-  50% {
-    box-shadow:
-      0 -125px 0 2px #E94E3D, -125px 0px 0 2px #E94E3D,
-      -60px 60px 0 2px #E94E3D, 60px 60px 0 2px #E94E3D, 0 0 0 2px #fff;
-  }
-  75% {
-    box-shadow:
-      0 -125px 0 2px #E94E3D, -125px 0px 0 2px #E94E3D,
-      0px 125px 0 2px #E94E3D, 60px 60px 0 2px #E94E3D, 0 0 0 2px #fff;
-  }
-  100% {
-    box-shadow:
-      0 -125px 0 2px #E94E3D, -125px 0px 0 2px #E94E3D,
-      0px 125px 0 2px #E94E3D, 120px 40px 0 2px #E94E3D, 0 0 0 2px #fff;
-  }
-}

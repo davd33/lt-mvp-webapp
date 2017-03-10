@@ -110,7 +110,7 @@ export class LtComponent implements OnInit {
     });
     this.testForm.statusChanges.subscribe(status => {
       if (status === "VALID") {
-        this.ltSuccess.emit({success: true});
+        this.ltSuccess.emit({status: "valid"});
       }
     })
   }

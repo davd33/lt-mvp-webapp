@@ -5,14 +5,14 @@ export const LT_LIST: any[] = [
     "level": "A1",
     "text": [
       {
-        "value": "Ich bin ein",
+        "value": "Ich will mit ",
         "isInput": false
       }, {
-        "value": "e",
+        "value": "dem",
         "isInput": true,
-        "explanation": "Feminin"
+        "explanation": "Accusative"
       }, {
-        "value": "hase",
+        "value": " Lückentext App Trainieren!",
         "isInput": false
       }
     ]

@@ -1,0 +1,111 @@
+.wrap {
+  margin: 100px auto;
+  width: 130px;
+
+  animation: slideLeft .7s ease-out 1 forwards;
+  animation-delay: 1.2s;
+}
+
+.sign-up {
+  float: right;
+  position: absolute;
+  left: 32%;
+  top: 27%;
+  text-align: center;
+  animation: signUp 1.5s ease-out 1 forwards;
+  animation-delay: 2s;
+  opacity: 0;
+}
+
+.sign-up a {
+  text-decoration: none;
+  color: black;
+  font-family: "Monoton", sans-serif;
+  font-size: 4em;
+  text-shadow: 1px 1px 0 white;
+}
+
+.sign-up a:hover {
+  animation: signUpEffect 1s ease-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes slideLeft {
+  0% {}
+  100% {
+    transform: translateX(-80%);
+  }
+}
+
+@keyframes signUpEffect {
+  0% {
+    text-shadow: 1px 1px 0 white;
+  }
+  25% {
+    text-shadow: 5px 1px 0 white;
+  }
+  100% {
+    text-shadow: 1px 1px 0 white;
+  }
+}
+
+@keyframes signUp {
+  0% {}
+  100% {
+    opacity: 1;
+  }
+}
+
+$color: #ffcc00;
+$color2: white;
+
+.circle {
+  position: relative;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: $color;
+  box-shadow: 60px -60px 0 2px $color, -60px -60px 0 2px $color,
+  -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color;
+
+  .text {
+    position: absolute;
+    width: 60px;
+    color: $color2;
+    text-align: center;
+    text-transform: uppercase;
+
+    font: 1em sans-serif;
+    top: 57px;
+    left: 29px;
+    transform: scale(7);
+  }
+
+  animation: border .5s ease 1 forwards;
+  animation-delay: .7s;
+}
+
+@keyframes border {
+  0% {
+    box-shadow: 60px -60px 0 2px $color, -60px -60px 0 2px $color,
+    -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color;
+  }
+  25% {
+    box-shadow: 0 -125px 0 2px $color, -60px -60px 0 2px $color,
+    -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color2;
+  }
+  50% {
+    box-shadow: 0 -125px 0 2px $color, -125px 0px 0 2px $color,
+    -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color2;
+  }
+  75% {
+    box-shadow: 0 -125px 0 2px $color, -125px 0px 0 2px $color,
+    0px 125px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color2;
+  }
+  100% {
+    box-shadow: 0 -125px 0 2px $color, -125px 0px 0 2px $color,
+    0px 125px 0 2px $color, 120px 40px 0 2px $color, 0 0 0 2px $color2;
+  }
+}
