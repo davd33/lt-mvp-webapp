@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 
-import {LT_LIST} from './mock-tests';
+import {LT_LIST} from '../mock-tests';
 
 @Injectable()
 export class LtService {

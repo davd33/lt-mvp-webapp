@@ -5,7 +5,11 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "cp node_modules/animate.css/animate.min.css src/app/lib/css && ng serve",
+    "start": "npm run cpCSS && ng serve",
+    "cpCSS": "npm run cpAnimateCSS && npm run cpHoverCSS && npm run cpShakeCSS",
+    "cpAnimateCSS": "cp node_modules/animate.css/animate.min.css src/app/lib/css",
+    "cpHoverCSS": "cp node_modules/hover.css/css/hover-min.css src/app/lib/css",
+    "cpShakeCSS": "cp node_modules/csshake/dist/csshake.css src/app/lib/css",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -22,6 +26,8 @@
     "@angular/router": "^3.4.0",
     "animate.css": "^3.5.2",
     "core-js": "^2.4.1",
+    "csshake": "^1.5.1",
+    "hover.css": "^2.0.2",
     "immutable": "^3.8.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",

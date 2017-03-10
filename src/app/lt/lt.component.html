@@ -1,0 +1,28 @@
+<div *ngIf="test" class="lt-container">
+
+  <form [formGroup]="testForm" novalidate>
+    <div *ngFor="let w of test.text; let i = index;">
+
+      <!--TEXT-->
+      <div *ngIf="!w.isInput">{{w.value}}</div>
+
+      <!--INPUTS FOR THE USER TO FILL IN-->
+      <div formGroupName="test">
+        <div *ngIf="w.isInput">
+          <label>
+            <input type="text" #thisInput
+                   [@hole]="holeInputStatus(i)"
+                   [name]="i"
+                   [id]="i"
+                   [autofocus]="i==1"
+                   [size]="w.value.length"
+                   [formControlName]="i">
+          </label>
+
+          <!--ADD INPUT ELEMENTS TO USE WHEN INPUT BECOMES VALID-->
+          <div *ngIf="addInput(i, thisInput)"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

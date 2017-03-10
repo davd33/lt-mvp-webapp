@@ -4,11 +4,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {LtService} from "app/lt.service";
+import {LtService} from "./lt/lt.service";
+import { LtComponent } from './lt/lt.component';
+import { RunLt1Component } from './run-lt-1/run-lt-1.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LtComponent,
+    RunLt1Component
   ],
   imports: [
     BrowserModule,

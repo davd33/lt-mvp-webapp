@@ -10,35 +10,6 @@
     Lückentext training
   </div>
 
-  <!--LUCKEN TEST-->
-  <div *ngIf="test" class="lt-container" #ltContainer>
-
-    <form [formGroup]="testForm" novalidate>
-      <div class="test-word" *ngFor="let w of test.text; let i = index;">
-
-        <!--TEXT-->
-        <div *ngIf="!w.isInput" [@flyInOut]="'in'">{{w.value}}</div>
-
-        <!--INPUTS FOR THE USER TO FILL IN-->
-        <div formGroupName="test">
-          <div *ngIf="w.isInput">
-            <!--<app-lucken-tooltip [text]="w.explanation"></app-lucken-tooltip>-->
-            <label>
-              <input type="text" #thisInput
-                     [@flyUpDown]="'up'"
-                     [@hole]="holeInputStatus(i)"
-                     [name]="i"
-                     [id]="i"
-                     [autofocus]="i==1"
-                     [size]="w.value.length"
-                     [formControlName]="i">
-            </label>
-
-            <!--ADD INPUT ELEMENTS TO USE WHEN INPUT BECOMES VALID-->
-            <div *ngIf="addInput(i, thisInput)"></div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+  <!--RUN TEST 1-->
+  <app-run-lt-1></app-run-lt-1>
 </div>

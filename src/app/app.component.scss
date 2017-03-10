@@ -53,20 +53,3 @@ $primary-font: 'Noto Sans', sans-serif;
     2px 2px 0 $third-color,
     3px 3px 0 $third-color;
 }
-
-.lt-container {
-  margin-top: 15%;
-  padding: 5%;
-  font-size: 2em;
-  font-family: $primary-font;
-  line-height: 2em;
-  text-shadow: 0px 1px 1px white;
-}
-
-.lt-container input[type='text'] {
-  border: 0;
-  font-size: 1em;
-  background: transparent;
-  border-bottom: 1px solid white;
-  display: inline-block;
-}
