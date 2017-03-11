@@ -10,7 +10,7 @@
       <div formGroupName="test">
         <div *ngIf="w.isInput">
           <label>
-            <input type="text" #thisInput
+            <input type="text" #thisInput autocomplete="off"
                    [@hole]="holeInputStatus(i)"
                    [name]="i"
                    [id]="i"

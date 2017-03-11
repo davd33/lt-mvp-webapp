@@ -33,3 +33,13 @@ $primary-font: 'Noto Sans', sans-serif;
   bottom: 0;
   background: $third-color;
 }
+
+@media only screen and (min-height: 768px) {
+
+  /* desktops */
+
+  .lt-container {
+    margin-top: 8%;
+    font-size: 3em;
+  }
+}

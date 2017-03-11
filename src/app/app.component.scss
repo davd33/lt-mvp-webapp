@@ -9,35 +9,33 @@ $primary-font: 'Noto Sans', sans-serif;
 .top-section {
   height: 100%;
   background: $primary-color;
-  padding-top: 3%;
+  overflow: hidden;
 }
 
 .gp-logo {
   position: relative;
-}
 
-.gp-logo-g {
-  float: left;
-  padding-left: 3%;
-  font-size: 4em;
-  font-family: $logo-font;
-  text-shadow:
-    1px 1px 0 $third-color,
+  .gp-logo-g {
+    float: left;
+    padding-left: 3%;
+    font-size: 4em;
+    font-family: $logo-font;
+    text-shadow: 1px 1px 0 $third-color,
     2px 2px 0 $third-color,
     3px 3px 0 $third-color;
-}
+  }
 
-.gp-logo-p {
-  color: $third-color;
-  font-size: 3em;
-  position: absolute;
-  left: 0.9em;
-  top: -.25em;
-  padding-left: 0em;
-  text-shadow:
-    1px 1px 0 $third-color,
+  .gp-logo-p {
+    color: $third-color;
+    font-size: 3em;
+    position: absolute;
+    left: 0.9em;
+    top: -.25em;
+    padding-left: 0em;
+    text-shadow: 1px 1px 0 $third-color,
     2px 2px 0 $third-color,
     3px 3px 0 $third-color;
+  }
 }
 
 .title {
@@ -50,8 +48,35 @@ $primary-font: 'Noto Sans', sans-serif;
   text-transform: uppercase;
   font-size: 2.5em;
   font-family: $app-title-font;
-  text-shadow:
-    1px 1px 0 $third-color,
-    2px 2px 0 $third-color,
-    3px 3px 0 $third-color;
+  text-shadow: 1px 1px 0 $third-color,
+  2px 2px 0 $third-color,
+  3px 3px 0 $third-color;
+}
+
+.title a {
+  color: $second-color;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+
+  /* desktops */
+
+  .gp-logo {
+    padding-top: 2%;
+    font-size: 2em;
+
+    .gp-logo-g {
+      font-size: 4em;
+    }
+
+    .gp-logo-p {
+      left: 7%;
+      top: 1%;
+    }
+  }
+
+  .title {
+    font-size: 4em;
+  }
 }
