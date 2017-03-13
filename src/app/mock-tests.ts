@@ -5,14 +5,42 @@ export const LT_LIST: any[] = [
     "level": "A1",
     "text": [
       {
-        "value": "Ich will mit ",
+        "value": "Ich wollte ",
         "isInput": false
       }, {
-        "value": "dem",
+        "value": "in",
         "isInput": true,
         "explanation": "Accusative"
       }, {
-        "value": " Lückentext App Trainieren!",
+        "value": " Deutschland studier",
+        "isInput": false
+      }, {
+        "value": "en",
+        "isInput": true,
+        "explanation": ""
+      }, {
+        "value": ", aber es g",
+        "isInput": false
+      }, {
+        "value": "ab",
+        "isInput": true,
+        "explanation": ""
+      }, {
+        "value": " leider kein App um ",
+        "isInput": false
+      }, {
+        "value": "die",
+        "isInput": true,
+        "explanation": ""
+      }, {
+        "value": " blöde Lückentexte ",
+        "isInput": false
+      }, {
+        "value": "zu",
+        "isInput": true,
+        "explanation": ""
+      }, {
+        "value": " üben.",
         "isInput": false
       }
     ]
