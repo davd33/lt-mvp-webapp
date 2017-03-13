@@ -1,10 +1,14 @@
 import {Component, OnInit, trigger, state, style, transition, animate, keyframes} from '@angular/core';
 
+import {routerTransition} from '../router.animations';
+
 @Component({
   selector: 'app-run-lt-1',
   templateUrl: './run-lt-1.component.html',
   styleUrls: ['./run-lt-1.component.scss'],
+  host: {'[@routerTransition]': ''},
   animations: [
+    routerTransition(),
     trigger('lt', [
       transition(':leave', [
         animate('.3s', keyframes([
