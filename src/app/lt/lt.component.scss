@@ -5,14 +5,14 @@ $logo-font: 'Monofett', cursive;
 $app-title-font: 'Monofett', cursive;
 $titles-font: 'Noto Serif', serif;
 $primary-font: 'Noto Sans', sans-serif;
+$lt-font: "Nova Mono", sans-serif;
 
 .lt-container {
   margin-top: 15%;
   padding: 5%;
   font-size: 2em;
-  font-family: $primary-font;
+  font-family: $lt-font;
   line-height: 2em;
-  text-shadow: 0 1px 1px $third-color;
 }
 
 .lt-container form div {
@@ -26,10 +26,19 @@ $primary-font: 'Noto Sans', sans-serif;
 .lt-container input[type='text'] {
   border: 0;
   font-size: 1em;
+  font-family: $lt-font;
   background: transparent;
   border-bottom: 1px solid $third-color;
   display: inline-block;
-  outline: none
+  outline: none;
+  margin: 0 0.5em;
+}
+
+.lt-container input[type='text']:focus {
+}
+
+.lt-container input[type='text'].incomplete-word-input {
+  margin-left: 0;
 }
 
 .lt-container input[type='text']::before {

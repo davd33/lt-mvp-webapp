@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 
 import {routerTransition} from '../router.animations';
 
@@ -11,11 +11,14 @@ import {routerTransition} from '../router.animations';
     routerTransition()
   ]
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements AfterViewInit {
+
+  @ViewChild('input') inputChild;
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.inputChild.nativeElement.focus();
   }
 
 }

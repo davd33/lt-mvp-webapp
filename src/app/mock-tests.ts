@@ -6,42 +6,39 @@ export const LT_LIST: any[] = [
     "text": [
       {
         "value": "Ich wollte ",
-        "isInput": false
       }, {
         "value": "in",
         "isInput": true,
-        "explanation": "Accusative"
+        "explanation": "Accusative",
+        "complete": true
       }, {
         "value": " Deutschland studier",
-        "isInput": false
       }, {
         "value": "en",
         "isInput": true,
         "explanation": ""
       }, {
         "value": ", aber es g",
-        "isInput": false
       }, {
         "value": "ab",
         "isInput": true,
         "explanation": ""
       }, {
         "value": " leider kein App um ",
-        "isInput": false
       }, {
         "value": "die",
         "isInput": true,
-        "explanation": ""
+        "explanation": "",
+        "complete": true
       }, {
         "value": " blöde Lückentexte ",
-        "isInput": false
       }, {
         "value": "zu",
         "isInput": true,
-        "explanation": ""
+        "explanation": "",
+        "complete": true
       }, {
         "value": " üben.",
-        "isInput": false
       }
     ]
   }

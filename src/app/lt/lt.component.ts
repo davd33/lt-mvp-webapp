@@ -1,6 +1,6 @@
 import {
-  Component, OnInit, ViewChild, trigger, state, style, transition, animate, keyframes,
-  Input, Renderer, Output, EventEmitter
+  Component, OnInit, trigger, state, style, transition, animate, keyframes,
+  Input, Renderer, Output, EventEmitter, ViewChildren, AfterViewInit
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 
@@ -24,7 +24,7 @@ import {LtService} from "./lt.service";
     ])
   ]
 })
-export class LtComponent implements OnInit {
+export class LtComponent implements OnInit, AfterViewInit {
 
   /**
    * Our test.
@@ -32,12 +32,28 @@ export class LtComponent implements OnInit {
   test: any;
 
   /**
+   * Counter of tries: a try is counted when the user
+   * press enter to validate his answer on an input.
+   */
+  triesCnt: number = 0;
+
+  /**
+   * Counter of the number of right answers.
+   */
+  rightAnswersCnt: number = 0;
+
+  /**
    * Form group for the test.
    */
   testForm: FormGroup;
 
   /**
-   *
+   * Inputs for focus.
+   */
+  @ViewChildren('thisInput') inputChildren;
+
+  /**
+   * Event emitted when lucken text is successfully filled.
    */
   @Output() ltSuccess = new EventEmitter();
 
@@ -55,6 +71,12 @@ export class LtComponent implements OnInit {
   ngOnInit() {
     this.inputList = Immutable.OrderedMap<number, {focused: boolean; input: any, status: string}>();
     this.getLt();
+  }
+
+  ngAfterViewInit() {
+    this.inputChildren.changes.subscribe(elements => {
+      elements.first.nativeElement.focus();
+    });
   }
 
   getLt() {
@@ -96,11 +118,7 @@ export class LtComponent implements OnInit {
           Validators.required,
           Validators.pattern(`^\\s*${word.value}\\s*$`)
         ]);
-        control.statusChanges.subscribe(status => {
-          if (status === "VALID") {
-            this.controlChanged(parseInt(w));
-          }
-        });
+
         testGroup.addControl(`${w}`, control);
       }
     }
@@ -121,17 +139,28 @@ export class LtComponent implements OnInit {
    * @param index
    */
   controlChanged(index: number) {
-    try {
-      let nextEntry = this.findNotYetFocusedInputEntry(index);
-      let entry = this.getInputEntry(index);
+    this.triesCnt++;
 
-      // input now should not get focus
+    let nextEntry = this.findNotYetFocusedInputEntry(index);
+    let entry = this.getInputEntry(index);
+
+    if (this.testForm.controls['test']['controls'][index].valid) {
+
+      this.rightAnswersCnt++;
+
+      // input should not get focus anymore
       entry.focused = true;
-      // input should be yet animated
+      // input valid: animation
       entry.status = "valid";
 
+      try {
+        this.renderer.setElementAttribute(entry.input, 'disabled', 'disabled');
+      } catch (e) {
+      }
+    }
+
+    try {
       this.renderer.invokeElementMethod(nextEntry.input, 'focus');
-      this.renderer.setElementAttribute(entry.input, 'disabled', 'disabled');
     } catch (e) {
     }
   }

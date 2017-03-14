@@ -1,3 +1,6 @@
+Number of tries: {{triesCnt}}
+Number of good answers: {{rightAnswersCnt}}
+
 <div *ngIf="test" class="lt-container">
 
   <form [formGroup]="testForm" novalidate>
@@ -11,6 +14,8 @@
         <div *ngIf="w.isInput">
           <label>
             <input type="text" #thisInput autocomplete="off"
+                   (keydown.enter)="controlChanged(i)"
+                   [ngClass]="{'incomplete-word-input': !w.complete}"
                    [@hole]="holeInputStatus(i)"
                    [name]="i"
                    [id]="i"
