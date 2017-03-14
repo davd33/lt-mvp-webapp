@@ -1,22 +1,30 @@
-$primary-color: #ffcc00;
-$second-color: black;
-$third-color: white;
-$logo-font: 'Monofett', cursive;
-$app-title-font: 'Monofett', cursive;
-$titles-font: 'Noto Serif', serif;
-$primary-font: 'Noto Sans', sans-serif;
+@import "common";
 
 .top-section {
-  height: 100%;
+  width: 100%;
+  height: 20%;
+
+  position: fixed;
+
   background: $primary-color;
-  overflow: hidden;
+}
+
+.router-section {
+  width: 100%;
+  height: 80%;
+
+  position: fixed;
+  top: 20%;
+  overflow: auto;
+
+  background: $primary-color;
 }
 
 .gp-logo {
-  position: relative;
+
+  float: left;
 
   .gp-logo-g {
-    float: left;
     padding-left: 3%;
     font-size: 4em;
     font-family: $logo-font;
@@ -31,7 +39,7 @@ $primary-font: 'Noto Sans', sans-serif;
     position: absolute;
     left: 0.9em;
     top: -.25em;
-    padding-left: 0em;
+    padding-left: 0;
     text-shadow: 1px 1px 0 $third-color,
     2px 2px 0 $third-color,
     3px 3px 0 $third-color;
@@ -39,7 +47,6 @@ $primary-font: 'Noto Sans', sans-serif;
 }
 
 .title {
-  position: relative;
   z-index: 10;
   margin: 0 auto;
   padding-left: 12%;
@@ -51,11 +58,11 @@ $primary-font: 'Noto Sans', sans-serif;
   text-shadow: 1px 1px 0 $third-color,
   2px 2px 0 $third-color,
   3px 3px 0 $third-color;
-}
 
-.title a {
-  color: $second-color;
-  text-decoration: none;
+  a {
+    color: $second-color;
+    text-decoration: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {

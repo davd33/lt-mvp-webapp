@@ -1,3 +1,5 @@
+@import "../common";
+
 .test-success-container {
   position: relative;
   margin-top: 13%;
@@ -79,23 +81,20 @@
   }
 }
 
-$color: #ffcc00;
-$color2: white;
-
 .circle {
   position: relative;
   overflow: hidden;
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: $color;
-  box-shadow: 60px -60px 0 2px $color, -60px -60px 0 2px $color,
-  -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color;
+  background: $primary-color;
+  box-shadow: 60px -60px 0 2px $primary-color, -60px -60px 0 2px $primary-color,
+  -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $primary-color;
 
   .text {
     position: absolute;
     width: 60px;
-    color: $color2;
+    color: $third-color;
     text-align: center;
     text-transform: uppercase;
 
@@ -111,23 +110,23 @@ $color2: white;
 
 @keyframes border {
   0% {
-    box-shadow: 60px -60px 0 2px $color, -60px -60px 0 2px $color,
-    -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color;
+    box-shadow: 60px -60px 0 2px $primary-color, -60px -60px 0 2px $primary-color,
+    -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $primary-color;
   }
   25% {
-    box-shadow: 0 -125px 0 2px $color, -60px -60px 0 2px $color,
-    -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color2;
+    box-shadow: 0 -125px 0 2px $primary-color, -60px -60px 0 2px $primary-color,
+    -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $third-color;
   }
   50% {
-    box-shadow: 0 -125px 0 2px $color, -125px 0px 0 2px $color,
-    -60px 60px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color2;
+    box-shadow: 0 -125px 0 2px $primary-color, -125px 0px 0 2px $primary-color,
+    -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $third-color;
   }
   75% {
-    box-shadow: 0 -125px 0 2px $color, -125px 0px 0 2px $color,
-    0px 125px 0 2px $color, 60px 60px 0 2px $color, 0 0 0 2px $color2;
+    box-shadow: 0 -125px 0 2px $primary-color, -125px 0px 0 2px $primary-color,
+    0px 125px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $third-color;
   }
   100% {
-    box-shadow: 0 -125px 0 2px $color, -125px 0px 0 2px $color,
-    0px 125px 0 2px $color, 120px 40px 0 2px $color, 0 0 0 2px $color2;
+    box-shadow: 0 -125px 0 2px $primary-color, -125px 0px 0 2px $primary-color,
+    0px 125px 0 2px $primary-color, 120px 40px 0 2px $primary-color, 0 0 0 2px $third-color;
   }
 }

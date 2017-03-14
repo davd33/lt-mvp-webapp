@@ -1,33 +1,36 @@
-Number of tries: {{triesCnt}}
-Number of good answers: {{rightAnswersCnt}}
-
 <div *ngIf="test" class="lt-container">
 
-  <form [formGroup]="testForm" novalidate>
-    <div *ngFor="let w of test.text; let i = index;">
+  <div *ngIf="triesCnt> 0" class="lt-thermometer" [@thermometer]="''">
+    <i [ngClass]="scoreClass()" class="fa" aria-hidden="true"></i>
+  </div>
 
-      <!--TEXT-->
-      <div *ngIf="!w.isInput">{{w.value}}</div>
+  <div>
+    <form [formGroup]="testForm" novalidate>
+      <div *ngFor="let w of test.text; let i = index;">
 
-      <!--INPUTS FOR THE USER TO FILL IN-->
-      <div formGroupName="test">
-        <div *ngIf="w.isInput">
-          <label>
-            <input type="text" #thisInput autocomplete="off"
-                   (keydown.enter)="controlChanged(i)"
-                   [ngClass]="{'incomplete-word-input': !w.complete}"
-                   [@hole]="holeInputStatus(i)"
-                   [name]="i"
-                   [id]="i"
-                   [autofocus]="i==1"
-                   [size]="w.value.length"
-                   [formControlName]="i">
-          </label>
+        <!--TEXT-->
+        <div *ngIf="!w.isInput">{{w.value}}</div>
 
-          <!--ADD INPUT ELEMENTS TO USE WHEN INPUT BECOMES VALID-->
-          <div *ngIf="addInput(i, thisInput)"></div>
+        <!--INPUTS FOR THE USER TO FILL IN-->
+        <div formGroupName="test">
+          <div *ngIf="w.isInput">
+            <label>
+              <input type="text" #thisInput autocomplete="off"
+                     (keydown.enter)="controlChanged(i)"
+                     [ngClass]="{'incomplete-word-input': !w.complete}"
+                     [@hole]="holeInputStatus(i)"
+                     [name]="i"
+                     [id]="i"
+                     [autofocus]="i==1"
+                     [size]="w.value.length"
+                     [formControlName]="i">
+            </label>
+
+            <!--ADD INPUT ELEMENTS TO USE WHEN INPUT BECOMES VALID-->
+            <div *ngIf="addInput(i, thisInput)"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

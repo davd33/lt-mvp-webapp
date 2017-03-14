@@ -1,6 +1,6 @@
 import {
   Component, OnInit, trigger, state, style, transition, animate, keyframes,
-  Input, Renderer, Output, EventEmitter, ViewChildren, AfterViewInit
+  Renderer, Output, EventEmitter, ViewChildren, AfterViewInit
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 
@@ -19,6 +19,14 @@ import {LtService} from "./lt.service";
         animate('200ms ease-in', keyframes([
           style({transform: 'scale(4)'}),
           style({transform: 'scale(1)'})
+        ]))
+      ])
+    ]),
+    trigger('thermometer', [
+      transition(':enter', [
+        animate('0.1s ease-in', keyframes([
+          style({transform: 'translateX(+100%)'}),
+          style({transform: 'translateX(0)'})
         ]))
       ])
     ])
@@ -213,6 +221,33 @@ export class LtComponent implements OnInit, AfterViewInit {
     let entry = this.getInputEntry(index);
 
     return entry ? entry.status : "invalid";
+  }
+
+  private SCORE_0_CSS = 'fa-thermometer-empty shake-opacity shake-constant lt-score-aweful';
+  private SCORE_1_CSS = 'fa-thermometer-quarter shake shake-constant lt-score-bad';
+  private SCORE_2_CSS = 'fa-thermometer-half lt-score-mediocre';
+  private SCORE_3_CSS = 'fa-thermometer-three-quarters lt-score-good';
+  private SCORE_4_CSS = 'fa-thermometer-full lt-score-perfect';
+
+  scoreClass() {
+    if (this.triesCnt == 0) {
+      return;
+    }
+
+    let score: number = this.rightAnswersCnt / this.triesCnt;
+    score = Math.ceil(score * 4);
+
+    if (score === 4) {
+      return this.SCORE_4_CSS;
+    } else if (score === 3) {
+      return this.SCORE_3_CSS;
+    } else if (score === 2) {
+      return this.SCORE_2_CSS;
+    } else if (score === 1) {
+      return this.SCORE_1_CSS;
+    } else if (score === 0) {
+      return this.SCORE_0_CSS;
+    }
   }
 
 }

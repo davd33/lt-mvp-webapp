@@ -1,15 +1,15 @@
-$primary-color: #ffcc00;
-$second-color: black;
-$third-color: white;
-$logo-font: 'Monofett', cursive;
-$app-title-font: 'Monofett', cursive;
-$titles-font: 'Noto Serif', serif;
-$primary-font: 'Noto Sans', sans-serif;
+@import "../common";
+
 $lt-font: "Nova Mono", sans-serif;
 
+$score-perfect: #009625;
+$score-good: #443f1a;
+$score-mediocre: #e27926;
+$score-bad: #b74747;
+$score-aweful: #b74747;
+
 .lt-container {
-  margin-top: 15%;
-  padding: 5%;
+  padding-left: 5%;
   font-size: 2em;
   font-family: $lt-font;
   line-height: 2em;
@@ -50,6 +50,33 @@ $lt-font: "Nova Mono", sans-serif;
   right: 0;
   bottom: 0;
   background: $third-color;
+}
+
+.lt-container .lt-thermometer {
+  padding-right: 3%;
+  font-size: 4em;
+  float: right;
+  text-shadow: 1px 1px 5px, -1px -1px 1px white;
+}
+
+.lt-container .lt-score-perfect {
+  color: $score-perfect;
+}
+
+.lt-container .lt-score-good {
+  color: $score-good;
+}
+
+.lt-container .lt-score-mediocre {
+  color: $score-mediocre;
+}
+
+.lt-container .lt-score-bad {
+  color: $score-bad;
+}
+
+.lt-container .lt-score-aweful {
+  color: $score-aweful;
 }
 
 @media only screen and (min-height: 768px) {
