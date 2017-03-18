@@ -10,6 +10,7 @@ import {LtComponent} from './lt/lt.component';
 import {RunLt1Component} from './run-lt-1/run-lt-1.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MovingFlagComponent } from './moving-flag/moving-flag.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RunLt1Component,
     SignUpComponent,
     NotFoundComponent,
+    MovingFlagComponent,
   ],
   imports: [
     BrowserModule,
