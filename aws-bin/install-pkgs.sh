@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-npm install
+npm install > /home/ec2-user/install-pkgs.log
