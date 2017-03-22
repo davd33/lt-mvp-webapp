@@ -14,6 +14,10 @@ hooks:
     - location: aws-bin/app-stop.sh
       timeout: 10
       runas: ec2-user
+  BeforeInstall:
+    - location: aws-bin/before-install.sh
+      timeout: 10
+      runas: ec2-user
   AfterInstall:
     - location: aws-bin/install-pkgs.sh
       timeout: 1200
