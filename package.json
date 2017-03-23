@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "npm run cpCSS && ng serve",
+    "start": "npm run cpCSS && ng serve --host 0.0.0.0",
     "cpCSS": "npm run cpAnimateCSS && npm run cpHoverCSS && npm run cpShakeCSS",
     "cpAnimateCSS": "cp node_modules/animate.css/animate.min.css src/app/lib/css",
     "cpHoverCSS": "cp node_modules/hover.css/css/hover-min.css src/app/lib/css",
