@@ -1,8 +1,12 @@
 # LtMvpWebApp
 
+# Description
+
 This application is the first MVP created for testing the idea
 of developing an app for training Lückentext tests specially created
 for foreign students willing to enroll to a university in Germany.
+
+# Objectives
 
 The objective of the MVP is to test the following hypotheses:
 
