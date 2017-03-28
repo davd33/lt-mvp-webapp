@@ -20,39 +20,12 @@
   background: $primary-color;
 }
 
-.gp-logo {
-
-  float: left;
-
-  .gp-logo-g {
-    padding-left: 3%;
-    font-size: 4em;
-    font-family: $logo-font;
-    text-shadow: 1px 1px 0 $third-color,
-    2px 2px 0 $third-color,
-    3px 3px 0 $third-color;
-  }
-
-  .gp-logo-p {
-    color: $third-color;
-    font-size: 3em;
-    position: absolute;
-    left: 0.9em;
-    top: -.25em;
-    padding-left: 0;
-    text-shadow: 1px 1px 0 $third-color,
-    2px 2px 0 $third-color,
-    3px 3px 0 $third-color;
-  }
-}
-
 .title {
   z-index: 10;
+  width: 100%;
   margin: 0 auto;
-  padding-left: 12%;
-  width: 50%;
-  text-align: left;
-  text-transform: uppercase;
+
+  text-align: center;
   font-size: 2.5em;
   font-family: $app-title-font;
   text-shadow: 1px 1px 0 $third-color,
@@ -65,25 +38,46 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-height: 320px) {
+
+  /* nexus 5x + keyboard */
+
+  .top-section {
+    transform: translateY(-100%);
+  }
+
+  .router-section {
+    height: 100%;
+    top: 0;
+  }
+
+  .router-section:nth-child(2) {
+    height: 125%;
+    transform: translateY(-20%);
+  }
+}
+
+@media only screen and (max-height: 450px) {
+
+  .title {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 768px) and (min-height: 450px) {
 
   /* desktops */
 
-  .gp-logo {
-    padding-top: 2%;
-    font-size: 2em;
-
-    .gp-logo-g {
-      font-size: 4em;
-    }
-
-    .gp-logo-p {
-      left: 7%;
-      top: 1%;
-    }
+  .title {
+    font-size: 4.5em;
   }
+}
+
+@media only screen and (min-width: 1540px) and (min-height: 740px) {
+
+  /* desktops */
 
   .title {
-    font-size: 4em;
+    font-size: 8.5em;
   }
 }

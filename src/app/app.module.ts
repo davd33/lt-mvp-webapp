@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from "@angular/router";
+import {MaterialModule} from "@angular/material";
 
 import {AppComponent} from './app.component';
 import {LtService} from "./lt/lt.service";
@@ -11,6 +12,9 @@ import {RunLt1Component} from './run-lt-1/run-lt-1.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MovingFlagComponent } from './moving-flag/moving-flag.component';
+import { IndexComponent } from './index/index.component';
+import { ChooseLevelComponent } from './choose-level/choose-level.component';
+import { ChooseTrainingComponent } from './choose-training/choose-training.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +24,13 @@ import { MovingFlagComponent } from './moving-flag/moving-flag.component';
     SignUpComponent,
     NotFoundComponent,
     MovingFlagComponent,
+    IndexComponent,
+    ChooseLevelComponent,
+    ChooseTrainingComponent,
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
@@ -36,8 +44,16 @@ import { MovingFlagComponent } from './moving-flag/moving-flag.component';
         component: RunLt1Component
       },
       {
+        path: 'index',
+        component: IndexComponent
+      },
+      {
+        path: 'choose-level',
+        component: ChooseLevelComponent
+      },
+      {
         path: '',
-        redirectTo: '/run-lt-1',
+        redirectTo: '/index',
         pathMatch: 'full'
       },
       {

@@ -21,14 +21,6 @@ import {LtService} from "./lt.service";
           style({transform: 'scale(1)'})
         ]))
       ])
-    ]),
-    trigger('thermometer', [
-      transition(':enter', [
-        animate('0.1s ease-in', keyframes([
-          style({transform: 'translateX(+100%)'}),
-          style({transform: 'translateX(0)'})
-        ]))
-      ])
     ])
   ]
 })
@@ -87,6 +79,9 @@ export class LtComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Get lt first test.
+   */
   getLt() {
     this.ltService.getTests()
       .then(lt => {
@@ -130,15 +125,11 @@ export class LtComponent implements OnInit, AfterViewInit {
         testGroup.addControl(`${w}`, control);
       }
     }
+
     // build our form
     this.testForm = this.fb.group({
       'test': testGroup
     });
-    this.testForm.statusChanges.subscribe(status => {
-      if (status === "VALID") {
-        this.ltSuccess.emit({status: "valid"});
-      }
-    })
   }
 
   /**
@@ -170,6 +161,12 @@ export class LtComponent implements OnInit, AfterViewInit {
     try {
       this.renderer.invokeElementMethod(nextEntry.input, 'focus');
     } catch (e) {
+    }
+
+    if (this.testForm.valid) {
+      setTimeout(() => {
+        this.ltSuccess.emit({status: "valid"});
+      }, 500);
     }
   }
 
@@ -223,31 +220,12 @@ export class LtComponent implements OnInit, AfterViewInit {
     return entry ? entry.status : "invalid";
   }
 
-  private SCORE_0_CSS = 'fa-thermometer-empty shake-opacity shake-constant lt-score-aweful';
-  private SCORE_1_CSS = 'fa-thermometer-quarter shake shake-constant lt-score-bad';
-  private SCORE_2_CSS = 'fa-thermometer-half lt-score-mediocre';
-  private SCORE_3_CSS = 'fa-thermometer-three-quarters lt-score-good';
-  private SCORE_4_CSS = 'fa-thermometer-full lt-score-perfect';
-
-  scoreClass() {
-    if (this.triesCnt == 0) {
-      return;
-    }
-
-    let score: number = this.rightAnswersCnt / this.triesCnt;
-    score = Math.ceil(score * 4);
-
-    if (score === 4) {
-      return this.SCORE_4_CSS;
-    } else if (score === 3) {
-      return this.SCORE_3_CSS;
-    } else if (score === 2) {
-      return this.SCORE_2_CSS;
-    } else if (score === 1) {
-      return this.SCORE_1_CSS;
-    } else if (score === 0) {
-      return this.SCORE_0_CSS;
-    }
+  /**
+   * Percentage of inputs validated
+   */
+  successBarSize() {
+    let barSize = (this.rightAnswersCnt / this.inputList.size) * 100;
+    return `${barSize}%`;
   }
 
 }

@@ -1,10 +1,13 @@
 <div *ngIf="test" class="lt-container">
 
-  <div *ngIf="triesCnt> 0" class="lt-thermometer" [@thermometer]="''">
-    <i [ngClass]="scoreClass()" class="fa" aria-hidden="true"></i>
+  <div class="success-bar" [ngStyle]="{width: successBarSize()}">
   </div>
 
   <div>
+    <app-moving-flag></app-moving-flag>
+  </div>
+
+  <div class="lt-text">
     <form [formGroup]="testForm" novalidate>
       <div *ngFor="let w of test.text; let i = index;">
 
@@ -23,6 +26,7 @@
                      [id]="i"
                      [autofocus]="i==1"
                      [size]="w.value.length"
+                     [maxlength]="w.value.length"
                      [formControlName]="i">
             </label>
 

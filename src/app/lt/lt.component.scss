@@ -9,7 +9,6 @@ $score-bad: #b74747;
 $score-aweful: #b74747;
 
 .lt-container {
-  padding-left: 5%;
   font-size: 2em;
   font-family: $lt-font;
   line-height: 2em;
@@ -24,17 +23,40 @@ $score-aweful: #b74747;
 }
 
 .lt-container input[type='text'] {
-  border: 0;
+  display: inline-block;
+  margin: 0 0.5em;
+
   font-size: 1em;
   font-family: $lt-font;
   background: transparent;
+  border: 1px solid transparent;
   border-bottom: 1px solid $third-color;
-  display: inline-block;
   outline: none;
-  margin: 0 0.5em;
 }
 
 .lt-container input[type='text']:focus {
+  animation: focusAnim .5s ease-in forwards;
+}
+
+@keyframes focusAnim {
+  0% {
+    border-bottom: 1px solid $third-color;
+  }
+  33% {
+    border-bottom: 1px solid $third-color;
+    border-left: 1px solid $third-color;
+  }
+  66% {
+    border-bottom: 1px solid $third-color;
+    border-left: 1px solid $third-color;
+    border-top: 1px solid $third-color;
+  }
+  100% {
+    border-bottom: 1px solid $third-color;
+    border-left: 1px solid $third-color;
+    border-top: 1px solid $third-color;
+    border-right: 1px solid $third-color;
+  }
 }
 
 .lt-container input[type='text'].incomplete-word-input {
@@ -50,13 +72,6 @@ $score-aweful: #b74747;
   right: 0;
   bottom: 0;
   background: $third-color;
-}
-
-.lt-container .lt-thermometer {
-  padding-right: 3%;
-  font-size: 4em;
-  float: right;
-  text-shadow: 1px 1px 5px, -1px -1px 1px white;
 }
 
 .lt-container .lt-score-perfect {
@@ -87,4 +102,16 @@ $score-aweful: #b74747;
     margin-top: 8%;
     font-size: 3em;
   }
+}
+
+.lt-container .lt-text {
+  padding: 2%;
+}
+
+.lt-container .success-bar {
+  position: fixed;
+  width: 0;
+  height: 2px;
+  background: darkred;
+  transition: width .5s;
 }
