@@ -52,6 +52,10 @@ import { ChooseTrainingComponent } from './choose-training/choose-training.compo
         component: ChooseLevelComponent
       },
       {
+        path: 'choose-training/:level',
+        component: ChooseTrainingComponent
+      },
+      {
         path: '',
         redirectTo: '/index',
         pathMatch: 'full'
