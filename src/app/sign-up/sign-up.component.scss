@@ -1,19 +1,55 @@
+@import "../common";
+
+$border-size: 10px;
+
 .notify-me {
   margin: 10% auto 0;
   text-align: center;
 }
 
 .notify-me label {
+  display: block;
   font-size: 2em;
 }
 
-.notify-me input[type="email"] {
-  display: block;
+.notify-me label span {
+  width: 60%;
+  display: inline-block;
   margin: 0 auto;
-  border: 0;
-  box-shadow: 0 0 3px 0 white;
-  background: transparent;
-  font-size: 1.5em;
-  text-align: center;
+
+  border: 10px solid transparent;
+  color: $second-color;
+  text-shadow: 1px 1px 1px $second-color;
+}
+
+.notify-me input[type="email"] {
+  display: inline-block;
+  width: 60%;
+  border: $border-size solid $primary-color;
+  padding: .2em;
+
+  background: $forth-color;
+  color: $third-color;
+  font-family: $primary-font;
+  font-size: 1em;
   outline: none;
+  text-align: center;
+
+  box-shadow: 0 1px 4px -1px $second-color inset;
+  text-shadow: 1px 1px 1px $third-color;
+}
+
+.notify-me input[type="button"] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  border: $border-size solid transparent;
+
+  background: transparent;
+  font-family: $primary-font;
+  font-size: 1.5em;
+  outline: none;
+  text-align: center;
+  text-shadow: 1px 1px 1px $second-color;
+  cursor: pointer;
 }

@@ -1,7 +1,7 @@
 @import "../common";
 
 .choose-training-container {
-  margin-top: 4%;
+  margin-top: 9%;
 }
 
 .choose-training-container ul {
@@ -20,9 +20,9 @@
   font-size: 3em;
   transition: all .2s;
   width: 4em;
-  background: $third-color;
-  border-radius: 50%;
   text-shadow: 1px 1px 1px $second-color;
+  background: $third-color;
+  border-radius: 5px;
   box-shadow: 0 0 40px 9px white;
   cursor: pointer;
 }
