@@ -1,6 +1,6 @@
 import {
   Component, OnInit, trigger, state, style, transition, animate, keyframes,
-  Renderer, Output, EventEmitter, ViewChildren, AfterViewInit
+  Renderer, Output, EventEmitter, ViewChildren, AfterViewInit, Input
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 
@@ -58,10 +58,25 @@ export class LtComponent implements OnInit, AfterViewInit {
   @Output() ltSuccess = new EventEmitter();
 
   /**
+   * Event emitted when lt test is not able to load.
+   */
+  @Output() loadTestError = new EventEmitter();
+
+  /**
+   * Level of the test (A2, B1...).
+   */
+  @Input() level: string;
+
+  /**
+   * Type of training: Verbs, Prepositions...
+   */
+  @Input() training: string;
+
+  /**
    * List of the inputs in the form.
    * These will be focused after user enters good answers.
    */
-  private inputList: Immutable.OrderedMap<number, {focused: boolean; input: any, status: string}>;
+  private inputList: Immutable.OrderedMap<number, { focused: boolean; input: any, status: string }>;
 
   constructor(private renderer: Renderer,
               private ltService: LtService,
@@ -69,7 +84,7 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.inputList = Immutable.OrderedMap<number, {focused: boolean; input: any, status: string}>();
+    this.inputList = Immutable.OrderedMap<number, { focused: boolean; input: any, status: string }>();
     this.getLt();
   }
 
@@ -80,14 +95,51 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Get lt first test.
+   * Get lt test according to level and training chosen.
    */
   getLt() {
-    this.ltService.getTests()
-      .then(lt => {
-        this.test = lt[0];
-        this.buildForm();
-      });
+
+    let error: string;
+
+    if (this.level == "A2") {
+      if (this.training == "prep") {
+        this.ltService.getTestA2Prep()
+          .then(lt => {
+            this.test = lt;
+            this.buildForm();
+          });
+      } else if (this.training == "verbs") {
+        this.ltService.getTestA2Verbs()
+          .then(lt => {
+            this.test = lt;
+            this.buildForm();
+          });
+      } else {
+        error = "Training not available.";
+      }
+    } else if (this.level == "B1") {
+      if (this.training == "prep") {
+        this.ltService.getTestB1Prep()
+          .then(lt => {
+            this.test = lt;
+            this.buildForm();
+          });
+      } else if (this.training == "verbs") {
+        this.ltService.getTestB1Verbs()
+          .then(lt => {
+            this.test = lt;
+            this.buildForm();
+          });
+      } else {
+        error = "Training not available";
+      }
+    } else {
+      error = "Level not available";
+    }
+
+    if (error) {
+      this.loadTestError.emit({error: error});
+    }
   }
 
   /**
@@ -177,7 +229,7 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param index
    * @returns {focused: boolean; input: any, status: string}
    */
-  getInputEntry(index: number): {focused: boolean; input: any, status: string} {
+  getInputEntry(index: number): { focused: boolean; input: any, status: string } {
     return this.inputList.get(index);
   }
 
@@ -187,7 +239,7 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param index
    * @returns {focused: boolean; input: any, status: string}
    */
-  findNotYetFocusedInputEntry(index: number): {focused: boolean; input: any, status: string} {
+  findNotYetFocusedInputEntry(index: number): { focused: boolean; input: any, status: string } {
     // we go to the current input entry and take the next one
     let e: any = this.inputList.entrySeq()
       .skipUntil(kv => kv[0] == index).skip(1)

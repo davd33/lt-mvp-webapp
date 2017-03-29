@@ -10,8 +10,20 @@ export class LtService {
   constructor(private http: Http) {
   }
 
-  getTests(): Promise<any[]> {
-    return Promise.resolve(LT_LIST);
+  getTestA2Prep(): Promise<any> {
+    return Promise.resolve(LT_LIST[0])
+  }
+
+  getTestA2Verbs(): Promise<any> {
+    return Promise.resolve(LT_LIST[1]);
+  }
+
+  getTestB1Prep(): Promise<any> {
+    return Promise.resolve(LT_LIST[2]);
+  }
+
+  getTestB1Verbs(): Promise<any> {
+    return Promise.resolve(LT_LIST[3]);
   }
 
 }

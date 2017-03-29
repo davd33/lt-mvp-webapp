@@ -1,6 +1,15 @@
 <!--LUCKEN TEST-->
 <div *ngIf="displayTest" [@lt]="''">
-  <app-lt (ltSuccess)="toggleDisplayTest($event)"></app-lt>
+  <app-lt
+    [level]="level"
+    [training]="training"
+    (loadTestError)="loadTestError=$event.error"
+    (ltSuccess)="toggleDisplayTest($event)">
+  </app-lt>
+</div>
+
+<div *ngIf="loadTestError" class="load-test-error">
+  {{loadTestError}}
 </div>
 
 <!--SUCCESS-->

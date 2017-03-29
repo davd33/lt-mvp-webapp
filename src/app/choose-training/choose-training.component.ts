@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {Observable} from "rxjs";
+import 'rxjs/add/operator/map';
 
 import {rtFadeOut} from '../router.animations';
 

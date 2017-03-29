@@ -1,5 +1,13 @@
 @import "../common";
 
+.load-test-error {
+  text-align: center;
+  font-size: 3em;
+  font-family: $titles-font;
+  color: $forth-color;
+  text-shadow: 1px 1px 1px $forth-color;
+}
+
 .test-success-container {
   position: relative;
   margin-top: 13%;

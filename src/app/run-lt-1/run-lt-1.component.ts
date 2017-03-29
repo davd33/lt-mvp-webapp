@@ -1,7 +1,8 @@
-import {Component, OnInit, trigger, state, style, transition, animate, keyframes} from '@angular/core';
+import {Component, OnInit, trigger, style, transition, animate, keyframes} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 import {Observable} from "rxjs";
+import 'rxjs/add/operator/map';
 
 import {rtFadeInOut} from '../router.animations';
 
@@ -36,11 +37,14 @@ export class RunLt1Component implements OnInit {
   displayTest: boolean = true;
   level: string;
   training: string;
+  loadTestError: string;
 
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.getLevelParam();
+    this.getTrainingParam();
   }
 
   toggleDisplayTest() {
