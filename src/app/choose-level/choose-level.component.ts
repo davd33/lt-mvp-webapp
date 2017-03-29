@@ -1,21 +1,29 @@
 import {Component, OnInit, trigger} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
-import {routerTransition} from '../router.animations';
+import {rtFadeOut} from '../router.animations';
 
 @Component({
   selector: 'app-choose-level',
   templateUrl: './choose-level.component.html',
-  styleUrls: ['./choose-level.component.css'],
+  styleUrls: ['./choose-level.component.scss'],
+  host: {'[@rtFadeOut]': ''},
   animations: [
+    rtFadeOut()
   ]
 })
 export class ChooseLevelComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
+  }
+
+  gotoChooseTraining(level: string) {
+    this.router.navigate(['/choose-training', level]);
   }
 
 }

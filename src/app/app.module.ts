@@ -40,7 +40,7 @@ import { ChooseTrainingComponent } from './choose-training/choose-training.compo
         component: SignUpComponent
       },
       {
-        path: 'run-lt-1',
+        path: 'run-lt-1/:level/:training',
         component: RunLt1Component
       },
       {

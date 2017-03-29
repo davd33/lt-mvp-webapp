@@ -1,0 +1,21 @@
+@import "../common";
+
+.index-container {
+  text-align: center;
+  font-family: $slogan-font;
+  font-size: 3em;
+  text-shadow: 1px 0 0 $second-color;
+  color: $third-color;
+}
+
+.index-container a {
+  font-size: 1.5em;
+  font-family: $big-links-font;
+  text-decoration: none;
+  color: $second-color;
+  text-shadow: 1px 1px 0 $third-color;
+}
+
+.index-container a:hover {
+  animation: $monoton-link-anim;
+}

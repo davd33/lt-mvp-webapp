@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
-import {routerTransition} from '../router.animations';
-import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
+
+import {rtFadeOut} from '../router.animations';
 
 @Component({
   selector: 'app-choose-training',
   templateUrl: './choose-training.component.html',
-  styleUrls: ['./choose-training.component.css'],
-  host: {'[@routerTransition]': ''},
-  animations: [routerTransition()]
+  styleUrls: ['./choose-training.component.scss'],
+  host: {'[@rtFadeOut]': ''},
+  animations: [rtFadeOut()]
 })
 export class ChooseTrainingComponent implements OnInit {
 
@@ -18,12 +20,20 @@ export class ChooseTrainingComponent implements OnInit {
   level: string;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
-    this.level = this.route.params['level'];
+    const id: Observable<string> = this.route.params.map(p => p['level']);
+    id.subscribe((level) => {
+      this.level = level;
+    });
+  }
+
+  gotoRunLt1(training: string) {
+    this.router.navigate(['/run-lt-1', this.level, training]);
   }
 
 }

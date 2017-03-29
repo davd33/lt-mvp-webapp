@@ -1,14 +1,17 @@
 import {Component, OnInit, trigger, state, style, transition, animate, keyframes} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
-import {routerTransition} from '../router.animations';
+import {Observable} from "rxjs";
+
+import {rtFadeInOut} from '../router.animations';
 
 @Component({
   selector: 'app-run-lt-1',
   templateUrl: './run-lt-1.component.html',
   styleUrls: ['./run-lt-1.component.scss'],
-  host: {'[@routerTransition]': ''},
+  host: {'[@rtFadeInOut]': ''},
   animations: [
-    routerTransition(),
+    rtFadeInOut(),
     trigger('lt', [
       transition(':leave', [
         animate('.3s', keyframes([
@@ -31,8 +34,10 @@ import {routerTransition} from '../router.animations';
 export class RunLt1Component implements OnInit {
 
   displayTest: boolean = true;
+  level: string;
+  training: string;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -40,6 +45,20 @@ export class RunLt1Component implements OnInit {
 
   toggleDisplayTest() {
     this.displayTest = !this.displayTest;
+  }
+
+  getTrainingParam() {
+    const param: Observable<string> = this.route.params.map(p => p['training']);
+    param.subscribe((training) => {
+      this.training = training;
+    });
+  }
+
+  getLevelParam() {
+    const param: Observable<string> = this.route.params.map(p => p['level']);
+    param.subscribe((level) => {
+      this.level = level;
+    });
   }
 
 }

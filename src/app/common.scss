@@ -5,3 +5,19 @@ $logo-font: 'Monofett', cursive;
 $app-title-font: 'Monofett', cursive;
 $titles-font: 'Noto Serif', serif;
 $primary-font: 'Noto Sans', sans-serif;
+$big-links-font: "Monoton", sans-serif;
+$slogan-font: 'Spirax', cursive;
+
+$monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
+
+@keyframes MonotonLinkAnim {
+  0% {
+    text-shadow: 1px 1px 0 white;
+  }
+  25% {
+    text-shadow: 5px 1px 0 white;
+  }
+  100% {
+    text-shadow: 1px 1px 0 white;
+  }
+}

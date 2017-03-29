@@ -5,7 +5,7 @@ import {routerTransition} from '../router.animations';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  styleUrls: ['./index.component.scss'],
   host: {'[@routerTransition]': ''},
   animations: [routerTransition()]
 })

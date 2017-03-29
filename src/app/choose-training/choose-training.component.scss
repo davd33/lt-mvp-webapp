@@ -1,0 +1,53 @@
+@import "../common";
+
+.choose-training-container {
+  margin-top: 4%;
+}
+
+.choose-training-container ul {
+  list-style: none;
+}
+
+.choose-training-container ul li {
+  text-align: center;
+  padding: .5em 0;
+}
+
+.choose-training-container ul li a {
+  text-decoration: none;
+  color: $second-color;
+  font-family: $primary-font;
+  font-size: 3em;
+  transition: all .2s;
+  width: 4em;
+  background: $third-color;
+  border-radius: 50%;
+  text-shadow: 1px 1px 1px $second-color;
+  box-shadow: 0 0 40px 9px white;
+  cursor: pointer;
+}
+
+.choose-training-container ul li a:hover {
+  font-size: 3.3em;
+  box-shadow: 0 0 100px 9px white;
+}
+
+.choose-training-container ul .li-prep {
+  opacity: 0;
+  transform: scale(0);
+  animation: LevelFadeIn .2s ease-in-out forwards;
+}
+
+.choose-training-container ul .li-mix {
+  opacity: 0;
+  transform: scale(0);
+  animation: LevelFadeIn .2s ease-in-out .2s forwards;
+}
+@keyframes LevelFadeIn {
+  0% {
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

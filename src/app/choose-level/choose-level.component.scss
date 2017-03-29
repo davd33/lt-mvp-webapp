@@ -1,0 +1,83 @@
+@import "../common";
+
+.choose-level-container {
+  margin-top: 4%;
+}
+
+.choose-level-container ul {
+  list-style: none;
+}
+
+.choose-level-container ul li {
+  text-align: center;
+  padding: .5em 0;
+}
+
+.choose-level-container ul li a {
+  text-decoration: none;
+  color: $second-color;
+  font-family: $primary-font;
+  font-size: 3em;
+  transition: all .2s;
+  width: 4em;
+  background: $third-color;
+  border-radius: 50%;
+  text-shadow: 1px 1px 1px $second-color;
+  box-shadow: 0 0 40px 9px white;
+  cursor: pointer;
+}
+
+.choose-level-container ul li a:hover {
+  font-size: 3.3em;
+  box-shadow: 0 0 100px 9px white;
+}
+
+.choose-level-container ul li a.comming-soon {
+  cursor: default;
+  opacity: .5;
+}
+
+.choose-level-container ul li a.comming-soon:hover {
+  font-size: 3em;
+  box-shadow: 0 0 40px 9px white;
+}
+
+.choose-level-container ul li a.comming-soon:hover::after {
+  content: "comming soon";
+  position: absolute;
+  font-size: .5em;
+  padding: .5em;
+}
+
+.choose-level-container ul .li-a1 {
+  opacity: 0;
+  transform: scale(0);
+  animation: LevelFadeIn .2s ease-in-out forwards;
+}
+
+.choose-level-container ul .li-a2 {
+  opacity: 0;
+  transform: scale(0);
+  animation: LevelFadeIn .2s ease-in-out .2s forwards;
+}
+
+.choose-level-container ul .li-b1 {
+  opacity: 0;
+  transform: scale(0);
+  animation: LevelFadeIn .2s ease-in-out .4s forwards;
+}
+
+.choose-level-container ul .li-b2 {
+  opacity: 0;
+  transform: scale(0);
+  animation: LevelFadeIn .2s ease-in-out .6s forwards;
+}
+
+@keyframes LevelFadeIn {
+  0% {
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
