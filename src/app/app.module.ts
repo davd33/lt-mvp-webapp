@@ -5,7 +5,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from "@angular/router";
 
 import {AppComponent} from './app.component';
-import {LtService} from "./lt/lt.service";
+import {LtService} from "./services/lt.service";
 import {LtComponent} from './lt/lt.component';
 import {RunLt1Component} from './run-lt-1/run-lt-1.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
@@ -14,6 +14,7 @@ import {MovingFlagComponent} from './moving-flag/moving-flag.component';
 import {IndexComponent} from './index/index.component';
 import {ChooseLevelComponent} from './choose-level/choose-level.component';
 import {ChooseTrainingComponent} from './choose-training/choose-training.component';
+import {SignUpService} from "./services/sign-up.service";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import {ChooseTrainingComponent} from './choose-training/choose-training.compone
       }
     ])
   ],
-  providers: [LtService],
+  providers: [LtService, SignUpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

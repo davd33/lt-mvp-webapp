@@ -24,7 +24,8 @@ $border-size: 0;
 
 .notify-me input[type="email"] {
   display: inline-block;
-  width: 60%;
+  width: 25em;
+  max-width: 50%;
   border: $border-size solid $primary-color;
   padding: .2em;
 

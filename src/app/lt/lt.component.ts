@@ -5,7 +5,7 @@ import {
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 
 import * as Immutable from "immutable";
-import {LtService} from "./lt.service";
+import {LtService} from "../services/lt.service";
 
 @Component({
   selector: 'app-lt',

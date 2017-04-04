@@ -7,7 +7,7 @@ import {LT_LIST} from '../mock-tests';
 export class LtService {
 
 
-  constructor(private http: Http) {
+  constructor() {
   }
 
   getTestA2Prep(): Promise<any> {
