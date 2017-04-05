@@ -15,16 +15,27 @@ $score-aweful: #b74747;
 }
 
 .lt-container form div {
-  float: left;
 }
 
 .lt-container label {
+}
+
+.lt-container .word {
+}
+
+.lt-container .word .point {
+  margin: -0.2em 0;
+}
+
+.lt-container .word div {
   float: left;
+  margin: -0.2em 0.2em;
 }
 
 .lt-container input[type='text'] {
   display: inline-block;
   margin: 0 0.5em;
+  float: left;
 
   font-size: 1em;
   font-family: $lt-font;
@@ -60,7 +71,7 @@ $score-aweful: #b74747;
 }
 
 .lt-container input[type='text'].incomplete-word-input {
-  margin-left: 0;
+  margin-left: -.2em;
 }
 
 .lt-container input[type='text']::before {
@@ -100,7 +111,7 @@ $score-aweful: #b74747;
 
   .lt-container {
     margin-top: 8%;
-    font-size: 3em;
+    font-size: 2em;
   }
 }
 

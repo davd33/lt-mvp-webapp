@@ -1,28 +1,16 @@
 import {
-  Component, OnInit, trigger, state, style, transition, animate, keyframes,
-  Renderer, Output, EventEmitter, ViewChildren, AfterViewInit, Input
+  Component, OnInit, Renderer, Output, EventEmitter, ViewChildren, AfterViewInit, Input
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 
-import * as Immutable from "immutable";
 import {LtService} from "../services/lt.service";
+import {luckenAnimations} from "./lt.animations";
 
 @Component({
   selector: 'app-lt',
   templateUrl: './lt.component.html',
   styleUrls: ['./lt.component.scss'],
-  animations: [
-    trigger('hole', [
-      state('invalid', style({transform: 'scale(1)'})),
-      state('valid', style({transform: 'scale(1)'})),
-      transition('* => valid', [
-        animate('200ms ease-in', keyframes([
-          style({transform: 'scale(4)'}),
-          style({transform: 'scale(1)'})
-        ]))
-      ])
-    ])
-  ]
+  animations: [luckenAnimations()]
 })
 export class LtComponent implements OnInit, AfterViewInit {
 
@@ -46,6 +34,12 @@ export class LtComponent implements OnInit, AfterViewInit {
    * Form group for the test.
    */
   testForm: FormGroup;
+
+  /**
+   * Shake the wrong answers.
+   * @type {boolean}
+   */
+  shakeIt: boolean = false;
 
   /**
    * Inputs for focus.
@@ -79,6 +73,26 @@ export class LtComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getLt();
+    setInterval(() => {
+      this.doShakeIt();
+      setTimeout(() => {
+        this.doNotShakeIt()
+      }, 1000);
+    }, 3000);
+  }
+
+  /**
+   * Change flag to true.
+   */
+  doShakeIt() {
+    this.shakeIt = true;
+  }
+
+  /**
+   * Change flag to false.
+   */
+  doNotShakeIt() {
+    this.shakeIt = false;
   }
 
   /**
@@ -166,6 +180,10 @@ export class LtComponent implements OnInit, AfterViewInit {
     });
   }
 
+  isInputInvalid(thisInput: any) {
+    return thisInput.status == "invalid";
+  }
+
   /**
    * When an input control
    *
@@ -173,17 +191,17 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param index in the loop of words
    */
   controlChanged(thisInput: any, index: number) {
-    this.triesCnt++;
 
-    let nextEntry = this.findNotYetFocusedInputEntry(thisInput);
+    let nextEntry = this.findNextInvalidInputEntry(thisInput);
     let entry = thisInput;
+
+    if (entry.value.trim() !== "")
+      this.triesCnt++;
 
     if (this.testForm.controls['test']['controls'][index].valid) {
 
       this.rightAnswersCnt++;
 
-      // input should not get focus anymore
-      entry.focused = true;
       // input valid: animation
       entry.status = "valid";
 
@@ -191,10 +209,14 @@ export class LtComponent implements OnInit, AfterViewInit {
         this.renderer.setElementAttribute(entry, 'disabled', 'disabled');
       } catch (e) {
       }
+    } else {
+      if (entry.value.trim() !== "")
+        entry.status = "invalid";
     }
 
     try {
       this.renderer.invokeElementMethod(nextEntry.nativeElement, 'focus');
+      this.renderer.invokeElementMethod(nextEntry.nativeElement, 'select');
     } catch (e) {
     }
 
@@ -207,8 +229,7 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Get the input entry (not the html element, rather the object
-   * with 'focused', 'status' and 'input' fields) for the given index.
+   * Get the input entry for the given index.
    *
    * @param index
    * @returns any
@@ -225,17 +246,17 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param thisInput
    * @returns any
    */
-  findNotYetFocusedInputEntry(thisInput: any): any {
-    // we go to the current input entry and take the next one
+  findNextInvalidInputEntry(thisInput: any): any {
+    // next input entry not valid
     let e: any = this.inputChildren.find((obj, i, arr) => {
-      if (arr[i - 1])
+      if (arr[i - 1] && obj.nativeElement.status !== 'valid')
         return arr[i - 1].nativeElement.id == thisInput.id;
     });
 
     if (!e) {
-      // we go to the first not focused
+      // we go to the first not valid
       e = this.inputChildren.find((obj) => {
-        return !obj.nativeElement.focused;
+        return obj.nativeElement.status !== 'valid';
       })
     }
 
@@ -254,16 +275,20 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param thisInput the input child
    * @returns {string}
    */
-  holeInputStatus(thisInput: any) {
-    return thisInput.status ? thisInput.status : "invalid";
+  luckenInputStatus(thisInput: any) {
+    return thisInput.status ? thisInput.status : "untouched";
   }
 
   /**
    * Percentage of inputs validated
    */
   successBarSize() {
-    let barSize = (this.rightAnswersCnt / this.inputChildren.size) * 100;
+    let barSize = (this.rightAnswersCnt / this.inputChildren.length) * 100;
     return `${barSize}%`;
+  }
+
+  getArray(str: string) {
+    return str.split(' ');
   }
 
 }

@@ -1,4 +1,5 @@
 <div class="index-container" #topSection>
   <h2>For the first time,<br> <em>Lückentexts</em> in a didactic App</h2>
+  <h3 *ngIf="studentSignedUp > 1000" class="count">Already <em>{{studentSignedUp}}</em> students have signed up!</h3>
   <a routerLink="/choose-level">Start!</a>
 </div>

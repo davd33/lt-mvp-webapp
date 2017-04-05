@@ -1,11 +1,13 @@
 <div *ngIf="!registrationSuccess" class="notify-me">
   <label>
-    <span>I want to be notified when the App is out!</span>
-    <input type="email" #input autofocus [(ngModel)]="email">
-    <input type="button" value="Send" (click)="sendForm()">
+    <span>Sign up!</span>
+    <input type="email" #input [(ngModel)]="email" (keypress)="keyValid($event)">
+    <div class="submit" (click)="sendForm()">
+      <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    </div>
   </label>
 </div>
 
-<div *ngIf="registrationSuccess">
+<div *ngIf="registrationSuccess" class="mail-sent">
   Email sent, you will notified when our App is ready for use.
 </div>

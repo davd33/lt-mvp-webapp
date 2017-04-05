@@ -19,20 +19,26 @@ export class SignUpComponent implements AfterViewInit {
   registrationSuccess: boolean = false;
   @ViewChild('input') inputChild;
 
-  constructor(
-    private signUpService: SignUpService
-  ) { }
+  constructor(private signUpService: SignUpService) {
+  }
 
   ngAfterViewInit() {
     this.inputChild.nativeElement.focus();
   }
 
   sendForm() {
-    this.signUpService.registerMail(this.email, this.price)
-      .then((res) => {
-        console.log(res);
-        this.registrationSuccess = true;
-      });
+    if (this.email && this.email.trim() !== "")
+      this.signUpService.registerMail(this.email.trim(), this.price)
+        .then((res) => {
+          console.log(res);
+          this.registrationSuccess = true;
+        });
+  }
+
+  keyValid(event: any) {
+    if (event.key == "Enter") {
+      this.sendForm();
+    }
   }
 
 }

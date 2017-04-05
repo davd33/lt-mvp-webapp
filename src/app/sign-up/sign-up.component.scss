@@ -2,6 +2,13 @@
 
 $border-size: 0;
 
+.mail-sent {
+  font-size: 2em;
+  color: $second-color;
+  text-shadow: 1px 1px 1px $second-color;
+  text-align: center;
+}
+
 .notify-me {
   margin: 10% auto 0;
   text-align: center;
@@ -26,6 +33,7 @@ $border-size: 0;
   display: inline-block;
   width: 25em;
   max-width: 50%;
+  margin-left: 5%;
   border: $border-size solid $primary-color;
   padding: .2em;
 
@@ -40,17 +48,18 @@ $border-size: 0;
   text-shadow: 1px 1px 1px $third-color;
 }
 
-.notify-me input[type="button"] {
-  display: block;
-  width: 60%;
-  margin: 0 auto;
+.notify-me .submit {
+  display: inline-block;
   border: $border-size solid transparent;
+
+  transform: translateX(-150%);
 
   background: transparent;
   font-family: $primary-font;
-  font-size: 1.5em;
+  font-size: 1em;
   outline: none;
   text-align: center;
-  text-shadow: 1px 1px 1px $second-color;
+  color: $third-color;
+  text-shadow: 1px 1px 1px $third-color;
   cursor: pointer;
 }

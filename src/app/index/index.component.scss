@@ -36,3 +36,8 @@
 .index-container a:hover {
   animation: $monoton-link-anim;
 }
+
+.count {
+  font-family: $titles-font;
+  font-size: 1.5em;
+}

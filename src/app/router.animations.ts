@@ -43,6 +43,23 @@ export function rtFadeInOut() {
   ]);
 }
 
+export function rtFadeInSlideUp() {
+  return trigger('rtFadeInSlideUp', [
+
+    state('void', style(CONTAINER_STATE)),
+    state('*', style(CONTAINER_STATE)),
+
+    transition(':enter', [
+      style({transform: 'scale(5)', opacity: '0'}),
+      animate('0.5s ease-in', style({transform: 'scale(1)', opacity: '1'}))
+    ]),
+    transition(':leave', [
+      style({transform: 'translateY(0)', opacity: '1'}),
+      animate('0.2s ease-in', style({transform: 'translateY(-100%)', opacity: '0'}))
+    ])
+  ]);
+}
+
 export function rtFadeOut() {
   return trigger('rtFadeOut', [
 

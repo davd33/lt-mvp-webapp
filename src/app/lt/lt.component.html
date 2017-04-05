@@ -12,24 +12,27 @@
       <div *ngFor="let w of test.text; let i = index;">
 
         <!--TEXT-->
-        <div *ngIf="!w.isInput">{{w.value}}</div>
+        <div *ngIf="!w.isInput" class="word">
+          <div *ngFor="let ww of getArray(w.value)" [ngClass]="{'point': ww.length == 1}">{{ww}}</div>
+        </div>
 
         <!--INPUTS FOR THE USER TO FILL IN-->
-        <div formGroupName="test">
-          <div *ngIf="w.isInput">
-            <label>
-              <input type="text" #thisInput autocomplete="off"
-                     (keydown.enter)="controlChanged(thisInput, i)"
-                     [ngClass]="{'incomplete-word-input': !w.complete}"
-                     [@hole]="holeInputStatus(thisInput)"
-                     [name]="i"
-                     [id]="i"
-                     [autofocus]="i==1"
-                     [size]="w.value.length"
-                     [maxlength]="w.value.length"
-                     [formControlName]="i">
-            </label>
-          </div>
+        <div formGroupName="test" *ngIf="w.isInput">
+          <label>
+            <input type="text" #thisInput autocomplete="off"
+                   (keydown.enter)="controlChanged(thisInput, i)"
+                   [ngClass]="{
+                        'incomplete-word-input': !w.complete,
+                        'shake shake-constant': shakeIt && isInputInvalid(thisInput)
+                     }"
+                   [@hole]="luckenInputStatus(thisInput)"
+                   [name]="i"
+                   [id]="i"
+                   [autofocus]="i==1"
+                   [size]="w.value.length"
+                   [maxlength]="w.value.length"
+                   [formControlName]="i">
+          </label>
         </div>
       </div>
     </form>

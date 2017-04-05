@@ -6,7 +6,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class SignUpService {
 
-  private frontAPIUrl = 'http://52.59.253.39:4242/';
+  // private frontAPIUrl = 'http://52.59.253.39:4242/';
+  private frontAPIUrl = 'http://localhost:4242/api/registration';
 
   constructor(private http: Http) {
   }
@@ -15,19 +16,29 @@ export class SignUpService {
     return this.http
       .post(
         this.frontAPIUrl,
-        JSON.stringify({
+        {
           email: email,
           price: price
-        })
+        }
       )
       .toPromise()
       .then(res => {
-        console.log(res.json())
-      });
+        return res.json()
+      })
+      .catch(this.handleError);
   }
 
-  private handleErrors(error: any) {
-    console.error('An error has occured', error);
+  signedUpStudents(): any {
+    return this.http
+      .get(`${this.frontAPIUrl}/count`)
+      .toPromise()
+      .then(res => {
+        return res.json()
+      })
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {routerTransition} from '../router.animations';
+import {SignUpService} from "../services/sign-up.service";
 
 @Component({
   selector: 'app-index',
@@ -11,10 +12,18 @@ import {routerTransition} from '../router.animations';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() {
+  studentSignedUp: number = 0;
+
+  constructor(
+    private signedUpService: SignUpService
+  ) {
   }
 
   ngOnInit() {
+    this.signedUpService.signedUpStudents()
+      .then(res => {
+        this.studentSignedUp = res.count;
+      });
   }
 
 }
