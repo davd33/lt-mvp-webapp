@@ -19,9 +19,9 @@
           <div *ngIf="w.isInput">
             <label>
               <input type="text" #thisInput autocomplete="off"
-                     (keydown.enter)="controlChanged(i)"
+                     (keydown.enter)="controlChanged(thisInput, i)"
                      [ngClass]="{'incomplete-word-input': !w.complete}"
-                     [@hole]="holeInputStatus(i)"
+                     [@hole]="holeInputStatus(thisInput)"
                      [name]="i"
                      [id]="i"
                      [autofocus]="i==1"
@@ -29,9 +29,6 @@
                      [maxlength]="w.value.length"
                      [formControlName]="i">
             </label>
-
-            <!--ADD INPUT ELEMENTS TO USE WHEN INPUT BECOMES VALID-->
-            <div *ngIf="addInput(i, thisInput)"></div>
           </div>
         </div>
       </div>

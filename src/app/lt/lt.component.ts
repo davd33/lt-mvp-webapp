@@ -72,22 +72,19 @@ export class LtComponent implements OnInit, AfterViewInit {
    */
   @Input() training: string;
 
-  /**
-   * List of the inputs in the form.
-   * These will be focused after user enters good answers.
-   */
-  private inputList: Immutable.OrderedMap<number, { focused: boolean; input: any, status: string }>;
-
   constructor(private renderer: Renderer,
               private ltService: LtService,
               private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.inputList = Immutable.OrderedMap<number, { focused: boolean; input: any, status: string }>();
     this.getLt();
   }
 
+  /**
+   * After view init:
+   *  -> focus first input
+   */
   ngAfterViewInit() {
     this.inputChildren.changes.subscribe(elements => {
       elements.first.nativeElement.focus();
@@ -98,7 +95,6 @@ export class LtComponent implements OnInit, AfterViewInit {
    * Get lt test according to level and training chosen.
    */
   getLt() {
-
     let error: string;
 
     if (this.level == "A2") {
@@ -143,20 +139,6 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Add input element reference to our list of inputs.
-   *
-   * @param index
-   * @param input html element
-   * @returns {boolean}
-   */
-  addInput(index: number, input: any) {
-    if (!this.inputList.has(index)) {
-      this.inputList = this.inputList.set(index, {focused: false, input: input, status: "invalid"});
-    }
-    return true;
-  }
-
-  /**
    * Create group controls with their validators:
    *  - required
    *  - a regex to match the right answer
@@ -187,13 +169,14 @@ export class LtComponent implements OnInit, AfterViewInit {
   /**
    * When an input control
    *
-   * @param index
+   * @param thisInput the input child
+   * @param index in the loop of words
    */
-  controlChanged(index: number) {
+  controlChanged(thisInput: any, index: number) {
     this.triesCnt++;
 
-    let nextEntry = this.findNotYetFocusedInputEntry(index);
-    let entry = this.getInputEntry(index);
+    let nextEntry = this.findNotYetFocusedInputEntry(thisInput);
+    let entry = thisInput;
 
     if (this.testForm.controls['test']['controls'][index].valid) {
 
@@ -205,13 +188,13 @@ export class LtComponent implements OnInit, AfterViewInit {
       entry.status = "valid";
 
       try {
-        this.renderer.setElementAttribute(entry.input, 'disabled', 'disabled');
+        this.renderer.setElementAttribute(entry, 'disabled', 'disabled');
       } catch (e) {
       }
     }
 
     try {
-      this.renderer.invokeElementMethod(nextEntry.input, 'focus');
+      this.renderer.invokeElementMethod(nextEntry.nativeElement, 'focus');
     } catch (e) {
     }
 
@@ -219,6 +202,7 @@ export class LtComponent implements OnInit, AfterViewInit {
       setTimeout(() => {
         this.ltSuccess.emit({status: "valid"});
       }, 500);
+      /* wait animation of success bar .5s */
     }
   }
 
@@ -227,28 +211,32 @@ export class LtComponent implements OnInit, AfterViewInit {
    * with 'focused', 'status' and 'input' fields) for the given index.
    *
    * @param index
-   * @returns {focused: boolean; input: any, status: string}
+   * @returns any
    */
-  getInputEntry(index: number): { focused: boolean; input: any, status: string } {
-    return this.inputList.get(index);
+  getInputEntry(index: number): any {
+    return this.inputChildren.find((obj, i) => {
+      return i == index;
+    });
   }
 
   /**
    * Finds the next input not yet validated by the user.
    *
-   * @param index
-   * @returns {focused: boolean; input: any, status: string}
+   * @param thisInput
+   * @returns any
    */
-  findNotYetFocusedInputEntry(index: number): { focused: boolean; input: any, status: string } {
+  findNotYetFocusedInputEntry(thisInput: any): any {
     // we go to the current input entry and take the next one
-    let e: any = this.inputList.entrySeq()
-      .skipUntil(kv => kv[0] == index).skip(1)
-      .skipUntil(kv => !kv[1].focused).first();
+    let e: any = this.inputChildren.find((obj, i, arr) => {
+      if (arr[i - 1])
+        return arr[i - 1].nativeElement.id == thisInput.id;
+    });
 
-    // we go to the first not focused if former method returns nothing
     if (!e) {
-      e = this.inputList.entrySeq()
-        .skipUntil(kv => !kv[1].focused).first();
+      // we go to the first not focused
+      e = this.inputChildren.find((obj) => {
+        return !obj.nativeElement.focused;
+      })
     }
 
     // we raise an error in case there's no entry left
@@ -256,27 +244,25 @@ export class LtComponent implements OnInit, AfterViewInit {
       throw new Error("No entry left.");
     }
 
-    return e[1];
+    return e;
   }
 
   /**
    * Animation status for an input.
    * When 'valid' triggers 'hole' animation.
    *
-   * @param index
+   * @param thisInput the input child
    * @returns {string}
    */
-  holeInputStatus(index: number) {
-    let entry = this.getInputEntry(index);
-
-    return entry ? entry.status : "invalid";
+  holeInputStatus(thisInput: any) {
+    return thisInput.status ? thisInput.status : "invalid";
   }
 
   /**
    * Percentage of inputs validated
    */
   successBarSize() {
-    let barSize = (this.rightAnswersCnt / this.inputList.size) * 100;
+    let barSize = (this.rightAnswersCnt / this.inputChildren.size) * 100;
     return `${barSize}%`;
   }
 
