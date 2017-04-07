@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
@@ -15,6 +15,7 @@ import {IndexComponent} from './index/index.component';
 import {ChooseLevelComponent} from './choose-level/choose-level.component';
 import {ChooseTrainingComponent} from './choose-training/choose-training.component';
 import {SignUpService} from "./services/sign-up.service";
+import {LangService} from "./services/lang.service";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import {SignUpService} from "./services/sign-up.service";
       }
     ])
   ],
-  providers: [LtService, SignUpService],
+  providers: [LtService, SignUpService, Title, LangService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

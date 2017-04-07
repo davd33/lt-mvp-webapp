@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 import {routerTransition} from '../router.animations';
 import {SignUpService} from "../services/sign-up.service";
+import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-index',
@@ -14,12 +16,13 @@ export class IndexComponent implements OnInit {
 
   studentSignedUp: number = 0;
 
-  constructor(
-    private signedUpService: SignUpService
-  ) {
+  constructor(private signedUpService: SignUpService,
+              private titleService: Title,
+              private lang: LangService) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle("Lücken tests");
     this.signedUpService.signedUpStudents()
       .then(res => {
         this.studentSignedUp = res.count;

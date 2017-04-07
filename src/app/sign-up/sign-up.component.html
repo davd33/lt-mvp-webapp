@@ -1,6 +1,6 @@
 <div *ngIf="!registrationSuccess" class="notify-me">
   <label>
-    <span>Sign up!</span>
+    <span>{{lang.text.SignUp.signUpLabel}}</span>
     <input type="email" #input [(ngModel)]="email" (keypress)="keyValid($event)">
     <div class="submit" (click)="sendForm()">
       <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
@@ -9,5 +9,5 @@
 </div>
 
 <div *ngIf="registrationSuccess" class="mail-sent">
-  Email sent, you will notified when our App is ready for use.
+  {{lang.text.SignUp.emailSent}}
 </div>

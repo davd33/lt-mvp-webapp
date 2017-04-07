@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 
 import {rtFadeOut} from '../router.animations';
+import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-choose-training',
@@ -20,10 +21,9 @@ export class ChooseTrainingComponent implements OnInit {
    */
   level: string;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private lang: LangService) {
   }
 
   ngOnInit() {

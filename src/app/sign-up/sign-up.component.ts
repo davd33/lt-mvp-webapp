@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 
 import {routerTransition} from '../router.animations';
 import {SignUpService} from "../services/sign-up.service";
+import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,8 @@ export class SignUpComponent implements AfterViewInit {
   registrationSuccess: boolean = false;
   @ViewChild('input') inputChild;
 
-  constructor(private signUpService: SignUpService) {
+  constructor(private signUpService: SignUpService,
+              private lang: LangService) {
   }
 
   ngAfterViewInit() {

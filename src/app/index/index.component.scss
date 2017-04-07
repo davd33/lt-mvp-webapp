@@ -3,41 +3,47 @@
 .index-container {
   text-align: center;
   font-family: $slogan-font;
-  font-size: 3em;
+  font-size: 2.1em;
   text-shadow: 1px 0 0 $second-color;
   color: $third-color;
-}
 
-.index-container em {
-  font-style: normal;
-}
+  em {
+    font-style: normal;
+  }
 
-.index-container em::before {
-  content: "";
-  display: inline-block;
+  em::before {
+    content: "";
+    display: inline-block;
 
-  width: 5em;
-  height: 1em;
-  position: absolute;
-  z-index: -1;
+    width: 5em;
+    height: 1em;
+    position: absolute;
+    z-index: -1;
 
-  background: $third-color;
-  opacity: .2;
-}
+    background: $third-color;
+    opacity: .2;
+  }
 
-.index-container a {
-  font-size: 1.5em;
-  font-family: $big-links-font;
-  text-decoration: none;
-  color: $second-color;
-  text-shadow: 1px 1px 0 $third-color;
-}
+  a {
+    font-size: 1.5em;
+    font-family: $big-links-font;
+    text-decoration: none;
+    color: $second-color;
+    text-shadow: 1px 1px 0 $third-color;
+  }
 
-.index-container a:hover {
-  animation: $monoton-link-anim;
-}
+  a:hover {
+    animation: $monoton-link-anim;
+  }
 
-.count {
-  font-family: $titles-font;
-  font-size: 1.5em;
+  .count {
+    font-family: $titles-font;
+    font-size: 1em;
+    color: black;
+    text-shadow: 1px 1px 1px black;
+
+    em::before {
+      width: 5.7em;
+    }
+  }
 }
