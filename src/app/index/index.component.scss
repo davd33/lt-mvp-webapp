@@ -42,8 +42,11 @@
     color: black;
     text-shadow: 1px 1px 1px black;
 
+    em {
+      text-decoration: underline  ;
+    }
     em::before {
-      width: 5.7em;
+      background: transparent;
     }
   }
 }

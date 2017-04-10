@@ -9,44 +9,76 @@ $score-bad: #b74747;
 $score-aweful: #b74747;
 
 .lt-container {
+
   font-size: 2em;
   font-family: $lt-font;
   line-height: 2em;
-}
 
-.lt-container form div {
-}
+  app-moving-flag {
+    width: 100%;
+    position: fixed;
+    top: 20%;
+  }
 
-.lt-container label {
-}
+  .word {
+    .point {
+      margin: -0.2em 0;
+      margin-left: -.5em;
+    }
 
-.lt-container .word {
-}
+    div {
+      float: left;
+      margin: -0.2em 0.2em;
+    }
+  }
 
-.lt-container .word .point {
-  margin: -0.2em 0;
-}
+  input[type='text'] {
+    display: inline-block;
+    margin: 0 0.5em;
+    float: left;
 
-.lt-container .word div {
-  float: left;
-  margin: -0.2em 0.2em;
-}
+    font-size: 1em;
+    font-family: $lt-font;
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: 1px solid $third-color;
+    outline: none;
+  }
 
-.lt-container input[type='text'] {
-  display: inline-block;
-  margin: 0 0.5em;
-  float: left;
+  input[type='text']:focus {
+    animation: focusAnim .5s ease-in forwards;
+  }
 
-  font-size: 1em;
-  font-family: $lt-font;
-  background: transparent;
-  border: 1px solid transparent;
-  border-bottom: 1px solid $third-color;
-  outline: none;
-}
+  input[type='text'].incomplete-word-input {
+    margin-left: -.2em;
+  }
 
-.lt-container input[type='text']:focus {
-  animation: focusAnim .5s ease-in forwards;
+  input[type='text']::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $third-color;
+  }
+
+  .lt-text {
+    padding: 2%;
+  }
+
+  .success-bar {
+    position: fixed;
+    width: 0;
+    height: 2px;
+    background: darkred;
+    transition: width .5s;
+  }
+
+  .wrong-answer {
+    cursor: pointer;
+  }
 }
 
 @keyframes focusAnim {
@@ -70,41 +102,6 @@ $score-aweful: #b74747;
   }
 }
 
-.lt-container input[type='text'].incomplete-word-input {
-  margin-left: -.2em;
-}
-
-.lt-container input[type='text']::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: $third-color;
-}
-
-.lt-container .lt-score-perfect {
-  color: $score-perfect;
-}
-
-.lt-container .lt-score-good {
-  color: $score-good;
-}
-
-.lt-container .lt-score-mediocre {
-  color: $score-mediocre;
-}
-
-.lt-container .lt-score-bad {
-  color: $score-bad;
-}
-
-.lt-container .lt-score-aweful {
-  color: $score-aweful;
-}
-
 @media only screen and (min-height: 768px) {
 
   /* desktops */
@@ -113,16 +110,4 @@ $score-aweful: #b74747;
     margin-top: 8%;
     font-size: 2em;
   }
-}
-
-.lt-container .lt-text {
-  padding: 2%;
-}
-
-.lt-container .success-bar {
-  position: fixed;
-  width: 0;
-  height: 2px;
-  background: darkred;
-  transition: width .5s;
 }

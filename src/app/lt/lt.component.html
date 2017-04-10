@@ -3,8 +3,8 @@
   <div class="success-bar" [ngStyle]="{width: successBarSize()}">
   </div>
 
-  <div>
-    <app-moving-flag></app-moving-flag>
+  <div *ngIf="isErrorFocusedInput()">
+    <app-moving-flag [explanation]="inputFocused.explanation"></app-moving-flag>
   </div>
 
   <div class="lt-text">
@@ -13,22 +13,25 @@
 
         <!--TEXT-->
         <div *ngIf="!w.isInput" class="word">
-          <div *ngFor="let ww of getArray(w.value)" [ngClass]="{'point': ww.length == 1}">{{ww}}</div>
+          <div *ngFor="let ww of getArray(w.value)" [ngClass]="{'point': isPoint(ww)}">{{ww}}</div>
         </div>
 
         <!--INPUTS FOR THE USER TO FILL IN-->
         <div formGroupName="test" *ngIf="w.isInput">
           <label>
             <input type="text" #thisInput autocomplete="off"
+
                    (keydown.enter)="controlChanged(thisInput, i)"
+                   (focus)="onInputFocus(thisInput, w.explanation)"
+
                    [ngClass]="{
                         'incomplete-word-input': !w.complete,
-                        'shake shake-constant': shakeIt && isInputInvalid(thisInput)
+                        'shake shake-constant': shakeIt && isInputInvalid(thisInput),
+                        'wrong-answer': isInputInvalid(thisInput)
                      }"
                    [@hole]="luckenInputStatus(thisInput)"
                    [name]="i"
                    [id]="i"
-                   [autofocus]="i==1"
                    [size]="w.value.length"
                    [maxlength]="w.value.length"
                    [formControlName]="i">

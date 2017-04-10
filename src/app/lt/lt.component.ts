@@ -31,6 +31,11 @@ export class LtComponent implements OnInit, AfterViewInit {
   rightAnswersCnt: number = 0;
 
   /**
+   * The currently focused input.
+   */
+  inputFocused: any;
+
+  /**
    * Form group for the test.
    */
   testForm: FormGroup;
@@ -280,15 +285,47 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Percentage of inputs validated
+   * Percentage of inputs validated.
+   * @returns {string}
    */
   successBarSize() {
     let barSize = (this.rightAnswersCnt / this.inputChildren.length) * 100;
     return `${barSize}%`;
   }
 
+  /**
+   * Split a string in an array of strings.
+   * @param str
+   * @returns {string[]}
+   */
   getArray(str: string) {
     return str.split(' ');
+  }
+
+  /**
+   * Is this string a punctuation.
+   * @param str
+   * @returns {boolean|RegExpMatchArray|null}
+   */
+  isPoint(str: string) {
+    return str.length == 1 && str.match(/[!?,.:;]/);
+  }
+
+  /**
+   * When input gets focus.
+   * @param thisInput
+   */
+  onInputFocus(thisInput: any, explanation: string) {
+    this.inputFocused = thisInput;
+    this.inputFocused.explanation = explanation;
+  }
+
+  /**
+   * Is the currently focused input invalid?
+   * @returns {any|boolean}
+   */
+  isErrorFocusedInput() {
+    return this.inputFocused && this.inputFocused.status && this.inputFocused.status == "invalid";
   }
 
 }

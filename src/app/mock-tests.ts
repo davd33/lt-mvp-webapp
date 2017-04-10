@@ -9,26 +9,26 @@ export const LT_LIST: any[] = [
       }, {
         "value": "in",
         "isInput": true,
-        "explanation": "",
+        "explanation": "You should use the accusative form of 'in'.",
         "complete": true
       }, {
         "value": " Deutschland studieren! Leider habe ich soweit k",
       }, {
         "value": "ein",
         "isInput": true,
-        "explanation": ""
+        "explanation": "There is not..."
       }, {
         "value": " cool",
       }, {
         "value": "es",
         "isInput": true,
-        "explanation": ""
+        "explanation": "This adjective needs to be accorded: neutral / accusative."
       }, {
         "value": " App gefunden um Lückentexte ",
       }, {
         "value": "zu",
         "isInput": true,
-        "explanation": "",
+        "explanation": "Use the form um[...]zu.",
         "complete": true
       }, {
         "value": " üben!",
@@ -46,7 +46,6 @@ export const LT_LIST: any[] = [
         "value": "me",
         "isInput": true,
         "explanation": "",
-        "complete": true
       }, {
         "value": " aus Frankreich. Ich möcht",
       }, {
@@ -65,14 +64,12 @@ export const LT_LIST: any[] = [
         "value": "en",
         "isInput": true,
         "explanation": "",
-        "complete": true
       }, {
         "value": " um Lückentexte zu üb",
       }, {
         "value": "en",
         "isInput": true,
         "explanation": "",
-        "complete": true
       }, {
         "value": "!",
       }
