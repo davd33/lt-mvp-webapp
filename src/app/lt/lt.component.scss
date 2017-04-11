@@ -79,6 +79,10 @@ $score-aweful: #b74747;
   .wrong-answer {
     cursor: pointer;
   }
+
+  .enter-tip {
+    position: fixed;
+  }
 }
 
 @keyframes focusAnim {

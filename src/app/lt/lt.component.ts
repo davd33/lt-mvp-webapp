@@ -1,5 +1,6 @@
 import {
-  Component, OnInit, Renderer, Output, EventEmitter, ViewChildren, AfterViewInit, Input
+  Component, OnInit, Renderer, Output, EventEmitter, ViewChildren, AfterViewInit, Input, HostListener, ViewChild,
+  ElementRef
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 
@@ -186,7 +187,8 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   isInputInvalid(thisInput: any) {
-    return thisInput.status == "invalid";
+    let input = this.getInputEntry(thisInput);
+    return input ? input.status == "invalid" : false;
   }
 
   /**
@@ -197,31 +199,28 @@ export class LtComponent implements OnInit, AfterViewInit {
    */
   controlChanged(thisInput: any, index: number) {
 
-    let nextEntry = this.findNextInvalidInputEntry(thisInput);
-    let entry = thisInput;
+    let entryInput = this.getInputEntry(thisInput);
 
-    if (entry.value.trim() !== "")
+    if (entryInput.nativeElement.value.trim() !== "")
       this.triesCnt++;
 
     if (this.testForm.controls['test']['controls'][index].valid) {
 
       this.rightAnswersCnt++;
 
-      // input valid: animation
-      entry.status = "valid";
+      entryInput.status = "valid";
 
       try {
-        this.renderer.setElementAttribute(entry, 'disabled', 'disabled');
+        this.renderer.setElementAttribute(entryInput.nativeElement, 'disabled', 'disabled');
       } catch (e) {
       }
-    } else {
-      if (entry.value.trim() !== "")
-        entry.status = "invalid";
+    } else if (entryInput.nativeElement.value.trim() !== "") {
+      entryInput.status = "invalid";
     }
 
     try {
-      this.renderer.invokeElementMethod(nextEntry.nativeElement, 'focus');
-      this.renderer.invokeElementMethod(nextEntry.nativeElement, 'select');
+      let nextInput = this.findNextInvalidInputEntry(thisInput);
+      this.focusInput(nextInput);
     } catch (e) {
     }
 
@@ -234,15 +233,32 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Get the input entry for the given index.
-   *
-   * @param index
-   * @returns any
+   * Focus the native element of the parameter
+   * and call selectInput.
+   * @param thisInput
    */
-  getInputEntry(index: number): any {
-    return this.inputChildren.find((obj, i) => {
-      return i == index;
-    });
+  focusInput(thisInput) {
+    this.renderer.invokeElementMethod(thisInput.nativeElement, 'focus');
+    this.selectInput(thisInput);
+  }
+
+  /**
+   * Select text inside an input element.
+   * @param thisInput ViewChild variable
+   */
+  selectInput(thisInput: any) {
+    this.renderer.invokeElementMethod(thisInput.nativeElement, 'select');
+  }
+
+  /**
+   * Get the input ViewChild entry in the
+   * 'this.inputChildren' field.
+   * @param thisInput
+   */
+  getInputEntry(thisInput: any) {
+    return this.inputChildren.find((obj) => {
+      return obj.nativeElement.id === thisInput.id;
+    })
   }
 
   /**
@@ -254,14 +270,21 @@ export class LtComponent implements OnInit, AfterViewInit {
   findNextInvalidInputEntry(thisInput: any): any {
     // next input entry not valid
     let e: any = this.inputChildren.find((obj, i, arr) => {
-      if (arr[i - 1] && obj.nativeElement.status !== 'valid')
+      if (arr[i - 1] && obj.status !== 'valid')
         return arr[i - 1].nativeElement.id == thisInput.id;
     });
 
     if (!e) {
       // we go to the first not valid
       e = this.inputChildren.find((obj) => {
-        return obj.nativeElement.status !== 'valid';
+        return obj.status === 'invalid';
+      })
+    }
+
+    if (!e) {
+      // we go to the first not valid
+      e = this.inputChildren.find((obj) => {
+        return obj.status !== 'valid';
       })
     }
 
@@ -281,7 +304,9 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @returns {string}
    */
   luckenInputStatus(thisInput: any) {
-    return thisInput.status ? thisInput.status : "untouched";
+    let input = this.getInputEntry(thisInput);
+    let untouched = "untouched";
+    return input ? input.status ? input.status : untouched : untouched;
   }
 
   /**
@@ -314,10 +339,31 @@ export class LtComponent implements OnInit, AfterViewInit {
   /**
    * When input gets focus.
    * @param thisInput
+   * @param explanation
    */
   onInputFocus(thisInput: any, explanation: string) {
-    this.inputFocused = thisInput;
+    this.inputFocused = this.getInputEntry(thisInput);
     this.inputFocused.explanation = explanation;
+  }
+
+  /**
+   * When user clicks on input:
+   *  -> focus and select this input.
+   * @param thisInput
+   */
+  onInputClick(thisInput: any) {
+    this.focusInput(this.getInputEntry(thisInput));
+  }
+
+  /**
+   * When tab is pressed:
+   *  -> go to the next input.
+   * @param event
+   * @param thisInput
+   */
+  onInputTab(event: any, thisInput: any) {
+    event.preventDefault();
+    this.focusInput(this.findNextInvalidInputEntry(thisInput));
   }
 
   /**
