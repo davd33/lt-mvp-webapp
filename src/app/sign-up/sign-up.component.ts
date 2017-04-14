@@ -19,6 +19,7 @@ export class SignUpComponent implements AfterViewInit {
   price: number;
   registrationSuccess: boolean = false;
   @ViewChild('input') inputChild;
+  emailRegex: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   constructor(private signUpService: SignUpService,
               private lang: LangService) {

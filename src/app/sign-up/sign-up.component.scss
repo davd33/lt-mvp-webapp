@@ -2,64 +2,75 @@
 
 $border-size: 0;
 
+.captcha {
+  width: 304px;
+  margin: 0 auto;
+}
+
 .mail-sent {
   font-size: 2em;
   color: $second-color;
   text-shadow: 1px 1px 1px $second-color;
   text-align: center;
+  margin-top: 5%;
 }
 
 .notify-me {
   margin: 10% auto 0;
   text-align: center;
-}
 
-.notify-me label {
-  display: block;
-  font-size: 2em;
-}
+  .ng-invalid .submit {
+    opacity: .5;
+  }
 
-.notify-me label span {
-  width: 60%;
-  display: inline-block;
-  margin: 0 auto;
+  label {
+    display: block;
+    font-size: 2em;
+  }
 
-  border: 10px solid transparent;
-  color: $second-color;
-  text-shadow: 1px 1px 1px $second-color;
-}
+  label span {
+    width: 60%;
+    display: inline-block;
+    margin: 0 auto;
 
-.notify-me input[type="email"] {
-  display: inline-block;
-  width: 25em;
-  max-width: 50%;
-  margin-left: 5%;
-  border: $border-size solid $primary-color;
-  padding: .2em;
+    border: 10px solid transparent;
+    color: $second-color;
+    text-shadow: 1px 1px 1px $second-color;
+  }
 
-  background: $forth-color;
-  color: $third-color;
-  font-family: $primary-font;
-  font-size: 1em;
-  outline: none;
-  text-align: center;
+  input[type="email"] {
+    display: inline-block;
+    width: 13em;
+    max-width: 50%;
+    margin-left: 1.35em;
+    border: $border-size solid $primary-color;
 
-  box-shadow: 0 1px 4px -1px $second-color inset;
-  text-shadow: 1px 1px 1px $third-color;
-}
+    padding: .2em 1.5em .2em .2em;
 
-.notify-me .submit {
-  display: inline-block;
-  border: $border-size solid transparent;
+    background: $forth-color;
+    color: $third-color;
+    font-family: $primary-font;
+    font-size: 1em;
+    outline: none;
+    text-align: left;
 
-  transform: translateX(-150%);
+    box-shadow: 0 1px 4px -1px $second-color inset;
+    text-shadow: 1px 1px 1px $third-color;
+  }
 
-  background: transparent;
-  font-family: $primary-font;
-  font-size: 1em;
-  outline: none;
-  text-align: center;
-  color: $third-color;
-  text-shadow: 1px 1px 1px $third-color;
-  cursor: pointer;
+  .submit {
+    display: inline-block;
+    border: $border-size solid transparent;
+
+    transform: translateX(-150%);
+
+    background: transparent;
+    font-family: $primary-font;
+    font-size: 1em;
+    outline: none;
+    text-align: center;
+    color: $third-color;
+    text-shadow: 1px 1px 1px $third-color;
+    cursor: pointer;
+  }
 }

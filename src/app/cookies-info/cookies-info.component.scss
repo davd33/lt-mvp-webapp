@@ -1,0 +1,18 @@
+@import "../common";
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 5%;
+  text-align: justify;
+  font-size: 1.3em;
+
+  a {
+    color: $third-color;
+    transition: all .25s;
+
+    &:hover {
+      text-shadow: 0 0 15px $third-color;
+    }
+  }
+}

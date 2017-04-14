@@ -27,5 +27,16 @@ export const lang_en = {
   SignUp: {
     signUpLabel: "Sign up!",
     emailSent: "Email sent, you will notified when our App is ready for use."
+  },
+  CookiesInfo: {
+    googleLink: "See how google uses your data.",
+    cookieInfosLink: "Learn more about cookies.",
+    info: `We use cookies to personalise content and ads,
+    to provide social media features and to analyse our
+    traffic. We also share information about your use of
+    our site with our social media, advertising and analytics
+    partners who may combine it with other information that
+    you’ve provided to them or that they’ve collected from
+    your use of their services.`
   }
 };

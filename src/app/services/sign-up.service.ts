@@ -6,8 +6,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class SignUpService {
 
-  // private frontAPIUrl = 'http://52.59.253.39:4242/';
-  private frontAPIUrl = 'http://localhost:4242/api/registration';
+  // TODO: make URL configurable
+  private frontAPIUrl = 'http://localhost:4201/api/registration';
 
   constructor(private http: Http) {
   }

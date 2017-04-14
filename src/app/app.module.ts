@@ -16,6 +16,7 @@ import {ChooseLevelComponent} from './choose-level/choose-level.component';
 import {ChooseTrainingComponent} from './choose-training/choose-training.component';
 import {SignUpService} from "./services/sign-up.service";
 import {LangService} from "./services/lang.service";
+import { CookiesInfoComponent } from './cookies-info/cookies-info.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {LangService} from "./services/lang.service";
     IndexComponent,
     ChooseLevelComponent,
     ChooseTrainingComponent,
+    CookiesInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,10 @@ import {LangService} from "./services/lang.service";
       {
         path: 'choose-training/:level',
         component: ChooseTrainingComponent
+      },
+      {
+        path: 'cookies-info',
+        component: CookiesInfoComponent
       },
       {
         path: '',
