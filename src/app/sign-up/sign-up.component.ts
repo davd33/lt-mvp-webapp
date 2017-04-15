@@ -20,9 +20,11 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   email: string;
   price: number;
 
+  error: string;
+
   registrationSuccess: boolean = false;
   emailRegex: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  captchaDone: boolean = false;
+  captchaResult: string;
 
   @ViewChild('input') inputChild;
   @ViewChild('captcha') captchaChild;
@@ -41,11 +43,13 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   }
 
   sendForm() {
-    if (this.formChild.valid && this.captchaDone) {
-      this.signUpService.registerMail(this.email.trim(), this.price)
+    if (this.formChild.valid && this.captchaResult) {
+      this.signUpService.registerMail(this.email, this.price, this.captchaResult)
         .then((res) => {
-          console.log(res);
           this.registrationSuccess = true;
+        })
+        .catch((e) => {
+          console.log("there is an err: " + e);
         });
     }
   }
@@ -62,7 +66,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     grecaptcha.render(captchaChildElmt, {
       'sitekey': '6LfAHR0UAAAAANvcs6MfnYzUMeJE-V3MhNaTfQNt',
       'callback': (res) => {
-        this.captchaDone = true;
+        this.captchaResult = res;
       },
       'theme': 'light'
     });
