@@ -1,20 +1,11 @@
 @import "common";
 
-.top-section {
-  width: 100%;
-  height: 20%;
-
-  position: fixed;
-
-  background: $primary-color;
-}
-
 .router-section {
   width: 100%;
-  height: 80%;
+  height: 100%;
 
   position: fixed;
-  top: 20%;
+  top: 0;
   overflow: auto;
 
   background: $primary-color;

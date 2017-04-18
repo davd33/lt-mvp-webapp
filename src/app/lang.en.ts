@@ -18,6 +18,11 @@ export const lang_en = {
   RunLt1: {
     title: "Test running"
   },
+  Menu: {
+    home: "Home",
+    signUp: "Sign up",
+    start: "Start training"
+  },
   Index: {
     slogan1: "For the first time,",
     slogan2: "Lückentexts",
@@ -29,7 +34,7 @@ export const lang_en = {
   SignUp: {
     title: "Sign up",
     signUpLabel: "Sign up!",
-    emailSent: "Email sent, you will notified when our App is ready for use.",
+    emailSent: "Email sent, you will be notified when our App is ready for use.",
     validateCaptcha: "Please validate the captcha.",
     serverCaptchaError: "There was an error validating the captcha, please try again."
   },

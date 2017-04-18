@@ -1,0 +1,22 @@
+@import "../common";
+
+.container {
+  width: 100%;
+
+  ul {
+    padding: 0 1em;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 1em;
+    list-style: none;
+
+    a {
+      font-size: 1.2em;
+      color: $third-color;
+      text-decoration: none;
+    }
+  }
+}

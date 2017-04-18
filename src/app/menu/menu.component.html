@@ -1,0 +1,7 @@
+<div class="container">
+  <ul>
+    <li *ngFor="let menu of menuList">
+      <a [routerLink]="menu[1]">{{menu[0]}}</a>
+    </li>
+  </ul>
+</div>
