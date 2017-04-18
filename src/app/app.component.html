@@ -1,12 +1,16 @@
-<div class="router-section">
+<div class="container">
 
-  <!--APP TITLE-->
-  <div class="title">
-    <a href="/">{{lang.text.Global.title}}</a>
+  <div class="up-section">
+    <!--APP TITLE-->
+    <div class="title">
+      <a href="/">{{lang.text.Global.title}}</a>
+    </div>
+
+    <!--MENU-->
+    <app-menu></app-menu>
   </div>
 
-  <!--MENU-->
-  <app-menu></app-menu>
-
-  <router-outlet></router-outlet>
+  <div class="router-section">
+    <router-outlet></router-outlet>
+  </div>
 </div>

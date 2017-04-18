@@ -1,14 +1,24 @@
 @import "common";
 
-.router-section {
+.container {
   width: 100%;
   height: 100%;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   overflow: auto;
 
   background: $primary-color;
+}
+
+.up-section {
+  background: $primary-color;
+  padding-bottom: 2em;
+}
+
+.router-section {
+  box-shadow: -1px 0 1px $second-color;
+  overflow: auto;
 }
 
 .title {
@@ -29,46 +39,122 @@
   }
 }
 
-@media only screen and (max-height: 320px) {
-
-  /* nexus 5x + keyboard */
-
-  .top-section {
-    transform: translateY(-100%);
-  }
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  // iPhone 5
 
   .router-section {
-    height: 100%;
-    top: 0;
+    font-size: .8em;
   }
 
-  .router-section:nth-child(2) {
-    height: 125%;
-    transform: translateY(-20%);
+  .up-section {
+    font-size: 1.1em;
   }
 }
 
-@media only screen and (max-height: 450px) {
+@media only screen and (orientation: portrait) and (min-width: 360px) {
+  // Galaxy S5
 
-  .title {
+  .router-section {
+    font-size: .9em;
+  }
+
+  .up-section {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 412px) {
+  // Nexus 5X
+
+  .router-section {
+    font-size: .9em;
+  }
+
+  .up-section {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 768px) {
+  // iPad
+
+  .router-section {
+    font-size: 1.26em;
+  }
+
+  .up-section {
+    font-size: 1.95em;
+  }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 1024px) {
+  // iPad Pro
+
+  .router-section {
+    font-size: 1.6em;
+  }
+
+  .up-section {
+    font-size: 1.95em;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 360px) {
+  // Galaxy S5
+
+  .router-section {
+    font-size: .7em;
+  }
+
+  .up-section {
+    font-size: .8em;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 412px) {
+  // Nexus 5X
+
+  .router-section {
+    font-size: .65em;
+  }
+
+  .up-section {
+    font-size: .7em;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 732px) {
+  // Nexus 6P
+
+  .router-section {
+    font-size: .8em;
+  }
+
+  .up-section {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 1024px) {
+  // Nexus 6P
+
+  .router-section {
+    font-size: 1.4em;
+  }
+
+  .up-section {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 1366px) {
+  // Nexus 6P
+
+  .router-section {
     font-size: 2em;
   }
-}
 
-@media only screen and (min-width: 768px) and (min-height: 450px) {
-
-  /* desktops */
-
-  .title {
-    font-size: 4.5em;
-  }
-}
-
-@media only screen and (min-width: 1540px) and (min-height: 740px) {
-
-  /* desktops */
-
-  .title {
-    font-size: 5.5em;
+  .up-section {
+    font-size: 2.4em;
   }
 }
