@@ -4,6 +4,7 @@ import {Title} from "@angular/platform-browser";
 import {routerTransition} from '../router.animations';
 import {SignUpService} from "../services/sign-up.service";
 import {LangService} from "../services/lang.service";
+import {RecaptchaService} from "../services/recaptcha.service";
 
 declare const grecaptcha: any;
 
@@ -35,18 +36,19 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   constructor(private signUpService: SignUpService,
               private titleService: Title,
+              private capchaService: RecaptchaService,
               private lang: LangService) {
-    window['onloadCallback'] = this.captchaLoad.bind(this);
   }
 
   ngOnInit() {
     this.titleService.setTitle(
       `${this.lang.text.Global.title} - ${this.lang.text.SignUp.title}`
-    )
+    );
   }
 
   ngAfterViewInit() {
     this.inputChild.nativeElement.focus();
+    this.captchaLoad();
   }
 
   sendForm() {
@@ -77,13 +79,18 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   captchaLoad() {
     let captchaChildElmt = this.captchaChild.nativeElement;
 
-    this.captchaId = grecaptcha.render(captchaChildElmt, {
-      'sitekey': '6LfAHR0UAAAAANvcs6MfnYzUMeJE-V3MhNaTfQNt',
-      'callback': (res) => {
-        this.captchaResult = res;
-      },
-      'theme': 'light'
-    });
+    this.capchaService.getReady(this.lang.lang)
+      .subscribe((ready) => {
+        if (!ready) return;
+
+        this.captchaId = grecaptcha.render(captchaChildElmt, {
+          'sitekey': '6LfAHR0UAAAAANvcs6MfnYzUMeJE-V3MhNaTfQNt',
+          'callback': (res) => {
+            this.captchaResult = res;
+          },
+          'theme': 'light'
+        });
+      });
   }
 
 }

@@ -16,7 +16,8 @@ import {ChooseLevelComponent} from './choose-level/choose-level.component';
 import {ChooseTrainingComponent} from './choose-training/choose-training.component';
 import {SignUpService} from "./services/sign-up.service";
 import {LangService} from "./services/lang.service";
-import { CookiesInfoComponent } from './cookies-info/cookies-info.component';
+import {CookiesInfoComponent} from './cookies-info/cookies-info.component';
+import {RecaptchaService} from "./services/recaptcha.service";
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { CookiesInfoComponent } from './cookies-info/cookies-info.component';
       }
     ])
   ],
-  providers: [LtService, SignUpService, Title, LangService],
+  providers: [LtService, SignUpService, Title, LangService, RecaptchaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
