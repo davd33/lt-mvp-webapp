@@ -4,10 +4,27 @@ const CONTAINER_STATE = {
   width: '100%',
   height: '80%',
   position: 'fixed',
-  top: '20%',
+  top: '25%',
   overflow: 'auto',
   background: '#ffcc00'
 };
+
+export function rtSimple() {
+  return trigger('rtSimple', [
+
+    state('void', style(CONTAINER_STATE)),
+    state('*', style(CONTAINER_STATE)),
+
+    transition(':enter', [
+      style({opacity: '0'}),
+      animate('0.5s ease-in-out', style({opacity: '1'}))
+    ]),
+    transition(':leave', [
+      style({opacity: '1'}),
+      animate('0.5s ease-in-out', style({opacity: '0'}))
+    ])
+  ]);
+}
 
 export function routerTransition() {
   return trigger('routerTransition', [

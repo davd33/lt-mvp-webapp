@@ -2,7 +2,10 @@ export const lang_en = {
   Global: {
     title: "Lücken tests"
   },
-  App: {},
+  App: {
+    title1: "L ü c k e n",
+    title2: "t e s t s"
+  },
   ChooseLevel: {
     title: "Choose Level",
     comeSoon: "comming soon",
@@ -24,7 +27,7 @@ export const lang_en = {
     start: "Start training"
   },
   Index: {
-    slogan1: "For the first time,",
+    slogan1: "For the first time",
     slogan2: "Lückentexts",
     slogan3: " in a didactic App",
     startLink: "Start!",

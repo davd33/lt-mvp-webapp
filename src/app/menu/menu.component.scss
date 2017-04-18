@@ -2,6 +2,7 @@
 
 .container {
   width: 100%;
+  font-family: $normal-font;
 
   ul {
     padding: 0 1em;
@@ -12,6 +13,10 @@
     display: inline-block;
     margin-right: 1em;
     list-style: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     a {
       font-size: 1.2em;

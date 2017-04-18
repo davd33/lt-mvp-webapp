@@ -1,27 +1,43 @@
 @import "../common";
 
+.img-bg {
+  position: fixed;
+  top: 25%;
+  left: 0;
+  z-index: -1;
+  animation: imgBgAnim 15s infinite alternate;
+
+  img {
+    width: 250%;
+  }
+}
+
+@keyframes imgBgAnim {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(-20%, -15%);
+  }
+  100% {
+    transform: translate(-25%, -10%);
+  }
+}
+
 .index-container {
   text-align: center;
-  font-family: $slogan-font;
-  font-size: 2.1em;
-  text-shadow: 1px 0 0 $second-color;
+  font-family: $normal-font;
+  font-size: 1.7em;
+  text-shadow: 1px 1px 0 $second-color;
   color: $third-color;
+
+  h2 {
+    padding: 1em;
+    margin: 0 0 1em;
+  }
 
   em {
     font-style: normal;
-  }
-
-  em::before {
-    content: "";
-    display: inline-block;
-
-    width: 5em;
-    height: 1em;
-    position: absolute;
-    z-index: -1;
-
-    background: $third-color;
-    opacity: .2;
   }
 
   a {
@@ -37,10 +53,11 @@
   }
 
   .count {
-    font-family: $titles-font;
+    font-family: $normal-font;
     font-size: 1em;
-    color: black;
-    text-shadow: 1px 1px 1px black;
+    color: $third-color;
+    text-shadow: 1px 1px 0 $second-color;
+    margin-top: 1em;
 
     em {
       text-decoration: underline  ;

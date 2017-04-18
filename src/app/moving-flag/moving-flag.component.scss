@@ -1,10 +1,15 @@
 .mf-container {
   background: black;
   color: white;
-  text-align: right;
+  text-align: center;
   font-size: .5em;
   font-family: "Noto Sans", sans-serif;
   box-shadow: 0px 0px 6px black;
+  transition: all .2s;
+
+  &:hover {
+    opacity: .2;
+  }
 }
 
 @media only screen and (min-height: 768px) {

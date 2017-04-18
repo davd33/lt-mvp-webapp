@@ -14,12 +14,6 @@ $score-aweful: #b74747;
   font-family: $lt-font;
   line-height: 2em;
 
-  app-moving-flag {
-    width: 100%;
-    position: fixed;
-    top: 20%;
-  }
-
   .word {
     .point {
       margin: -0.2em 0;
@@ -32,36 +26,47 @@ $score-aweful: #b74747;
     }
   }
 
-  input[type='text'] {
+  .input-div {
+    position: relative;
     display: inline-block;
-    margin: 0 0.5em;
+    margin: -.205em 0.5em 0;
     float: left;
 
-    font-size: 1em;
-    font-family: $lt-font;
-    background: transparent;
-    border: 1px solid transparent;
-    border-bottom: 1px solid $third-color;
-    outline: none;
-  }
+    app-moving-flag {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
 
-  input[type='text']:focus {
-    animation: focusAnim .5s ease-in forwards;
-  }
+    input[type='text'] {
 
-  input[type='text'].incomplete-word-input {
-    margin-left: -.2em;
-  }
+      font-size: 1em;
+      font-family: $lt-font;
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: 1px solid $third-color;
+      outline: none;
+    }
 
-  input[type='text']::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: $third-color;
+    input[type='text']:focus {
+      animation: focusAnim .5s ease-in forwards;
+    }
+
+    input[type='text'].incomplete-word-input {
+      margin-left: -.7em;
+    }
+
+    input[type='text']::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $third-color;
+    }
   }
 
   .lt-text {

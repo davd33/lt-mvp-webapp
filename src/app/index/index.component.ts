@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 
-import {routerTransition} from '../router.animations';
+import {routerTransition, rtSimple} from '../router.animations';
 import {SignUpService} from "../services/sign-up.service";
 import {LangService} from "../services/lang.service";
 
@@ -9,8 +9,8 @@ import {LangService} from "../services/lang.service";
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
-  host: {'[@routerTransition]': ''},
-  animations: [routerTransition()]
+  host: {'[@rtSimple]': ''},
+  animations: [rtSimple()]
 })
 export class IndexComponent implements OnInit {
 

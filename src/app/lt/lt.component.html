@@ -3,10 +3,6 @@
   <div class="success-bar" [ngStyle]="{width: successBarSize()}">
   </div>
 
-  <div *ngIf="isErrorFocusedInput()">
-    <app-moving-flag [explanation]="inputFocused.explanation"></app-moving-flag>
-  </div>
-
   <div class="lt-text">
     <form [formGroup]="testForm" novalidate>
       <div *ngFor="let w of test.text; let i = index;">
@@ -17,7 +13,7 @@
         </div>
 
         <!--INPUTS FOR THE USER TO FILL IN-->
-        <div formGroupName="test" *ngIf="w.isInput">
+        <div formGroupName="test" *ngIf="w.isInput" class="input-div">
           <label>
             <input type="text" #thisInput autocomplete="off"
 
@@ -37,6 +33,12 @@
                    [size]="w.value.length"
                    [maxlength]="w.value.length"
                    [formControlName]="i">
+
+            <div *ngIf="isErrorFocusedInput()">
+              <app-moving-flag
+                *ngIf="inputFocused.nativeElement.id === thisInput.id"
+                [explanation]="inputFocused.explanation"></app-moving-flag>
+            </div>
           </label>
         </div>
       </div>
