@@ -19,6 +19,11 @@ $border-size: 0;
   margin: 10% auto 0;
   text-align: center;
 
+  .error {
+    color: $forth-color;
+    font-size: 1.5em;
+  }
+
   .ng-invalid .submit {
     opacity: .5;
   }

@@ -7,7 +7,7 @@
       <div>
         <input type="email" #input [(ngModel)]="email" autocomplete="off"
                name="email" required [pattern]="emailRegex">
-        <div class="submit" (click)="sendForm()">
+        <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
           <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
         </div>
       </div>
@@ -18,6 +18,11 @@
       <div #captcha></div>
     </div>
   </form>
+
+  <!--ERROR-->
+  <div class="error">
+    {{error}}
+  </div>
 
 </div>
 

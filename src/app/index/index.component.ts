@@ -22,7 +22,7 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titleService.setTitle("Lücken tests");
+    this.titleService.setTitle(this.lang.text.Global.title);
     this.signedUpService.signedUpStudents()
       .then(res => {
         this.studentSignedUp = res.count;

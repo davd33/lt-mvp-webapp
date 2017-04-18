@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
@@ -23,10 +24,15 @@ export class ChooseTrainingComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private titleService: Title,
               private lang: LangService) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle(
+      `${this.lang.text.Global.title} - ${this.lang.text.ChooseTraining.title}`
+    );
+
     const id: Observable<string> = this.route.params.map(p => p['level']);
     id.subscribe((level) => {
       this.level = level;

@@ -1,10 +1,12 @@
-import {Component, OnInit, trigger, style, transition, animate, keyframes} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 
 import {rtFadeInSlideUp} from '../router.animations';
+import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-run-lt-1',
@@ -21,11 +23,16 @@ export class RunLt1Component implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleService: Title,
+    private lang: LangService
   ) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle(
+      `${this.lang.text.Global.title} - ${this.lang.text.RunLt1.title}`
+    );
     this.getLevelParam();
     this.getTrainingParam();
   }

@@ -2,9 +2,7 @@ export const lang_en = {
   Global: {
     title: "Lücken tests"
   },
-  App: {
-    title: "Lückentext training"
-  },
+  App: {},
   ChooseLevel: {
     title: "Choose Level",
     comeSoon: "comming soon",
@@ -13,8 +11,12 @@ export const lang_en = {
     b2: "B2"
   },
   ChooseTraining: {
+    title: "Choose training",
     prep: "Prepositions",
     verbs: "Verbs"
+  },
+  RunLt1: {
+    title: "Test running"
   },
   Index: {
     slogan1: "For the first time,",
@@ -25,10 +27,14 @@ export const lang_en = {
     count2: " students have signed up!"
   },
   SignUp: {
+    title: "Sign up",
     signUpLabel: "Sign up!",
-    emailSent: "Email sent, you will notified when our App is ready for use."
+    emailSent: "Email sent, you will notified when our App is ready for use.",
+    validateCaptcha: "Please validate the captcha.",
+    serverCaptchaError: "There was an error validating the captcha, please try again."
   },
   CookiesInfo: {
+    title: "Cookies info",
     googleLink: "See how google uses your data.",
     cookieInfosLink: "Learn more about cookies.",
     info: `We use cookies to personalise content and ads,

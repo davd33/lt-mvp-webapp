@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 import {routerTransition} from '../router.animations';
 import {SignUpService} from "../services/sign-up.service";
@@ -22,6 +23,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   error: string;
 
+  captchaId: any;
+
   registrationSuccess: boolean = false;
   emailRegex: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   captchaResult: string;
@@ -31,11 +34,15 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   @ViewChild('signUpForm') formChild;
 
   constructor(private signUpService: SignUpService,
+              private titleService: Title,
               private lang: LangService) {
     window['onloadCallback'] = this.captchaLoad.bind(this);
   }
 
   ngOnInit() {
+    this.titleService.setTitle(
+      `${this.lang.text.Global.title} - ${this.lang.text.SignUp.title}`
+    )
   }
 
   ngAfterViewInit() {
@@ -49,13 +56,20 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.registrationSuccess = true;
         })
         .catch((e) => {
-          console.log("there is an err: " + e);
+          let message = e.json().message;
+          if (message === 'Captcha not valid!') {
+            grecaptcha.reset(this.captchaId);
+            this.error = this.lang.text.SignUp.serverCaptchaError;
+          }
         });
+    } else if (!this.captchaResult) {
+      this.error = this.lang.text.SignUp.validateCaptcha;
     }
   }
 
   keyValid(event: any) {
     if (event.key == "Enter") {
+      this.error = "";
       this.sendForm();
     }
   }
@@ -63,7 +77,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   captchaLoad() {
     let captchaChildElmt = this.captchaChild.nativeElement;
 
-    grecaptcha.render(captchaChildElmt, {
+    this.captchaId = grecaptcha.render(captchaChildElmt, {
       'sitekey': '6LfAHR0UAAAAANvcs6MfnYzUMeJE-V3MhNaTfQNt',
       'callback': (res) => {
         this.captchaResult = res;
