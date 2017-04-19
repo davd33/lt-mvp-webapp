@@ -2,13 +2,12 @@
 
 .img-bg {
   position: fixed;
-  top: 25%;
-  left: 0;
+  top: -170%;
+  left: -80%;
   z-index: -1;
   animation: imgBgAnim 15s infinite alternate;
 
   img {
-    width: 250%;
   }
 }
 
@@ -46,9 +45,6 @@
     text-decoration: none;
     color: $second-color;
     text-shadow: 1px 1px 0 $third-color;
-  }
-
-  a:hover {
     animation: $monoton-link-anim;
   }
 

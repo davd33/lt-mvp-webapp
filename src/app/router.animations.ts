@@ -6,7 +6,7 @@ const CONTAINER_STATE = {
   position: 'fixed',
   top: '25%',
   overflow: 'auto',
-  background: '#ffcc00'
+  background: 'transparent'
 };
 
 export function rtSimple() {
