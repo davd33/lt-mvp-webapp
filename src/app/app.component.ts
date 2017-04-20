@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LangService} from "./services/lang.service";
+import {BgImgAnimService} from "./services/bg-img-anim.service";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,19 @@ import {LangService} from "./services/lang.service";
 export class AppComponent implements OnInit {
 
   constructor(
-    public lang: LangService
+    public lang: LangService,
+    private bgImgAnim: BgImgAnimService
   ) {
   }
 
   ngOnInit() {
+  }
+
+  bgImgStopped() {
+    return this.bgImgAnim.animStopped;
+  }
+
+  bgImgBlur() {
+    return this.bgImgAnim.blur;
   }
 }

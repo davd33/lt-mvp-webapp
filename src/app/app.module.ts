@@ -19,6 +19,7 @@ import {LangService} from "./services/lang.service";
 import {CookiesInfoComponent} from './cookies-info/cookies-info.component';
 import {RecaptchaService} from "./services/recaptcha.service";
 import { MenuComponent } from './menu/menu.component';
+import {BgImgAnimService} from "./services/bg-img-anim.service";
 
 @NgModule({
   declarations: [
@@ -75,7 +76,14 @@ import { MenuComponent } from './menu/menu.component';
       }
     ])
   ],
-  providers: [LtService, SignUpService, Title, LangService, RecaptchaService],
+  providers: [
+    LtService,
+    SignUpService,
+    Title,
+    LangService,
+    RecaptchaService,
+    BgImgAnimService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

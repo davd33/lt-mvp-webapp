@@ -1,5 +1,6 @@
 $primary-color: #ffcc00;
 $newspaper-filter-color: rgba(255, 204, 0, .2);
+$menu-newspaper-filter-color: rgba(255, 204, 0, .5);
 $second-color: black;
 $third-color: white;
 $forth-color: #ba0c02;
@@ -19,8 +20,7 @@ $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
   top: 0;
   width: 100%;
   font-size: 1.3em;
-  background: $primary-color;
-  opacity: .5;
+  background: $menu-newspaper-filter-color;
   z-index: 1000;
 }
 
@@ -38,6 +38,10 @@ $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
   left: -80%;
   z-index: -1;
   animation: imgBgAnim 20s infinite alternate;
+}
+
+.img-bg-stop-anim {
+  animation-play-state: paused;
 }
 
 @media only screen and (min-width: 768px) {

@@ -2,6 +2,10 @@
   <router-outlet></router-outlet>
 </div>
 
-<div class="img-bg">
+<div
+  class="img-bg"
+  [ngClass]="{'img-bg-stop-anim': bgImgStopped()}"
+  [ngStyle]="{'filter': 'blur(' + bgImgBlur() + ')'}">
+
   <img src="app/img/newspaper.jpg">
 </div>

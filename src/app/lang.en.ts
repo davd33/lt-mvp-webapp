@@ -32,11 +32,12 @@ export const lang_en = {
     slogan3: " in a didactic App",
     startLink: "Start!",
     count1: "Already ",
-    count2: " students have signed up!"
+    count2: " students have signed up!",
+    workingWith: "Working with:"
   },
   SignUp: {
     title: "Sign up",
-    signUpLabel: "Sign up!",
+    signUpLabel: "Sign up:",
     emailSent: "Email sent, you will be notified when our App is ready for use.",
     validateCaptcha: "Please validate the captcha.",
     serverCaptchaError: "There was an error validating the captcha, please try again."

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 
@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import {rtSimple} from '../router.animations';
 import {LangService} from "../services/lang.service";
+import {BgImgAnimService} from "../services/bg-img-anim.service";
 
 @Component({
   selector: 'app-run-lt-1',
@@ -15,7 +16,7 @@ import {LangService} from "../services/lang.service";
   host: {'[@rtSimple]': ''},
   animations: [rtSimple()]
 })
-export class RunLt1Component implements OnInit {
+export class RunLt1Component implements OnDestroy, OnInit {
 
   level: string;
   training: string;
@@ -25,8 +26,14 @@ export class RunLt1Component implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private titleService: Title,
-    private lang: LangService
+    private lang: LangService,
+    private bgImgAnim: BgImgAnimService
   ) {
+  }
+
+  ngOnDestroy() {
+    this.bgImgAnim.animStopped = false;
+    this.bgImgAnim.blur = "0";
   }
 
   ngOnInit() {
@@ -35,6 +42,9 @@ export class RunLt1Component implements OnInit {
     );
     this.getLevelParam();
     this.getTrainingParam();
+
+    this.bgImgAnim.animStopped = true;
+    this.bgImgAnim.blur = "15px";
   }
 
   gotoSignUp() {

@@ -11,16 +11,17 @@
 
       <form #signUpForm="ngForm">
         <!--SIGN UP INPUT-->
-        <label>
+        <label for="email">
           <span>{{lang.text.SignUp.signUpLabel}}</span>
-          <div>
-            <input type="email" #input [(ngModel)]="email" autocomplete="off"
-                   name="email" required [pattern]="emailRegex">
-            <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
-              <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-            </div>
-          </div>
         </label>
+        <div class="input-container">
+          <input type="email" #input [(ngModel)]="email" autocomplete="off"
+                 name="email" id="email" required [pattern]="emailRegex">
+
+          <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
+            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+          </div>
+        </div>
 
         <!--CAPTCHA-->
         <div class="captcha">

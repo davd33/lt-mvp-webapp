@@ -43,59 +43,61 @@ $border-size: 0;
         font-size: 1.5em;
       }
 
-      .ng-invalid .submit {
-        opacity: .5;
-      }
-
-      label {
-        display: block;
-        font-size: 2em;
-      }
-
       label span {
         width: 60%;
         display: inline-block;
         margin: 0 auto;
 
+        font-size: 2em;
         border: 10px solid transparent;
         color: $second-color;
         text-shadow: 1px 1px 1px $second-color;
       }
 
-      input[type="email"] {
-        display: inline-block;
-        width: 13em;
-        max-width: 50%;
-        margin-left: 1.35em;
-        border: $border-size solid $primary-color;
-
-        padding: .2em 1.5em .2em .2em;
-
-        background: $forth-color;
-        color: $third-color;
-        font-family: $primary-font;
-        font-size: 1em;
-        outline: none;
-        text-align: left;
-
-        box-shadow: 0 1px 4px -1px $second-color inset;
-        text-shadow: 1px 1px 1px $third-color;
+      .ng-invalid .submit {
+        opacity: .5;
       }
 
-      .submit {
-        display: inline-block;
-        border: $border-size solid transparent;
+      .input-container {
+        position: relative;
+        width: 50%;
+        margin: 0 auto;
 
-        transform: translateX(-150%);
+        input[type="email"] {
+          display: inline-block;
+          width: 100%;
+          border: $border-size solid $primary-color;
 
-        background: transparent;
-        font-family: $primary-font;
-        font-size: 1em;
-        outline: none;
-        text-align: center;
-        color: $third-color;
-        text-shadow: 1px 1px 1px $third-color;
-        cursor: pointer;
+          padding: .2em;
+
+          background: $forth-color;
+          color: $third-color;
+          font-family: $primary-font;
+          font-size: 2em;
+          outline: none;
+          text-align: left;
+
+          box-shadow: 0 1px 4px -1px $second-color inset;
+          text-shadow: 1px 1px 1px $third-color;
+        }
+
+        .submit {
+          position: absolute;
+          top: calc(.2em);
+          right: 0;
+          z-index: 99;
+
+          border: $border-size solid transparent;
+
+          background: transparent;
+          font-family: $primary-font;
+          font-size: 2em;
+          outline: none;
+          text-align: center;
+          color: $third-color;
+          text-shadow: 1px 1px 1px $third-color;
+          cursor: pointer;
+        }
       }
     }
   }
