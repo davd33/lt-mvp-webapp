@@ -1,126 +1,41 @@
 @import "../common";
 
-.load-test-error {
-  text-align: center;
-  font-size: 3em;
-  font-family: $titles-font;
-  color: $forth-color;
-  text-shadow: 1px 1px 1px $forth-color;
+$background-opaq: rgba(160, 63, 133, 0.93);
+
+.bg-opaq {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: $background-opaq;
 }
 
-.test-success-container {
-  position: relative;
-  margin-top: 13%;
-}
+.run-lt-container {
 
-.wrap {
-  margin: 100px auto;
-  width: 130px;
+  display: table;
+  width: 100%;
+  height: 100%;
 
-  animation: slideLeft .7s ease-out 1 forwards;
-  animation-delay: 1.2s;
-}
-
-.sign-up {
-  float: right;
   position: absolute;
-  left: 37%;
-  top: -35%;
-  text-align: center;
-  animation: signUp 1.5s ease-out 1 forwards;
-  animation-delay: 2s;
-  opacity: 0;
-}
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-.sign-up a {
-  text-decoration: none;
-  color: black;
-  font-family: $big-links-font;
-  font-size: 4em;
-  text-shadow: 1px 1px 0 white;
-}
+  margin: auto;
 
-.sign-up a:hover {
-  animation: $monoton-link-anim;
-}
+  .run-lt-sub-container {
 
-@keyframes slideLeft {
-  0% {}
-  100% {
-    transform: translateX(-80%);
-  }
-}
+    display: table-cell;
+    vertical-align: middle;
 
-@keyframes signUp {
-  0% {}
-  100% {
-    opacity: 1;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-
-  /* desktops */
-
-  .sign-up {
-    left: 39%;
-    top: 10%;
-  }
-
-  @keyframes slideLeft {
-    0% {}
-    100% {
-      transform: translateX(-215%);
+    .load-test-error {
+      text-align: center;
+      font-size: 3em;
+      font-family: $titles-font;
+      color: $forth-color;
+      text-shadow: 1px 1px 1px $forth-color;
     }
-  }
-}
-
-.circle {
-  position: relative;
-  overflow: hidden;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: $primary-color;
-  box-shadow: 60px -60px 0 2px $primary-color, -60px -60px 0 2px $primary-color,
-  -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $primary-color;
-
-  .text {
-    position: absolute;
-    width: 60px;
-    color: $third-color;
-    text-align: center;
-    text-transform: uppercase;
-
-    font: 1em sans-serif;
-    top: 57px;
-    left: 29px;
-    transform: scale(7);
-  }
-
-  animation: border .5s ease 1 forwards;
-  animation-delay: .7s;
-}
-
-@keyframes border {
-  0% {
-    box-shadow: 60px -60px 0 2px $primary-color, -60px -60px 0 2px $primary-color,
-    -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $primary-color;
-  }
-  25% {
-    box-shadow: 0 -125px 0 2px $primary-color, -60px -60px 0 2px $primary-color,
-    -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $third-color;
-  }
-  50% {
-    box-shadow: 0 -125px 0 2px $primary-color, -125px 0px 0 2px $primary-color,
-    -60px 60px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $third-color;
-  }
-  75% {
-    box-shadow: 0 -125px 0 2px $primary-color, -125px 0px 0 2px $primary-color,
-    0px 125px 0 2px $primary-color, 60px 60px 0 2px $primary-color, 0 0 0 2px $third-color;
-  }
-  100% {
-    box-shadow: 0 -125px 0 2px $primary-color, -125px 0px 0 2px $primary-color,
-    0px 125px 0 2px $primary-color, 120px 40px 0 2px $primary-color, 0 0 0 2px $third-color;
   }
 }

@@ -14,6 +14,24 @@ $normal-font: 'Dosis', cursive;
 
 $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
 
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 1.3em;
+  background: $primary-color;
+  opacity: .5;
+  z-index: 1000;
+}
+
+.background-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  background: $newspaper-filter-color;
+}
+
 .img-bg {
   position: fixed;
   top: -170%;

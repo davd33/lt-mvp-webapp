@@ -5,15 +5,15 @@ import {Title} from "@angular/platform-browser";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 
-import {rtFadeInSlideUp} from '../router.animations';
+import {rtSimple} from '../router.animations';
 import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-run-lt-1',
   templateUrl: './run-lt-1.component.html',
   styleUrls: ['./run-lt-1.component.scss'],
-  host: {'[@rtFadeInSlideUp]': ''},
-  animations: [rtFadeInSlideUp()]
+  host: {'[@rtSimple]': ''},
+  animations: [rtSimple()]
 })
 export class RunLt1Component implements OnInit {
 

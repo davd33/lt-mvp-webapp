@@ -5,15 +5,15 @@ import {Title} from "@angular/platform-browser";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 
-import {rtFadeOut} from '../router.animations';
 import {LangService} from "../services/lang.service";
+import {rtSimple} from "../router.animations";
 
 @Component({
   selector: 'app-choose-training',
   templateUrl: './choose-training.component.html',
   styleUrls: ['./choose-training.component.scss'],
-  host: {'[@rtFadeOut]': ''},
-  animations: [rtFadeOut()]
+  host: {'[@rtSimple]': ''},
+  animations: [rtSimple()]
 })
 export class ChooseTrainingComponent implements OnInit {
 

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 
-import {routerTransition} from '../router.animations';
+import {rtSimple} from '../router.animations';
 import {SignUpService} from "../services/sign-up.service";
 import {LangService} from "../services/lang.service";
 import {RecaptchaService} from "../services/recaptcha.service";
@@ -12,9 +12,9 @@ declare const grecaptcha: any;
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['sign-up.component.scss'],
-  host: {'[@routerTransition]': ''},
+  host: {'[@rtSimple]': ''},
   animations: [
-    routerTransition()
+    rtSimple()
   ]
 })
 export class SignUpComponent implements OnInit, AfterViewInit {

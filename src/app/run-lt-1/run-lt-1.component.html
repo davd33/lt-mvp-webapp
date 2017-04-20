@@ -1,13 +1,26 @@
-<!--LUCKEN TEST-->
-<div *ngIf="!loadTestError">
-  <app-lt
-    [level]="level"
-    [training]="training"
-    (loadTestError)="loadTestError=$event.error"
-    (ltSuccess)="gotoSignUp()">
-  </app-lt>
+<div class="background-container">
 </div>
 
-<div *ngIf="loadTestError" class="load-test-error">
-  {{loadTestError}}
+<div class="menu">
+  <app-menu></app-menu>
 </div>
+
+<!--LUCKEN TEST-->
+<div class="run-lt-container">
+  <div class="run-lt-sub-container">
+    <div *ngIf="!loadTestError">
+      <app-lt
+        [level]="level"
+        [training]="training"
+        (loadTestError)="loadTestError=$event.error"
+        (ltSuccess)="gotoSignUp()">
+      </app-lt>
+    </div>
+
+    <div *ngIf="loadTestError" class="load-test-error">
+      {{loadTestError}}
+    </div>
+  </div>
+</div>
+
+<div class="bg-opaq"></div>

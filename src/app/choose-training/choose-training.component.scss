@@ -1,49 +1,64 @@
 @import "../common";
 
 .choose-training-container {
-  margin-top: 9%;
+
+  display: table;
+  width: 100%;
+  height: 80%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: auto;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    display: table-cell;
+    vertical-align: middle;
+
+    li {
+      text-align: center;
+      padding: .5em 0;
+
+      a {
+        text-decoration: none;
+        color: $second-color;
+        font-family: $primary-font;
+        font-size: 3em;
+        transition: all .2s;
+        width: 4em;
+        text-shadow: 1px 1px 1px $second-color;
+        background: $third-color;
+        border-radius: 5px;
+        box-shadow: 0 0 40px 9px white;
+        cursor: pointer;
+
+        &:hover {
+          font-size: 3.3em;
+          box-shadow: 0 0 100px 9px white;
+        }
+      }
+
+      .li-prep {
+        opacity: 0;
+        transform: scale(0);
+        animation: LevelFadeIn .2s ease-in-out forwards;
+      }
+
+      .li-mix {
+        opacity: 0;
+        transform: scale(0);
+        animation: LevelFadeIn .2s ease-in-out .2s forwards;
+      }
+    }
+  }
 }
 
-.choose-training-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-.choose-training-container ul li {
-  text-align: center;
-  padding: .5em 0;
-}
-
-.choose-training-container ul li a {
-  text-decoration: none;
-  color: $second-color;
-  font-family: $primary-font;
-  font-size: 3em;
-  transition: all .2s;
-  width: 4em;
-  text-shadow: 1px 1px 1px $second-color;
-  background: $third-color;
-  border-radius: 5px;
-  box-shadow: 0 0 40px 9px white;
-  cursor: pointer;
-}
-
-.choose-training-container ul li a:hover {
-  font-size: 3.3em;
-  box-shadow: 0 0 100px 9px white;
-}
-
-.choose-training-container ul .li-prep {
-  opacity: 0;
-  transform: scale(0);
-  animation: LevelFadeIn .2s ease-in-out forwards;
-}
-
-.choose-training-container ul .li-mix {
-  opacity: 0;
-  transform: scale(0);
-  animation: LevelFadeIn .2s ease-in-out .2s forwards;
-}
 @keyframes LevelFadeIn {
   0% {
   }

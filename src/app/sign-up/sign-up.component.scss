@@ -2,80 +2,101 @@
 
 $border-size: 0;
 
-.captcha {
-  width: 304px;
-  margin: 0 auto;
-}
+.su-container {
 
-.mail-sent {
-  font-size: 2em;
-  color: $second-color;
-  text-shadow: 1px 1px 1px $second-color;
-  text-align: center;
-  margin-top: 5%;
-}
+  display: table;
+  width: 100%;
+  height: 80%;
 
-.notify-me {
-  margin: 10% auto 0;
-  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  .error {
-    color: $forth-color;
-    font-size: 1.5em;
-  }
+  margin: auto;
 
-  .ng-invalid .submit {
-    opacity: .5;
-  }
+  .su-sub-container {
 
-  label {
-    display: block;
-    font-size: 2em;
-  }
+    display: table-cell;
+    vertical-align: middle;
 
-  label span {
-    width: 60%;
-    display: inline-block;
-    margin: 0 auto;
+    .captcha {
+      width: 304px;
+      margin: 0 auto;
+    }
 
-    border: 10px solid transparent;
-    color: $second-color;
-    text-shadow: 1px 1px 1px $second-color;
-  }
+    .mail-sent {
+      font-size: 2em;
+      color: $second-color;
+      text-shadow: 1px 1px 1px $second-color;
+      text-align: center;
+      margin-top: 5%;
+    }
 
-  input[type="email"] {
-    display: inline-block;
-    width: 13em;
-    max-width: 50%;
-    margin-left: 1.35em;
-    border: $border-size solid $primary-color;
+    .notify-me {
+      margin: 10% auto 0;
+      text-align: center;
 
-    padding: .2em 1.5em .2em .2em;
+      .error {
+        color: $forth-color;
+        font-size: 1.5em;
+      }
 
-    background: $forth-color;
-    color: $third-color;
-    font-family: $primary-font;
-    font-size: 1em;
-    outline: none;
-    text-align: left;
+      .ng-invalid .submit {
+        opacity: .5;
+      }
 
-    box-shadow: 0 1px 4px -1px $second-color inset;
-    text-shadow: 1px 1px 1px $third-color;
-  }
+      label {
+        display: block;
+        font-size: 2em;
+      }
 
-  .submit {
-    display: inline-block;
-    border: $border-size solid transparent;
+      label span {
+        width: 60%;
+        display: inline-block;
+        margin: 0 auto;
 
-    transform: translateX(-150%);
+        border: 10px solid transparent;
+        color: $second-color;
+        text-shadow: 1px 1px 1px $second-color;
+      }
 
-    background: transparent;
-    font-family: $primary-font;
-    font-size: 1em;
-    outline: none;
-    text-align: center;
-    color: $third-color;
-    text-shadow: 1px 1px 1px $third-color;
-    cursor: pointer;
+      input[type="email"] {
+        display: inline-block;
+        width: 13em;
+        max-width: 50%;
+        margin-left: 1.35em;
+        border: $border-size solid $primary-color;
+
+        padding: .2em 1.5em .2em .2em;
+
+        background: $forth-color;
+        color: $third-color;
+        font-family: $primary-font;
+        font-size: 1em;
+        outline: none;
+        text-align: left;
+
+        box-shadow: 0 1px 4px -1px $second-color inset;
+        text-shadow: 1px 1px 1px $third-color;
+      }
+
+      .submit {
+        display: inline-block;
+        border: $border-size solid transparent;
+
+        transform: translateX(-150%);
+
+        background: transparent;
+        font-family: $primary-font;
+        font-size: 1em;
+        outline: none;
+        text-align: center;
+        color: $third-color;
+        text-shadow: 1px 1px 1px $third-color;
+        cursor: pointer;
+      }
+    }
   }
 }

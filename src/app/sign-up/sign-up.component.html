@@ -1,32 +1,43 @@
-<div *ngIf="!registrationSuccess" class="notify-me">
-
-  <form #signUpForm="ngForm">
-    <!--SIGN UP INPUT-->
-    <label>
-      <span>{{lang.text.SignUp.signUpLabel}}</span>
-      <div>
-        <input type="email" #input [(ngModel)]="email" autocomplete="off"
-               name="email" required [pattern]="emailRegex">
-        <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
-          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-        </div>
-      </div>
-    </label>
-
-    <!--CAPTCHA-->
-    <div class="captcha">
-      <div #captcha></div>
-    </div>
-  </form>
-
-  <!--ERROR-->
-  <div class="error">
-    {{error}}
-  </div>
-
+<div class="background-container">
 </div>
 
-<!--SUCCESS FROM SERVER-->
-<div *ngIf="registrationSuccess" class="mail-sent">
-  {{lang.text.SignUp.emailSent}}
+<div class="menu">
+  <app-menu></app-menu>
+</div>
+
+<div class="su-container">
+  <div class="su-sub-container">
+    <div *ngIf="!registrationSuccess" class="notify-me">
+
+      <form #signUpForm="ngForm">
+        <!--SIGN UP INPUT-->
+        <label>
+          <span>{{lang.text.SignUp.signUpLabel}}</span>
+          <div>
+            <input type="email" #input [(ngModel)]="email" autocomplete="off"
+                   name="email" required [pattern]="emailRegex">
+            <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
+              <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            </div>
+          </div>
+        </label>
+
+        <!--CAPTCHA-->
+        <div class="captcha">
+          <div #captcha></div>
+        </div>
+      </form>
+
+      <!--ERROR-->
+      <div class="error">
+        {{error}}
+      </div>
+
+    </div>
+
+    <!--SUCCESS FROM SERVER-->
+    <div *ngIf="registrationSuccess" class="mail-sent">
+      {{lang.text.SignUp.emailSent}}
+    </div>
+  </div>
 </div>

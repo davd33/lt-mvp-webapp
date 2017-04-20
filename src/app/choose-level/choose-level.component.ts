@@ -2,7 +2,7 @@ import {Component, OnInit, trigger} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 
-import {rtFadeOut} from '../router.animations';
+import {rtSimple} from '../router.animations';
 import {LangService} from "../services/lang.service";
 
 @Component({
@@ -13,9 +13,9 @@ import {LangService} from "../services/lang.service";
       content: "${LangService.lang('en').ChooseLevel.comeSoon}";
     }
   `, require('./choose-level.component.scss')],
-  host: {'[@rtFadeOut]': ''},
+  host: {'[@rtSimple]': ''},
   animations: [
-    rtFadeOut()
+    rtSimple()
   ]
 })
 export class ChooseLevelComponent implements OnInit {
