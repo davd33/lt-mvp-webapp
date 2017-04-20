@@ -1,4 +1,5 @@
 $primary-color: #ffcc00;
+$newspaper-filter-color: rgba(255, 204, 0, .2);
 $second-color: black;
 $third-color: white;
 $forth-color: #ba0c02;
@@ -13,6 +14,20 @@ $normal-font: 'Dosis', cursive;
 
 $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
 
+.img-bg {
+  position: fixed;
+  top: -170%;
+  left: -80%;
+  z-index: -1;
+  animation: imgBgAnim 20s infinite alternate;
+}
+
+@media only screen and (min-width: 768px) {
+  .img-bg {
+    top: 0;
+  }
+}
+
 @keyframes MonotonLinkAnim {
   0% {
     text-shadow: 1px 1px 0 white;
@@ -22,5 +37,17 @@ $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
   }
   100% {
     text-shadow: 1px 1px 0 white;
+  }
+}
+
+@keyframes imgBgAnim {
+  0% {
+    transform: translate(0);
+  }
+  75% {
+    transform: translate(-20%, -15%);
+  }
+  100% {
+    transform: translate(-25%, -10%);
   }
 }

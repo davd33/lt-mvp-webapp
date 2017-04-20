@@ -1,34 +1,22 @@
 @import "../common";
 
-.img-bg {
-  position: fixed;
-  top: -170%;
-  left: -80%;
-  z-index: -1;
-  animation: imgBgAnim 15s infinite alternate;
-
-  img {
-  }
-}
-
-@keyframes imgBgAnim {
-  0% {
-    transform: translate(0);
-  }
-  75% {
-    transform: translate(-20%, -15%);
-  }
-  100% {
-    transform: translate(-25%, -10%);
-  }
-}
-
 .background-container {
-  width: 90%;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 
-  background: $primary-color;
+  background: $newspaper-filter-color;
+  opacity: .5;
+}
+
+.background-container2 {
+  width: 90%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 5%;
+
+  background: #ffcc00;
   opacity: .5;
 }
 
@@ -144,11 +132,5 @@
     .title {
       margin-top: .5em;
     }
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .img-bg {
-    top: 0;
   }
 }

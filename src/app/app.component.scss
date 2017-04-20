@@ -11,15 +11,6 @@
   background: $primary-color;
 }
 
-.up-section {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: 100;
-  background: $forth-color;
-  box-shadow: 0 0 1px $second-color;
-}
-
 .router-section {
   box-shadow: -1px 0 1px $second-color;
   overflow: auto;
@@ -43,10 +34,6 @@
   .router-section {
     font-size: .9em;
   }
-
-  .up-section {
-    font-size: 1.2em;
-  }
 }
 
 @media only screen and (orientation: portrait) and (min-width: 412px) {
@@ -54,10 +41,6 @@
 
   .router-section {
     font-size: .9em;
-  }
-
-  .up-section {
-    font-size: 1.4em;
   }
 }
 
@@ -67,14 +50,6 @@
   .router-section {
     font-size: 1.6em;
   }
-
-  .title {
-    font-size: 3.8em;
-  }
-
-  .title + app-menu {
-    font-size: 1.5em;
-  }
 }
 
 @media only screen and (orientation: portrait) and (min-width: 1024px) {
@@ -82,10 +57,6 @@
 
   .router-section {
     font-size: 2em;
-  }
-
-  .up-section {
-    font-size: 1.95em;
   }
 }
 
@@ -95,10 +66,6 @@
   .router-section {
     font-size: .7em;
   }
-
-  .up-section {
-    font-size: .8em;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 412px) {
@@ -106,10 +73,6 @@
 
   .router-section {
     font-size: .65em;
-  }
-
-  .up-section {
-    font-size: .7em;
   }
 }
 
@@ -119,10 +82,6 @@
   .router-section {
     font-size: .8em;
   }
-
-  .up-section {
-    font-size: 1em;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 1024px) {
@@ -131,10 +90,6 @@
   .router-section {
     font-size: 1.4em;
   }
-
-  .up-section {
-    font-size: 1.5em;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 1366px) {
@@ -142,9 +97,5 @@
 
   .router-section {
     font-size: 2em;
-  }
-
-  .up-section {
-    font-size: 1.4em;
   }
 }
