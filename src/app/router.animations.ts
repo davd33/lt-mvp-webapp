@@ -2,9 +2,9 @@ import {trigger, state, animate, style, transition, keyframes} from '@angular/co
 
 const CONTAINER_STATE = {
   width: '100%',
-  height: '80%',
+  height: '100%',
   position: 'fixed',
-  top: '25%',
+  top: '0',
   overflow: 'auto',
   background: 'transparent'
 };

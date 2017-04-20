@@ -1,11 +1,32 @@
-<div class="index-container" #topSection>
-  <h2>{{lang.text.Index.slogan1}}<br> <em>{{lang.text.Index.slogan2}}</em>{{lang.text.Index.slogan3}}</h2>
-  <a routerLink="/choose-level">{{lang.text.Index.startLink}}</a>
-  <h3 *ngIf="studentSignedUp > 1" class="count">
-    {{lang.text.Index.count1}}<em>{{studentSignedUp}}</em>{{lang.text.Index.count2}}
-  </h3>
+<div class="background-container">
 </div>
 
+<div class="index-container" #topSection>
+
+  <!--APP TITLE-->
+  <div class="title">
+    <a href="/">
+      <span>{{lang.text.App.title1}}</span>
+      <span>{{lang.text.App.title2}}</span>
+    </a>
+  </div>
+
+  <div class="text-container">
+    <h2>{{lang.text.Index.slogan1}}<br> <em>{{lang.text.Index.slogan2}}</em>{{lang.text.Index.slogan3}}</h2>
+    <hr>
+    <a routerLink="/choose-level">{{lang.text.Index.startLink}}</a>
+  </div>
+</div>
+
+<div class="footer">
+  Working with:
+  <img src="app/img/flags/de.png">
+  <img src="app/img/flags/fr.png">
+  <img src="app/img/flags/co.png">
+</div>
+
+<div class="footer-background"></div>
+
 <div class="img-bg">
-  <img src="app/img/yellow-wall.jpg">
+  <img src="app/img/newspaper.jpg">
 </div>

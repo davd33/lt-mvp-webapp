@@ -15,7 +15,7 @@
   0% {
     transform: translate(0);
   }
-  50% {
+  75% {
     transform: translate(-20%, -15%);
   }
   100% {
@@ -23,43 +23,132 @@
   }
 }
 
+.background-container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+
+  background: $primary-color;
+  opacity: .5;
+}
+
 .index-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
   text-align: center;
   font-family: $normal-font;
   font-size: 1.7em;
   text-shadow: 1px 1px 0 $second-color;
   color: $third-color;
 
-  h2 {
-    padding: 1em;
-    margin: 0 0 1em;
+  background: transparent;
+
+  .title {
+    z-index: 10;
+    width: 100%;
+    margin: 2% auto 0;
+
+    text-align: center;
+    font-size: 2.5em;
+    font-family: $app-title-font;
+
+    a {
+      color: $second-color;
+      text-decoration: none;
+
+      span:last-child {
+        display: block;
+      }
+    }
   }
 
-  em {
-    font-style: normal;
-  }
+  .text-container {
 
-  a {
-    font-size: 1.5em;
-    font-family: $big-links-font;
-    text-decoration: none;
-    color: $second-color;
-    text-shadow: 1px 1px 0 $third-color;
-    animation: $monoton-link-anim;
-  }
+    width: 90%;
+    margin: 0 auto;
 
-  .count {
-    font-family: $normal-font;
-    font-size: 1em;
-    color: $third-color;
-    text-shadow: 1px 1px 0 $second-color;
-    margin-top: 1em;
+    hr {
+      width: 80%;
+      border: 1px solid black;
+    }
+
+    h2 {
+      padding: 1em;
+      margin: 0;
+    }
 
     em {
-      text-decoration: underline  ;
+      font-style: normal;
     }
-    em::before {
-      background: transparent;
+
+    a {
+      font-size: 2em;
+      font-family: $big-links-font;
+      text-decoration: none;
+      color: $second-color;
+      text-shadow: 1px 1px 0 $third-color;
+      animation: $monoton-link-anim;
     }
+
+    .count {
+      font-family: $normal-font;
+      font-size: 1em;
+      color: $third-color;
+      text-shadow: 1px 1px 0 $second-color;
+      margin-top: 1em;
+
+      em {
+      }
+      em::before {
+        background: transparent;
+      }
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, .5);
+  margin: 0;
+  font-size: 1em;
+  color: white;
+  padding: .2em 0;
+}
+
+@media only screen and (orientation: landscape) {
+  .index-container {
+    .text-container {
+      font-size: 1.2em;
+      h2 {
+        padding: .8em;
+      }
+    }
+    .title a {
+      span:first-child {
+        margin-right: .4em;
+      }
+      span:last-child {
+        display: inline;
+      }
+    }
+  }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 375px) {
+  .index-container {
+    .title {
+      margin-top: .5em;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .img-bg {
+    top: 0;
   }
 }
