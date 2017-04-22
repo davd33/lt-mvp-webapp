@@ -1,7 +1,7 @@
 import {Injectable, NgZone, Optional, SkipSelf} from '@angular/core';
 
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Observable} from "rxjs/Observable";
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class RecaptchaService {
@@ -11,14 +11,14 @@ export class RecaptchaService {
 
   constructor(zone: NgZone) {
     /* the callback needs to exist before the API is loaded */
-    window[<any>"reCaptchaOnloadCallback"] = <any>(() => zone.run(this.onloadCallback.bind(this)));
+    window[<any>'reCaptchaOnloadCallback'] = <any>(() => zone.run(this.onloadCallback.bind(this)));
   }
 
   public getReady(language: String): Observable<boolean> {
     if (!this.scriptLoaded) {
       this.scriptLoaded = true;
-      let doc = <HTMLDivElement>document.body;
-      let script = document.createElement('script');
+      const doc = <HTMLDivElement>document.body;
+      const script = document.createElement('script');
       script.innerHTML = '';
       script.src = 'https://www.google.com/recaptcha/api.js?onload=reCaptchaOnloadCallback&render=explicit' +
         (language ? '&hl=' + language : '');

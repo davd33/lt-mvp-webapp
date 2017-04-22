@@ -1,51 +1,51 @@
 export const lang_en = {
   Global: {
-    title: "Lücken tests"
+    title: 'Lücken tests'
   },
   App: {
-    title1: "L ü c k e n",
-    title2: "t e s t s"
+    title1: 'L ü c k e n',
+    title2: 't e s t s'
   },
   ChooseLevel: {
-    title: "Choose Level",
-    comeSoon: "comming soon",
-    a2: "A2",
-    b1: "B1",
-    b2: "B2"
+    title: 'Choose Level',
+    comeSoon: 'comming soon',
+    a2: 'A2',
+    b1: 'B1',
+    b2: 'B2'
   },
   ChooseTraining: {
-    title: "Choose training",
-    prep: "Prepositions",
-    verbs: "Verbs"
+    title: 'Choose training',
+    prep: 'Prepositions',
+    verbs: 'Verbs'
   },
   RunLt1: {
-    title: "Test running"
+    title: 'Test running'
   },
   Menu: {
-    home: "Home",
-    signUp: "Sign up",
-    start: "Start training"
+    home: 'Home',
+    signUp: 'Sign up',
+    start: 'Start training'
   },
   Index: {
-    slogan1: "For the first time",
-    slogan2: "Lückentexts",
-    slogan3: " in a didactic App",
-    startLink: "Start!",
-    count1: "Already ",
-    count2: " students have signed up!",
-    workingWith: "Working with:"
+    slogan1: 'For the first time',
+    slogan2: 'Lückentexts',
+    slogan3: ' in a didactic App',
+    startLink: 'Start!',
+    count1: 'Already ',
+    count2: ' students have signed up!',
+    workingWith: 'Working with:'
   },
   SignUp: {
-    title: "Sign up",
-    signUpLabel: "Sign up:",
-    emailSent: "Email sent, you will be notified when our App is ready for use.",
-    validateCaptcha: "Please validate the captcha.",
-    serverCaptchaError: "There was an error validating the captcha, please try again."
+    title: 'Sign up',
+    signUpLabel: 'Sign up:',
+    emailSent: 'Email sent, you will be notified when our App is ready for use.',
+    validateCaptcha: 'Please validate the captcha.',
+    serverCaptchaError: 'There was an error validating the captcha, please try again.'
   },
   CookiesInfo: {
-    title: "Cookies info",
-    googleLink: "See how google uses your data.",
-    cookieInfosLink: "Learn more about cookies.",
+    title: 'Cookies info',
+    googleLink: 'See how google uses your data.',
+    cookieInfosLink: 'Learn more about cookies.',
     info: `We use cookies to personalise content and ads,
     to provide social media features and to analyse our
     traffic. We also share information about your use of

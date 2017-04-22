@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import {lang_en} from "../lang.en";
+import {lang_en} from '../lang.en';
 
 @Injectable()
 export class LangService {
 
-  private _lang = "en";
+  private _lang = 'en';
   private _text;
+
+  static lang(lang: string) {
+    if (lang && lang === 'en') {
+      return lang_en;
+    }
+  }
 
   constructor() { }
 
@@ -20,7 +26,7 @@ export class LangService {
 
   get text(): any {
     if (!this._text) {
-      if (this.lang == "en") {
+      if (this.lang === 'en') {
         this.setText(lang_en);
       }
     }
@@ -30,11 +36,5 @@ export class LangService {
 
   private setText(value: any) {
     this._text = value;
-  }
-
-  static lang(lang: string) {
-    if (lang && lang == "en") {
-      return lang_en;
-    }
   }
 }

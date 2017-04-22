@@ -1,20 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {Title} from "@angular/platform-browser";
+import {Component, HostBinding, OnInit} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
-import {routerTransition, rtSimple} from '../router.animations';
-import {SignUpService} from "../services/sign-up.service";
-import {LangService} from "../services/lang.service";
+import {rtSimple} from '../router.animations';
+import {SignUpService} from '../services/sign-up.service';
+import {LangService} from '../services/lang.service';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
-  host: {'[@rtSimple]': ''},
   animations: [rtSimple()]
 })
 export class IndexComponent implements OnInit {
 
-  studentSignedUp: number = 0;
+  @HostBinding('@rtSimple') hostAnim = '';
+
+  studentSignedUp = 0;
 
   constructor(private signedUpService: SignUpService,
               private titleService: Title,

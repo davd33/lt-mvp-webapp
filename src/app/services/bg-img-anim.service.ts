@@ -1,27 +1,53 @@
 import { Injectable } from '@angular/core';
 
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+
 @Injectable()
 export class BgImgAnimService {
 
-  private _animStopped = false;
-  private _blur: string = "0";
+  private _animStopped = new BehaviorSubject<boolean>(false);
+  private _blur = new BehaviorSubject<string>('0');
 
   constructor() {}
 
-  get animStopped(): boolean {
+  /**
+   * Get observable for changes of the state of
+   * the animation.
+   * @returns {BehaviorSubject}
+   */
+  get animStopped(): BehaviorSubject<boolean> {
     return this._animStopped;
   }
 
-  set animStopped(value: boolean) {
-    this._animStopped = value;
+  /**
+   * Stop animation.
+   */
+  stopAnim() {
+    this._animStopped.next(true);
   }
 
-  get blur(): string {
+  /**
+   * Start animation.
+   */
+  startAnim() {
+    this._animStopped.next(false);
+  }
+
+  /**
+   * Get observable for changes of the blur
+   * to be applied on the image.
+   * @returns {BehaviorSubject}
+   */
+  get blur(): BehaviorSubject<string> {
     return this._blur;
   }
 
-  set blur(value: string) {
-    this._blur = value;
+  /**
+   * Set blur value to apply on the image.
+   * @param value
+   */
+  animChangeBlur(value: string) {
+    this._blur.next(value);
   }
 
 }

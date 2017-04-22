@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {LangService} from "./services/lang.service";
-import {BgImgAnimService} from "./services/bg-img-anim.service";
+
+import {LangService} from './services/lang.service';
+import {BgImgAnimService} from './services/bg-img-anim.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,9 @@ import {BgImgAnimService} from "./services/bg-img-anim.service";
 })
 export class AppComponent implements OnInit {
 
+  bgImgStopped = false;
+  bgImgBlur = '';
+
   constructor(
     public lang: LangService,
     private bgImgAnim: BgImgAnimService
@@ -16,13 +20,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    this.bgImgAnim.animStopped
+      .subscribe(value => {
+        this.bgImgStopped = value;
+      });
 
-  bgImgStopped() {
-    return this.bgImgAnim.animStopped;
-  }
-
-  bgImgBlur() {
-    return this.bgImgAnim.blur;
+    this.bgImgAnim.blur
+      .subscribe(value => {
+        this.bgImgBlur = value;
+      });
   }
 }

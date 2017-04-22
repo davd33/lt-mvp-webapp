@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from "@angular/http";
+import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -24,7 +24,7 @@ export class SignUpService {
       )
       .toPromise()
       .then(res => {
-        return res.json()
+        return res.json();
       })
       .catch(this.handleError);
   }
@@ -34,7 +34,7 @@ export class SignUpService {
       .get(`${this.frontAPIUrl}/count`)
       .toPromise()
       .then(res => {
-        return res.json()
+        return res.json();
       })
       .catch(this.handleError);
   }

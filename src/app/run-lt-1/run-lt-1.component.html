@@ -12,7 +12,7 @@
       <app-lt
         [level]="level"
         [training]="training"
-        (loadTestError)="loadTestError=$event.error"
+        (loadTestError)="setError($event)"
         (ltSuccess)="gotoSignUp()">
       </app-lt>
     </div>

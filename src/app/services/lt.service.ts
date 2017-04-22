@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Http} from "@angular/http";
 
 import {LT_LIST} from '../mock-tests';
 
@@ -11,7 +10,7 @@ export class LtService {
   }
 
   getTestA2Prep(): Promise<any> {
-    return Promise.resolve(LT_LIST[0])
+    return Promise.resolve(LT_LIST[0]);
   }
 
   getTestA2Verbs(): Promise<any> {

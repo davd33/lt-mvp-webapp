@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {LangService} from "../services/lang.service";
+import {LangService} from '../services/lang.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
       [this.lang.text.Menu.home, '/index'],
       [this.lang.text.Menu.signUp, '/sign-up'],
       [this.lang.text.Menu.start, '/choose-level'],
-    ]
+    ];
   }
 
 }

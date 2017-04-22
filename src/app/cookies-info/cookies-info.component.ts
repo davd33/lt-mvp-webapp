@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {LangService} from "../services/lang.service";
+import {LangService} from '../services/lang.service';
 
 @Component({
   selector: 'app-cookies-info',

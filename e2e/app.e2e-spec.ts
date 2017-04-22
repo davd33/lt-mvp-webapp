@@ -1,10 +1,10 @@
-import { LtMvpWebappPage } from './app.po';
+import { LtMvpWebappNg4Page } from './app.po';
 
-describe('lt-mvp-webapp App', function() {
-  let page: LtMvpWebappPage;
+describe('lt-mvp-webapp App', () => {
+  let page: LtMvpWebappNg4Page;
 
   beforeEach(() => {
-    page = new LtMvpWebappPage();
+    page = new LtMvpWebappNg4Page();
   });
 
   it('should display message saying app works', () => {

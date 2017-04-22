@@ -1,11 +1,11 @@
 import {
-  Component, OnInit, Renderer, Output, EventEmitter, ViewChildren, AfterViewInit, Input, HostListener, ViewChild,
+  Component, OnInit, Output, EventEmitter, ViewChildren, AfterViewInit, Input, Renderer2, OnDestroy, QueryList,
   ElementRef
 } from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
-import {LtService} from "../services/lt.service";
-import {luckenAnimations} from "./lt.animations";
+import {LtService} from '../services/lt.service';
+import {luckenAnimations} from './lt.animations';
 
 @Component({
   selector: 'app-lt',
@@ -13,7 +13,7 @@ import {luckenAnimations} from "./lt.animations";
   styleUrls: ['./lt.component.scss'],
   animations: [luckenAnimations()]
 })
-export class LtComponent implements OnInit, AfterViewInit {
+export class LtComponent implements OnInit, AfterViewInit, OnDestroy {
 
   /**
    * Our test.
@@ -24,12 +24,12 @@ export class LtComponent implements OnInit, AfterViewInit {
    * Counter of tries: a try is counted when the user
    * press enter to validate his answer on an input.
    */
-  triesCnt: number = 0;
+  triesCnt = 0;
 
   /**
    * Counter of the number of right answers.
    */
-  rightAnswersCnt: number = 0;
+  rightAnswersCnt = 0;
 
   /**
    * The currently focused input.
@@ -45,7 +45,12 @@ export class LtComponent implements OnInit, AfterViewInit {
    * Shake the wrong answers.
    * @type {boolean}
    */
-  shakeIt: boolean = false;
+  shakeIt = false;
+
+  /**
+   * Shake interval to be set and cleared.
+   */
+  shakeInterval: number;
 
   /**
    * Inputs for focus.
@@ -72,19 +77,24 @@ export class LtComponent implements OnInit, AfterViewInit {
    */
   @Input() training: string;
 
-  constructor(private renderer: Renderer,
+  constructor(private renderer: Renderer2,
               private ltService: LtService,
               private fb: FormBuilder) {
   }
 
   ngOnInit() {
     this.getLt();
-    setInterval(() => {
+
+    this.shakeInterval = setInterval(() => {
       this.doShakeIt();
       setTimeout(() => {
-        this.doNotShakeIt()
+        this.doNotShakeIt();
       }, 1000);
     }, 3000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.shakeInterval);
   }
 
   /**
@@ -117,40 +127,40 @@ export class LtComponent implements OnInit, AfterViewInit {
   getLt() {
     let error: string;
 
-    if (this.level == "A2") {
-      if (this.training == "prep") {
+    if (this.level === 'A2') {
+      if (this.training === 'prep') {
         this.ltService.getTestA2Prep()
           .then(lt => {
             this.test = lt;
             this.buildForm();
           });
-      } else if (this.training == "verbs") {
+      } else if (this.training === 'verbs') {
         this.ltService.getTestA2Verbs()
           .then(lt => {
             this.test = lt;
             this.buildForm();
           });
       } else {
-        error = "Training not available.";
+        error = 'Training not available.';
       }
-    } else if (this.level == "B1") {
-      if (this.training == "prep") {
+    } else if (this.level === 'B1') {
+      if (this.training === 'prep') {
         this.ltService.getTestB1Prep()
           .then(lt => {
             this.test = lt;
             this.buildForm();
           });
-      } else if (this.training == "verbs") {
+      } else if (this.training === 'verbs') {
         this.ltService.getTestB1Verbs()
           .then(lt => {
             this.test = lt;
             this.buildForm();
           });
       } else {
-        error = "Training not available";
+        error = 'Training not available';
       }
     } else {
-      error = "Level not available";
+      error = 'Level not available';
     }
 
     if (error) {
@@ -164,12 +174,12 @@ export class LtComponent implements OnInit, AfterViewInit {
    *  - a regex to match the right answer
    */
   buildForm() {
-    let testGroup: FormGroup = this.fb.group({});
-    for (let w in this.test.text) {
-      let word = this.test.text[w];
+    const testGroup: FormGroup = this.fb.group({});
+    for (let w = 0; w < this.test.text.length; w++) {
+      const word = this.test.text[w];
 
       if (word.isInput) {
-        let control: FormControl = new FormControl();
+        const control: FormControl = new FormControl();
         control.setValue('');
         control.setValidators([
           Validators.required,
@@ -187,8 +197,8 @@ export class LtComponent implements OnInit, AfterViewInit {
   }
 
   isInputInvalid(thisInput: any) {
-    let input = this.getInputEntry(thisInput);
-    return input ? input.status == "invalid" : false;
+    const input = this.getInputEntry(thisInput);
+    return input ? input.status === 'invalid' : false;
   }
 
   /**
@@ -199,34 +209,35 @@ export class LtComponent implements OnInit, AfterViewInit {
    */
   controlChanged(thisInput: any, index: number) {
 
-    let entryInput = this.getInputEntry(thisInput);
+    const entryInput = this.getInputEntry(thisInput);
 
-    if (entryInput.nativeElement.value.trim() !== "")
+    if (entryInput.nativeElement.value.trim() !== '') {
       this.triesCnt++;
+    }
 
     if (this.testForm.controls['test']['controls'][index].valid) {
 
       this.rightAnswersCnt++;
 
-      entryInput.status = "valid";
+      entryInput.status = 'valid';
 
       try {
-        this.renderer.setElementAttribute(entryInput.nativeElement, 'disabled', 'disabled');
+        this.renderer.setAttribute(entryInput.nativeElement, 'disabled', 'disabled');
       } catch (e) {
       }
-    } else if (entryInput.nativeElement.value.trim() !== "") {
-      entryInput.status = "invalid";
+    } else if (entryInput.nativeElement.value.trim() !== '') {
+      entryInput.status = 'invalid';
     }
 
     try {
-      let nextInput = this.findNextInvalidInputEntry(thisInput);
+      const nextInput = this.findNextInvalidInputEntry(thisInput);
       this.focusInput(nextInput);
     } catch (e) {
     }
 
     if (this.testForm.valid) {
       setTimeout(() => {
-        this.ltSuccess.emit({status: "valid"});
+        this.ltSuccess.emit({status: 'valid'});
       }, 500);
       /* wait animation of success bar .5s */
     }
@@ -238,7 +249,7 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param thisInput
    */
   focusInput(thisInput) {
-    this.renderer.invokeElementMethod(thisInput.nativeElement, 'focus');
+    thisInput.nativeElement.focus();
     this.selectInput(thisInput);
   }
 
@@ -247,7 +258,7 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @param thisInput ViewChild variable
    */
   selectInput(thisInput: any) {
-    this.renderer.invokeElementMethod(thisInput.nativeElement, 'select');
+    thisInput.nativeElement.select();
   }
 
   /**
@@ -258,7 +269,7 @@ export class LtComponent implements OnInit, AfterViewInit {
   getInputEntry(thisInput: any) {
     return this.inputChildren.find((obj) => {
       return obj.nativeElement.id === thisInput.id;
-    })
+    });
   }
 
   /**
@@ -270,27 +281,28 @@ export class LtComponent implements OnInit, AfterViewInit {
   findNextInvalidInputEntry(thisInput: any): any {
     // next input entry not valid
     let e: any = this.inputChildren.find((obj, i, arr) => {
-      if (arr[i - 1] && obj.status !== 'valid')
-        return arr[i - 1].nativeElement.id == thisInput.id;
+      if (arr[i - 1] && obj.status !== 'valid') {
+        return arr[i - 1].nativeElement.id === thisInput.id;
+      }
     });
 
     if (!e) {
       // we go to the first not valid
       e = this.inputChildren.find((obj) => {
         return obj.status === 'invalid';
-      })
+      });
     }
 
     if (!e) {
       // we go to the first not valid
       e = this.inputChildren.find((obj) => {
         return obj.status !== 'valid';
-      })
+      });
     }
 
     // we raise an error in case there's no entry left
     if (!e) {
-      throw new Error("No entry left.");
+      throw new Error('No entry left.');
     }
 
     return e;
@@ -304,8 +316,8 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @returns {string}
    */
   luckenInputStatus(thisInput: any) {
-    let input = this.getInputEntry(thisInput);
-    let untouched = "untouched";
+    const input = this.getInputEntry(thisInput);
+    const untouched = 'untouched';
     return input ? input.status ? input.status : untouched : untouched;
   }
 
@@ -314,7 +326,10 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @returns {string}
    */
   successBarSize() {
-    let barSize = (this.rightAnswersCnt / this.inputChildren.length) * 100;
+    const barSize = (this.rightAnswersCnt / this.inputChildren.length) * 100;
+    if (`${barSize}` === 'NaN') {
+      return '0%';
+    }
     return `${barSize}%`;
   }
 
@@ -333,7 +348,7 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @returns {boolean|RegExpMatchArray|null}
    */
   isPoint(str: string) {
-    return str.length == 1 && str.match(/[!?,.:;]/);
+    return str.length === 1 && str.match(/[!?,.:;]/);
   }
 
   /**
@@ -371,7 +386,7 @@ export class LtComponent implements OnInit, AfterViewInit {
    * @returns {any|boolean}
    */
   isErrorFocusedInput() {
-    return this.inputFocused && this.inputFocused.status && this.inputFocused.status == "invalid";
+    return this.inputFocused && this.inputFocused.status && this.inputFocused.status === 'invalid';
   }
 
 }

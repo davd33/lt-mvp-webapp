@@ -1,4 +1,4 @@
-import {trigger, state, animate, style, transition, keyframes} from '@angular/core';
+import {trigger, state, animate, style, transition} from '@angular/animations';
 
 const CONTAINER_STATE = {
   width: '100%',

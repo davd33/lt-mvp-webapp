@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import {Title} from "@angular/platform-browser";
+import {Component, OnInit, ViewChild, AfterViewInit, HostBinding} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 import {rtSimple} from '../router.animations';
-import {SignUpService} from "../services/sign-up.service";
-import {LangService} from "../services/lang.service";
-import {RecaptchaService} from "../services/recaptcha.service";
+import {SignUpService} from '../services/sign-up.service';
+import {LangService} from '../services/lang.service';
+import {RecaptchaService} from '../services/recaptcha.service';
 
 declare const grecaptcha: any;
 
@@ -12,12 +12,13 @@ declare const grecaptcha: any;
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['sign-up.component.scss'],
-  host: {'[@rtSimple]': ''},
   animations: [
     rtSimple()
   ]
 })
 export class SignUpComponent implements OnInit, AfterViewInit {
+
+  @HostBinding('@rtSimple') hostAnim = '';
 
   email: string;
   price: number;
@@ -26,7 +27,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   captchaId: any;
 
-  registrationSuccess: boolean = false;
+  registrationSuccess = false;
   emailRegex: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   captchaResult: string;
 
@@ -58,7 +59,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.registrationSuccess = true;
         })
         .catch((e) => {
-          let message = e.json().message;
+          const message = e.json().message;
           if (message === 'Captcha not valid!') {
             grecaptcha.reset(this.captchaId);
             this.error = this.lang.text.SignUp.serverCaptchaError;
@@ -70,14 +71,14 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   }
 
   keyValid(event: any) {
-    if (event.key == "Enter") {
-      this.error = "";
+    if (event.key == 'Enter') {
+      this.error = '';
       this.sendForm();
     }
   }
 
   captchaLoad() {
-    let captchaChildElmt = this.captchaChild.nativeElement;
+    const captchaChildElmt = this.captchaChild.nativeElement;
 
     this.capchaService.getReady(this.lang.lang)
       .subscribe((ready) => {

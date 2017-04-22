@@ -1,4 +1,4 @@
-import {animate, state, style, transition, trigger} from "@angular/core";
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 const invalidBgColor = 'transparent';
 const invalidTxtColor = 'darkred';
@@ -29,5 +29,5 @@ export function luckenAnimations() {
     transition('untouched => invalid', [
       animate('200ms ease-in')
     ])
-  ])
+  ]);
 }

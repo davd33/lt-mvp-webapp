@@ -1,22 +1,23 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
+import {Component, OnInit, OnDestroy, HostBinding} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import {rtSimple} from '../router.animations';
-import {LangService} from "../services/lang.service";
-import {BgImgAnimService} from "../services/bg-img-anim.service";
+import {LangService} from '../services/lang.service';
+import {BgImgAnimService} from '../services/bg-img-anim.service';
 
 @Component({
   selector: 'app-run-lt-1',
   templateUrl: './run-lt-1.component.html',
   styleUrls: ['./run-lt-1.component.scss'],
-  host: {'[@rtSimple]': ''},
   animations: [rtSimple()]
 })
 export class RunLt1Component implements OnDestroy, OnInit {
+
+  @HostBinding('@rtSimple') hostAnim = '';
 
   level: string;
   training: string;
@@ -32,8 +33,8 @@ export class RunLt1Component implements OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this.bgImgAnim.animStopped = false;
-    this.bgImgAnim.blur = "0";
+    this.bgImgAnim.startAnim();
+    this.bgImgAnim.animChangeBlur('0');
   }
 
   ngOnInit() {
@@ -43,12 +44,16 @@ export class RunLt1Component implements OnDestroy, OnInit {
     this.getLevelParam();
     this.getTrainingParam();
 
-    this.bgImgAnim.animStopped = true;
-    this.bgImgAnim.blur = "15px";
+    this.bgImgAnim.stopAnim();
+    this.bgImgAnim.animChangeBlur('15px');
   }
 
   gotoSignUp() {
     this.router.navigate(['sign-up']);
+  }
+
+  setError(event: any) {
+    console.log(event);
   }
 
   getTrainingParam() {
