@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class LtMvpWebappNg4Page {
+export class LtMvpWebappPage {
   navigateTo() {
     return browser.get('/');
   }
