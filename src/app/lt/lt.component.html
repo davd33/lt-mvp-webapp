@@ -17,9 +17,9 @@
           <label>
             <input type="text" #thisInput autocomplete="off"
 
-                   (keydown.enter)="controlChanged($event, thisInput, i)"
-                   (keydown.tab)="controlChanged($event, thisInput, i)"
-                   (click)="onInputClick(thisInput)"
+                   (keydown.enter)="controlChanged($event, thisInput, i, w.explanation)"
+                   (keydown.tab)="controlChanged($event, thisInput, i, w.explanation)"
+                   (click)="onInputClick(thisInput, w.explanation)"
 
                    [ngClass]="{
                         'incomplete-word-input': !w.complete,

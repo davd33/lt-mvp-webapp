@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Output, EventEmitter, ViewChildren,
-  AfterViewInit, Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef
+  AfterViewInit, Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef, QueryList
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
@@ -13,7 +13,7 @@ import {luckenAnimations} from './lt.animations';
   styleUrls: ['./lt.component.scss'],
   animations: [luckenAnimations()]
 })
-export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy {
+export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   /**
    * Our test.
@@ -63,7 +63,7 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
   /**
    * Inputs for focus.
    */
-  @ViewChildren('thisInput') inputChildren;
+  @ViewChildren('thisInput') inputChildren: QueryList<ElementRef>;
 
   /**
    * Event emitted when lucken text is successfully filled.
@@ -105,6 +105,18 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
     clearInterval(this.shakeInterval);
   }
 
+  ngAfterViewChecked() {
+    this.inputChildren.forEach((obj) => {
+      if (!this.inputObj[obj.nativeElement.id]) {
+        this.inputObj[obj.nativeElement.id] = "untouched";
+      }
+    });
+
+    if (!this.inputFocused) {
+      this.focusInput(this.inputChildren.first, ``);
+    }
+  }
+
   /**
    * Change flag to true.
    */
@@ -117,24 +129,6 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
    */
   doNotShakeIt() {
     this.shakeIt = false;
-  }
-
-  /**
-   * After view init:
-   *  -> focus first input
-   */
-  ngAfterViewInit() {
-    this.inputChildren.changes.subscribe(elements => {
-      elements.first.nativeElement.focus();
-    });
-  }
-
-  ngAfterViewChecked() {
-    this.inputChildren.forEach((obj) => {
-      if (!this.inputObj[obj.nativeElement.id]) {
-        this.inputObj[obj.nativeElement.id] = "untouched";
-      }
-    });
   }
 
   /**
@@ -225,10 +219,12 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
   /**
    * When an input control
    *
+   * @param event
    * @param thisInput the input child
    * @param index in the loop of words
+   * @param explanation
    */
-  controlChanged(event: any, thisInput: any, index: number) {
+  controlChanged(event: any, thisInput: any, index: number, explanation: string) {
     event.preventDefault();
 
     const entryInput = this.getInputEntry(thisInput);
@@ -256,7 +252,7 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
 
     try {
       const nextInput = this.findNextInvalidInputEntry(thisInput);
-      this.focusInput(nextInput);
+      this.focusInput(nextInput, explanation);
     } catch (e) {
     }
 
@@ -271,21 +267,23 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
   /**
    * Focus the native element of the parameter
    * and call selectInput.
-   * @param thisInput
+   * @param elRef
+   * @param explanation
    */
-  focusInput(thisInput) {
-    if (thisInput) {
-      thisInput.nativeElement.focus();
-      this.selectInput(thisInput);
+  focusInput(elRef: ElementRef, explanation: string) {
+    if (elRef) {
+      elRef.nativeElement.focus();
+      this.setInputFocused(elRef, explanation);
+      this.selectInput(elRef);
     }
   }
 
   /**
    * Select text inside an input element.
-   * @param thisInput ViewChild variable
+   * @param elRef ViewChild variable
    */
-  selectInput(thisInput: any) {
-    thisInput.nativeElement.select();
+  selectInput(elRef: ElementRef) {
+    elRef.nativeElement.select();
   }
 
   /**
@@ -428,21 +426,17 @@ export class LtComponent implements OnInit, AfterViewChecked, AfterViewInit, OnD
    * When user clicks on input:
    *  -> focus and select this input.
    * @param thisInput
+   * @param explanation
    */
-  onInputClick(thisInput: any) {
-    this.setInputFocused(this.getInputEntry(thisInput));
-    this.focusInput(this.getInputEntry(thisInput));
+  onInputClick(thisInput: any, explanation: string) {
+    let entry = this.getInputEntry(thisInput);
+    this.focusInput(entry, explanation);
   }
 
-  setInputFocusedExplanation(value: string) {
-    if (this.inputFocused) {
-      this.inputFocused.explanation = value;
-    }
-  }
-
-  setInputFocused(elRef: ElementRef) {
+  setInputFocused(elRef: ElementRef, explanation: string) {
     if (elRef) {
       this.inputFocused = elRef;
+      this.inputFocused.explanation = explanation;
     }
   }
 
