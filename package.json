@@ -4,11 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run cpCSS && ng serve --host 0.0.0.0",
-    "cpCSS": "npm run cpAnimateCSS && npm run cpHoverCSS && npm run cpShakeCSS",
-    "cpAnimateCSS": "cp node_modules/animate.css/animate.min.css src/app/lib/css",
-    "cpHoverCSS": "cp node_modules/hover.css/css/hover-min.css src/app/lib/css",
-    "cpShakeCSS": "cp node_modules/csshake/dist/csshake.css src/app/lib/css",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -29,6 +25,7 @@
     "animate.css": "^3.5.2",
     "core-js": "^2.4.1",
     "csshake": "^1.5.1",
+    "hammerjs": "^2.0.8",
     "hover.css": "^2.0.2",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.5"

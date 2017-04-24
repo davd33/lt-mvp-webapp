@@ -2,18 +2,18 @@ import {Component, OnInit, ViewChild, AfterViewInit, HostBinding} from '@angular
 import {Title} from '@angular/platform-browser';
 
 import {rtSimple} from '../router.animations';
+import {anims} from "./sign-up.animations";
+
 import {SignUpService} from '../services/sign-up.service';
 import {LangService} from '../services/lang.service';
-import {RecaptchaService} from '../services/recaptcha.service';
-
-declare const grecaptcha: any;
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['sign-up.component.scss'],
   animations: [
-    rtSimple()
+    rtSimple(),
+    anims()
   ]
 })
 export class SignUpComponent implements OnInit, AfterViewInit {
@@ -23,20 +23,17 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   email: string;
   price: number;
 
-  error: string;
-
-  captchaId: any;
-
   registrationSuccess = false;
-  captchaResult: string;
+  captchaValid: boolean;
+
+  sliderValue = 0;
+  sliderBlink = false;
 
   @ViewChild('input') inputChild;
-  @ViewChild('captcha') captchaChild;
   @ViewChild('signUpForm') formChild;
 
   constructor(private signUpService: SignUpService,
               private titleService: Title,
-              private capchaService: RecaptchaService,
               private lang: LangService) {
   }
 
@@ -48,49 +45,48 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.inputChild.nativeElement.focus();
-    this.captchaLoad();
   }
 
   sendForm() {
-    if (this.formChild.valid && this.captchaResult) {
-      this.signUpService.registerMail(this.email, this.price, this.captchaResult)
+    if (this.formChild.valid && this.captchaValid) {
+      this.signUpService.registerMail(this.email, this.price)
         .then((res) => {
           this.registrationSuccess = true;
-        })
-        .catch((e) => {
-          const message = e.json().message;
-          if (message === 'Captcha not valid!') {
-            grecaptcha.reset(this.captchaId);
-            this.error = this.lang.text.SignUp.serverCaptchaError;
-          }
         });
-    } else if (!this.captchaResult) {
-      this.error = this.lang.text.SignUp.validateCaptcha;
+    } else if (!this.captchaValid) {
+      this.makeSliderBlink();
+    }
+  }
+
+  makeSliderBlink() {
+    this.sliderBlink = true;
+
+    setInterval(() => {
+      this.sliderBlink = false;
+    }, 1000);
+  }
+
+  sliderChange(event) {
+    this.sliderValue = event.value;
+    if (this.sliderValue < 100) {
+      // reset captcha
+      setTimeout(() => {
+        this.sliderValue = 0;
+      }, 0);
+    } else {
+      this.captchaValid = true;
+      // reset captcha after 10s
+      setTimeout(() => {
+        this.captchaValid = false;
+        this.sliderValue = 0;
+      }, 10000);
     }
   }
 
   keyValid(event: any) {
     if (event.key == 'Enter') {
-      this.error = '';
       this.sendForm();
     }
-  }
-
-  captchaLoad() {
-    const captchaChildElmt = this.captchaChild.nativeElement;
-
-    this.capchaService.getReady(this.lang.lang)
-      .subscribe((ready) => {
-        if (!ready) return;
-
-        this.captchaId = grecaptcha.render(captchaChildElmt, {
-          'sitekey': '6LfAHR0UAAAAANvcs6MfnYzUMeJE-V3MhNaTfQNt',
-          'callback': (res) => {
-            this.captchaResult = res;
-          },
-          'theme': 'light'
-        });
-      });
   }
 
 }

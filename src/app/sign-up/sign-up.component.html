@@ -25,14 +25,15 @@
 
         <!--CAPTCHA-->
         <div class="captcha">
-          <div #captcha></div>
+          <md-slider
+            *ngIf="sliderValue < 100"
+            (change)="sliderChange($event)"
+            [value]="sliderValue"
+            [@sliderAnim]=""
+            [ngClass]="{'animated flash': sliderBlink}">
+          </md-slider>
         </div>
       </form>
-
-      <!--ERROR-->
-      <div class="error">
-        {{error}}
-      </div>
 
     </div>
 

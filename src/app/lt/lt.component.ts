@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Output, EventEmitter, ViewChildren,
-  AfterViewInit, Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef, QueryList
+  Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef, QueryList
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 

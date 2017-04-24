@@ -12,14 +12,13 @@ export class SignUpService {
   constructor(private http: Http) {
   }
 
-  registerMail(email: string, price: number, captcha: string) {
+  registerMail(email: string, price: number) {
     return this.http
       .post(
         this.frontAPIUrl,
         {
           email: email,
-          price: price,
-          captcha: captcha
+          price: price
         }
       )
       .toPromise()

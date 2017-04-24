@@ -1,9 +1,10 @@
 import {BrowserModule, Title} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
+import {MdSliderModule} from "@angular/material";
 
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu/menu.component';
@@ -22,6 +23,9 @@ import {SignUpService} from './services/sign-up.service';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
 import {BgImgAnimService} from './services/bg-img-anim.service';
+
+// needed for angular material
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import {BgImgAnimService} from './services/bg-img-anim.service';
     HttpModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MdSliderModule,
     RouterModule.forRoot([
       {
         path: 'sign-up',
