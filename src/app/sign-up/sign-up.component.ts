@@ -28,7 +28,6 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   captchaId: any;
 
   registrationSuccess = false;
-  emailRegex: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   captchaResult: string;
 
   @ViewChild('input') inputChild;

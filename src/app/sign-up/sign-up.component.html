@@ -16,7 +16,7 @@
         </label>
         <div class="input-container">
           <input type="email" #input [(ngModel)]="email" autocomplete="off"
-                 name="email" id="email" required [pattern]="emailRegex">
+                 name="email" id="email" required email>
 
           <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
             <i class="fa fa-paper-plane-o" aria-hidden="true"></i>

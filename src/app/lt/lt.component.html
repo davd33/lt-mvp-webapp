@@ -17,10 +17,9 @@
           <label>
             <input type="text" #thisInput autocomplete="off"
 
-                   (keydown.enter)="controlChanged(thisInput, i)"
-                   (keydown.tab)="onInputTab($event, thisInput)"
+                   (keydown.enter)="controlChanged($event, thisInput, i)"
+                   (keydown.tab)="controlChanged($event, thisInput, i)"
                    (click)="onInputClick(thisInput)"
-                   (focus)="onInputFocus(thisInput, w.explanation)"
 
                    [ngClass]="{
                         'incomplete-word-input': !w.complete,
@@ -34,11 +33,8 @@
                    [maxlength]="w.value.length"
                    [formControlName]="i">
 
-            <div *ngIf="isErrorFocusedInput()">
-              <app-moving-flag
-                *ngIf="inputFocused.nativeElement.id === thisInput.id"
-                [explanation]="inputFocused.explanation"></app-moving-flag>
-            </div>
+            <app-moving-flag *ngIf="thisInputFocused(thisInput) && isErrorFocusedInput()"
+                             [explanation]="inputFocused.explanation"></app-moving-flag>
           </label>
         </div>
       </div>

@@ -26,7 +26,7 @@ export function luckenAnimations() {
     transition('* => valid', [
       animate('200ms ease-in')
     ]),
-    transition('untouched => invalid', [
+    transition('* => invalid', [
       animate('200ms ease-in')
     ])
   ]);
