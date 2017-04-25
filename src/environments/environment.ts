@@ -7,6 +7,6 @@ export const environment = {
   production: false,
   signUp: {
     frontAPIHost: '192.168.1.105',
-    frontAPIPort: '4201'
+    frontAPIPort: '4242'
   }
 };
