@@ -3,11 +3,12 @@ import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+import {environment} from '../../environments/environment';
+
 @Injectable()
 export class SignUpService {
 
-  // TODO: make URL configurable
-  private frontAPIUrl = 'http://localhost:4201/api/registration';
+  private frontAPIUrl = `http://${environment.signUp.frontAPIHost}:${environment.signUp.frontAPIPort}/api/registration`;
 
   constructor(private http: Http) {
   }
