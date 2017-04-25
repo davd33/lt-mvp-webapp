@@ -23,7 +23,7 @@ $border-size: 0;
 
     .captcha {
       width: 100%;
-      margin: 0 auto;
+      margin: 1em auto 0;
       font-family: $normal-font;
     }
 
@@ -55,10 +55,6 @@ $border-size: 0;
         text-shadow: 1px 1px 1px $second-color;
       }
 
-      .ng-invalid .submit {
-        opacity: .5;
-      }
-
       .input-container {
         position: relative;
         width: 50%;
@@ -80,24 +76,13 @@ $border-size: 0;
 
           box-shadow: 0 1px 4px -1px $second-color inset;
           text-shadow: 1px 1px 1px $third-color;
-        }
 
-        .submit {
-          position: absolute;
-          top: calc(.2em);
-          right: .2em;
-          z-index: 99;
-
-          border: $border-size solid transparent;
-
-          background: transparent;
-          font-family: $primary-font;
-          font-size: 2em;
-          outline: none;
-          text-align: center;
-          color: $third-color;
-          text-shadow: 1px 1px 1px $third-color;
-          cursor: pointer;
+          &::placeholder {
+            font-style: italic;
+            text-shadow: 0 0 0 transparent;
+            color: $third-color;
+            opacity: .5;
+          }
         }
       }
     }

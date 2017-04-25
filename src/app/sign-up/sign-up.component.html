@@ -16,22 +16,18 @@
         </label>
         <div class="input-container">
           <input type="email" #input [(ngModel)]="email" autocomplete="off"
-                 name="email" id="email" required email>
-
-          <div class="submit" (click)="sendForm()" (keypress)="keyValid($event)">
-            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-          </div>
+                 name="email" id="email" required email placeholder="my@email.com">
         </div>
 
         <!--CAPTCHA-->
-        <div class="captcha">
-          <md-slider
-            *ngIf="sliderValue < 100"
-            (change)="sliderChange($event)"
-            [value]="sliderValue"
-            [@sliderAnim]=""
-            [ngClass]="{'animated flash': sliderBlink}">
-          </md-slider>
+        <div class="captcha" *ngIf="signUpForm.valid">
+          <div [@sliderAnim]="">
+            <div>Slide to send!</div>
+            <md-slider
+              (change)="sliderChange($event)"
+              [value]="sliderValue">
+            </md-slider>
+          </div>
         </div>
       </form>
 

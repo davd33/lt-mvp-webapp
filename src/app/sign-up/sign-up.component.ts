@@ -24,10 +24,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   price: number;
 
   registrationSuccess = false;
-  captchaValid: boolean;
+  captchaValid = false;
 
   sliderValue = 0;
-  sliderBlink = false;
 
   @ViewChild('input') inputChild;
   @ViewChild('signUpForm') formChild;
@@ -53,39 +52,24 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         .then((res) => {
           this.registrationSuccess = true;
         });
-    } else if (!this.captchaValid) {
-      this.makeSliderBlink();
     }
   }
 
-  makeSliderBlink() {
-    this.sliderBlink = true;
-
-    setInterval(() => {
-      this.sliderBlink = false;
-    }, 1000);
+  resetCaptcha() {
+    this.captchaValid = false;
+    setTimeout(() => {
+      this.sliderValue = 0;
+    }, 0);
   }
 
   sliderChange(event) {
     this.sliderValue = event.value;
-    if (this.sliderValue < 100) {
-      // reset captcha
-      setTimeout(() => {
-        this.sliderValue = 0;
-      }, 0);
-    } else {
-      this.captchaValid = true;
-      // reset captcha after 10s
-      setTimeout(() => {
-        this.captchaValid = false;
-        this.sliderValue = 0;
-      }, 10000);
-    }
-  }
 
-  keyValid(event: any) {
-    if (event.key == 'Enter') {
+    if (this.sliderValue === 100 && this.formChild.valid) {
+      this.captchaValid = true;
       this.sendForm();
+    } else {
+      this.resetCaptcha();
     }
   }
 
