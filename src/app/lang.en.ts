@@ -40,7 +40,8 @@ export const lang_en = {
     signUpLabel: 'Sign up:',
     emailSent: 'Email sent, you will be notified when our App is ready for use.',
     validateCaptcha: 'Please validate the captcha.',
-    serverCaptchaError: 'There was an error validating the captcha, please try again.'
+    serverCaptchaError: 'There was an error validating the captcha, please try again.',
+    emailAlreadyExists: 'Your email is already in our database.'
   },
   CookiesInfo: {
     title: 'Cookies info',

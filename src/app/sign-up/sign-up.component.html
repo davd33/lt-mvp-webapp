@@ -17,6 +17,7 @@
         <div class="input-container">
           <input type="email" #input [(ngModel)]="email" autocomplete="off"
                  name="email" id="email" required email placeholder="my@email.com">
+          <div class="error">{{error}}</div>
         </div>
 
         <!--CAPTCHA-->

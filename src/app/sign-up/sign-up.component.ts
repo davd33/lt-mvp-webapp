@@ -28,6 +28,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   sliderValue = 0;
 
+  error = '';
+
   @ViewChild('input') inputChild;
   @ViewChild('signUpForm') formChild;
 
@@ -51,6 +53,12 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       this.signUpService.registerMail(this.email, this.price)
         .then((res) => {
           this.registrationSuccess = true;
+        })
+        .catch(e => {
+          let msg = e.json().message;
+          if (msg.includes(`Email already exists`)) {
+            this.error = this.lang.text.SignUp.emailAlreadyExists;
+          }
         });
     }
   }
