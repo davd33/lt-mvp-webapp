@@ -22,9 +22,11 @@
 
                    (keydown.enter)="controlChanged($event, thisInput, i, w.explanation)"
                    (keydown.tab)="controlChanged($event, thisInput, i, w.explanation)"
+                   (keydown.shift.tab)="controlChanged($event, thisInput, i, w.explanation)"
                    (keydown.space)="controlChanged($event, thisInput, i, w.explanation)"
 
                    (click)="onInputClick(thisInput, w.explanation)"
+                   (blur)="blurInput()"
 
                    [ngClass]="{
                         'incomplete-word-input': !w.complete,
