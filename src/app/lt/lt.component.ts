@@ -5,13 +5,11 @@ import {
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 import {LtService} from '../services/lt.service';
-import {luckenAnimations} from './lt.animations';
 
 @Component({
   selector: 'app-lt',
   templateUrl: './lt.component.html',
-  styleUrls: ['./lt.component.scss'],
-  animations: [luckenAnimations()]
+  styleUrls: ['./lt.component.scss']
 })
 export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
@@ -50,7 +48,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   /**
    * Shake interval to be set and cleared.
    */
-  shakeInterval: number;
+  shakeInterval: any;
 
   /**
    * Object containing meta info of input children:
@@ -129,6 +127,10 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   doNotShakeIt() {
     this.shakeIt = false;
+  }
+
+  wordNoMargin(ww: string) {
+    return ww.length === 0;
   }
 
   /**
@@ -229,7 +231,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     const entryInput = this.getInputEntry(thisInput);
 
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.key === 'Tab') {
 
       if (entryInput.nativeElement.value.trim() !== '') {
         this.triesCnt++;

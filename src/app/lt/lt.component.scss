@@ -8,32 +8,44 @@ $score-mediocre: #e27926;
 $score-bad: #b74747;
 $score-aweful: #b74747;
 
+$invalidBgColor: transparent;
+$invalidTxtColor: darkred;
+$validBgColor: transparent;
+$validTxtColor: green;
+$untouchedTxtColor: white;
+
 .lt-container {
 
   font-size: 2em;
   font-family: $lt-font;
   line-height: 2em;
 
+  overflow: auto;
+  position: fixed;
+  width: 100%;
+  height: calc(100% - 2.2em);
+
   .lt-text {
     padding: 2%;
 
-    .word {
-      .point {
-        margin: -0.2em 0;
-        margin-left: -.5em;
-      }
+    .point {
+      margin: -0.2em 0;
+      margin-left: -.5em;
+    }
 
-      div {
-        float: left;
-        margin: -0.2em 0.2em;
-      }
+    .word {
+      margin: -0.2em 0.2em;
+      display: inline-block;
+    }
+
+    .word-no-margin {
+      margin: 0;
     }
 
     .input-div {
       position: relative;
       display: inline-block;
-      margin: -.205em 0.5em 0;
-      float: left;
+      margin: 0;
 
       app-moving-flag {
         position: fixed;
@@ -50,25 +62,41 @@ $score-aweful: #b74747;
         border: 1px solid transparent;
         border-bottom: 1px solid $third-color;
         outline: none;
-      }
+        transition: all .4s;
+        color: $third-color;
 
-      input[type='text']:focus {
-        animation: focusAnim .5s ease-in forwards;
-      }
+        &.incomplete-word-input {
+          margin-left: -.7em;
+        }
 
-      input[type='text'].incomplete-word-input {
-        margin-left: -.7em;
-      }
+        &.valid {
+          border-color: $validBgColor;
+          background: $validBgColor;
+          color: $validTxtColor;
+          text-shadow: 1px 1px 1px $validTxtColor;
+        }
 
-      input[type='text']::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: $third-color;
+        &.invalid {
+          border-color: $invalidBgColor;
+          background: $invalidBgColor;
+          color: $invalidTxtColor;
+          text-shadow: 1px 1px 1px $invalidTxtColor;
+        }
+
+        &:focus {
+          animation: focusAnim .5s ease-in forwards;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: $third-color;
+        }
       }
     }
 
