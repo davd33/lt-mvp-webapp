@@ -13,6 +13,7 @@ export class MovingFlagComponent implements OnInit {
   @HostBinding('@flag') hostAnim = '';
 
   @Input() explanation;
+  @Input() color;
 
   constructor() { }
 

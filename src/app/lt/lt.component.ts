@@ -5,6 +5,7 @@ import {
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 import {LtService} from '../services/lt.service';
+import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-lt',
@@ -33,6 +34,18 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    * The currently focused input.
    */
   inputFocused: any;
+
+  /**
+   * Color of the flag displaying messages and errors.
+   * @type {string}
+   */
+  flagColor = 'green';
+
+  /**
+   * Basic flag explanation.
+   * @type {string}
+   */
+  flagExplanation: string;
 
   /**
    * Form group for the test.
@@ -85,11 +98,14 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   constructor(private renderer: Renderer2,
               private ltService: LtService,
+              private lang: LangService,
               private fb: FormBuilder) {
   }
 
   ngOnInit() {
     this.getLt();
+
+    this.flagExplanation = this.lang.text.Lt.flagExplanation;
 
     this.shakeInterval = setInterval(() => {
       this.doShakeIt();
@@ -129,6 +145,11 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.shakeIt = false;
   }
 
+  /**
+   * Whether margin should be applied to an empty word.
+   * @param ww
+   * @returns {boolean}
+   */
   wordNoMargin(ww: string) {
     return ww.length === 0;
   }
@@ -257,7 +278,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       if (event.key === 'Tab' && event.shiftKey) {
         nextInput = this.findPreviousInvalidInputEntry(thisInput);
       }
-      
+
       this.focusInput(nextInput, explanation);
     } catch (e) {
     }
@@ -475,28 +496,24 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
   }
 
-  thisInputFocused(thisInput: any) {
-    let entry = this.getInputEntry(thisInput);
-
-    if (entry && this.inputFocused) {
-      return this.inputFocused.nativeElement.id === thisInput.id && !this.inputFocused.blured;
-    }
-
-    return false;
+  getFlagColor() {
+    return this.flagColor;
   }
 
-  /**
-   * Is the currently focused input invalid?
-   * @returns {boolean}
-   */
-  isErrorFocusedInput() {
+  getFlagExplanation() {
     if (this.inputFocused) {
       let status = this.getStatusValueByElementRef(this.inputFocused);
-
-      return status === 'invalid';
+      if (status === 'invalid' && !this.inputFocused.blured) {
+        this.flagColor = "red";
+        return this.inputFocused.explanation;
+      } else {
+        this.flagColor = "green";
+        return this.flagExplanation;
+      }
     }
 
-    return false;
+    this.flagColor = "green";
+    return this.flagExplanation;
   }
 
 }

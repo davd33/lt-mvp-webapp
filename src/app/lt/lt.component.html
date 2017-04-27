@@ -3,6 +3,9 @@
   <div class="success-bar" [ngStyle]="{width: successBarSize()}">
   </div>
 
+  <app-moving-flag [explanation]="getFlagExplanation()"
+                   [color]="getFlagColor()"></app-moving-flag>
+
   <div class="lt-text">
     <form [formGroup]="testForm" novalidate>
       <ng-container *ngFor="let w of test.text; let i = index;">
@@ -41,9 +44,6 @@
                    [size]="w.value.length"
                    [maxlength]="w.value.length"
                    [formControlName]="i">
-
-            <app-moving-flag *ngIf="thisInputFocused(thisInput) && isErrorFocusedInput()"
-                             [explanation]="inputFocused.explanation"></app-moving-flag>
           </label>
         </div>
       </ng-container>

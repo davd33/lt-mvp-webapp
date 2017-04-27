@@ -21,6 +21,9 @@ export const lang_en = {
   RunLt1: {
     title: 'Test running'
   },
+  Lt: {
+    flagExplanation: 'Fill the words correctly.'
+  },
   Menu: {
     home: 'Home',
     signUp: 'Sign up',

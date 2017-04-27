@@ -25,8 +25,16 @@ $untouchedTxtColor: white;
   width: 100%;
   height: calc(100% - 2.2em);
 
+  app-moving-flag {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
   .lt-text {
     padding: 2%;
+    padding-top: 2em;
 
     .point {
       margin: -0.2em 0;
@@ -46,13 +54,6 @@ $untouchedTxtColor: white;
       position: relative;
       display: inline-block;
       margin: 0;
-
-      app-moving-flag {
-        position: fixed;
-        left: 0;
-        width: 100%;
-        z-index: 100;
-      }
 
       input[type='text'] {
 
@@ -140,7 +141,6 @@ $untouchedTxtColor: white;
   /* desktops */
 
   .lt-container {
-    margin-top: 8%;
     font-size: 2em;
   }
 }
