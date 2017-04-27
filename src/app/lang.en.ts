@@ -40,11 +40,17 @@ export const lang_en = {
   },
   SignUp: {
     title: 'Sign up',
-    signUpLabel: 'Sign up:',
     emailSent: 'Email sent, you will be notified when our App is ready for use.',
-    validateCaptcha: 'Please validate the captcha.',
-    serverCaptchaError: 'There was an error validating the captcha, please try again.',
-    emailAlreadyExists: 'Your email is already in our database.'
+    errors: {
+      emailAlreadyExists: 'Your email is already in our database.',
+    },
+    email: {
+      label: 'Sign up:',
+      placeholder: 'my@email.com'
+    },
+    textarea: {
+      placeholder: 'Tell us your thoughts!'
+    }
   },
   CookiesInfo: {
     title: 'Cookies info',

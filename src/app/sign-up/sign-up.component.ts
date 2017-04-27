@@ -21,6 +21,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   @HostBinding('@rtSimple') hostAnim = '';
 
   email: string;
+  comment: string;
   price: number;
 
   registrationSuccess = false;
@@ -50,14 +51,16 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
   sendForm() {
     if (this.formChild.valid && this.captchaValid) {
-      this.signUpService.registerMail(this.email, this.price)
+      this.signUpService.registerMail(this.email, this.price, this.comment)
         .then((res) => {
           this.registrationSuccess = true;
         })
         .catch(e => {
           let msg = e.json().message;
           if (msg.includes(`Email already exists`)) {
-            this.error = this.lang.text.SignUp.emailAlreadyExists;
+            this.error = this.lang.text.SignUp.errors.emailAlreadyExists;
+          } else {
+            console.log(`another error has happened`);
           }
         });
     }

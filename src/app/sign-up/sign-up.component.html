@@ -12,13 +12,20 @@
       <form #signUpForm="ngForm">
         <!--SIGN UP INPUT-->
         <label for="email">
-          <span>{{lang.text.SignUp.signUpLabel}}</span>
+          <span>{{lang.text.SignUp.email.label}}</span>
         </label>
         <div class="input-container">
           <input type="email" #input [(ngModel)]="email" autocomplete="off"
-                 name="email" id="email" required email placeholder="my@email.com">
-          <div class="error">{{error}}</div>
+                 name="email" id="email" required email
+                 [placeholder]="lang.text.SignUp.email.placeholder">
         </div>
+
+        <div class="comment">
+          <textarea [(ngModel)]="comment" name="comment"
+                    [placeholder]="lang.text.SignUp.textarea.placeholder"></textarea>
+        </div>
+
+        <div class="error">{{error}}</div>
 
         <!--CAPTCHA-->
         <div class="captcha" *ngIf="signUpForm.valid">

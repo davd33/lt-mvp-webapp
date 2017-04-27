@@ -25,6 +25,7 @@ $border-size: 0;
       width: 100%;
       margin: 1em auto 0;
       font-family: $normal-font;
+      font-size: 2em;
       text-shadow: 1px 1px 0 $third-color;
     }
 
@@ -54,6 +55,29 @@ $border-size: 0;
         border: 10px solid transparent;
         color: $second-color;
         text-shadow: 1px 1px 1px $second-color;
+      }
+
+      .comment {
+        textarea {
+          background: $forth-color;
+          color: $third-color;
+          font-family: $primary-font;
+          font-size: 2em;
+          outline: none;
+          text-align: left;
+
+          box-shadow: 0 1px 4px -1px $second-color inset;
+          text-shadow: 1px 1px 1px $third-color;
+
+          border: 0;
+
+          &::placeholder {
+            font-style: italic;
+            text-shadow: 0 0 0 transparent;
+            color: $third-color;
+            opacity: .5;
+          }
+        }
       }
 
       .input-container {
