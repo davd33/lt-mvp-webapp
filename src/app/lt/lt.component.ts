@@ -45,6 +45,12 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    * Basic flag explanation.
    * @type {string}
    */
+  defaultFlagExplanation: string;
+
+  /**
+   * Flag explanation value.
+   * @type {string}
+   */
   flagExplanation: string;
 
   /**
@@ -66,10 +72,10 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   /**
    * Object containing meta info of input children:
    * [{
-   *  id: status
+   *  status, explanation
    * }]
    */
-  inputObj: any = [];
+  inputObj: any[] = [];
 
   /**
    * Inputs for focus.
@@ -105,7 +111,8 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   ngOnInit() {
     this.getLt();
 
-    this.flagExplanation = this.lang.text.Lt.flagExplanation;
+    this.defaultFlagExplanation = this.lang.text.Lt.flagExplanation;
+    this.flagExplanation = this.defaultFlagExplanation;
 
     this.shakeInterval = setInterval(() => {
       this.doShakeIt();
@@ -122,7 +129,10 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   ngAfterViewChecked() {
     this.inputChildren.forEach((obj) => {
       if (!this.inputObj[obj.nativeElement.id]) {
-        this.inputObj[obj.nativeElement.id] = "untouched";
+        this.inputObj[obj.nativeElement.id] = {
+          status: "untouched",
+          explanation: this.defaultFlagExplanation
+        };
       }
     });
 
@@ -252,6 +262,11 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     const entryInput = this.getInputEntry(thisInput);
 
+    // save explanation entry
+    if (this.getExplanation(thisInput) === this.defaultFlagExplanation) {
+      this.setExplanation(thisInput, explanation);
+    }
+
     if (event.key === 'Enter' || (event.key === 'Tab' && !event.shiftKey)) {
 
       if (entryInput.nativeElement.value.trim() !== '') {
@@ -279,7 +294,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
         nextInput = this.findPreviousInvalidInputEntry(thisInput);
       }
 
-      this.focusInput(nextInput, explanation);
+      this.focusInput(nextInput, this.getExplanationByElementRef(nextInput));
     } catch (e) {
     }
 
@@ -302,6 +317,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       elRef.nativeElement.focus();
       this.setInputFocused(elRef, explanation);
       this.selectInput(elRef);
+      this.changeFlagExplanation();
     }
   }
 
@@ -348,7 +364,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   getStatusValueByElementRef(elRef: ElementRef) {
     if (elRef) {
-      return this.inputObj[elRef.nativeElement.id];
+      return this.inputObj[elRef.nativeElement.id].status;
     }
   }
 
@@ -374,7 +390,27 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   setStatusValueByElementRef(elRef: ElementRef, newValue: string) {
     if (elRef) {
-      this.inputObj[elRef.nativeElement.id] = newValue;
+      this.inputObj[elRef.nativeElement.id].status = newValue;
+    }
+  }
+
+  getExplanation(thisInput: any) {
+    return this.getExplanationByElementRef(this.getInputEntry(thisInput));
+  }
+
+  getExplanationByElementRef(elRef: ElementRef) {
+    if (elRef) {
+      return this.inputObj[elRef.nativeElement.id].explanation;
+    }
+  }
+
+  setExplanation(thisInput: any, newValue: string) {
+    this.setExplanationByElementRef(this.getInputEntry(thisInput), newValue);
+  }
+
+  setExplanationByElementRef(elRef: ElementRef, newValue: string) {
+    if (elRef) {
+      this.inputObj[elRef.nativeElement.id].explanation = newValue;
     }
   }
 
@@ -500,20 +536,21 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     return this.flagColor;
   }
 
-  getFlagExplanation() {
+  changeFlagExplanation() {
     if (this.inputFocused) {
       let status = this.getStatusValueByElementRef(this.inputFocused);
+
       if (status === 'invalid' && !this.inputFocused.blured) {
         this.flagColor = "red";
-        return this.inputFocused.explanation;
+        this.flagExplanation = this.inputFocused.explanation;
       } else {
         this.flagColor = "green";
-        return this.flagExplanation;
+        this.flagExplanation = this.defaultFlagExplanation;
       }
+    } else {
+      this.flagColor = "green";
+      this.flagExplanation = this.defaultFlagExplanation;
     }
-
-    this.flagColor = "green";
-    return this.flagExplanation;
   }
 
 }
