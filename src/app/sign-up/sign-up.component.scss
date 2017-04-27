@@ -35,6 +35,11 @@ $border-size: 0;
       text-shadow: 1px 1px 1px $second-color;
       text-align: center;
       margin-top: 5%;
+
+      a {
+        cursor: pointer;
+        color: $second-color;
+      }
     }
 
     .notify-me {

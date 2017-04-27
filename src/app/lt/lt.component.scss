@@ -110,8 +110,9 @@ $untouchedTxtColor: white;
     position: fixed;
     width: 0;
     height: 2px;
-    background: green;
+    background: $third-color;
     transition: width .5s;
+    z-index: 1000;
   }
 }
 

@@ -43,7 +43,8 @@
 
     <!--SUCCESS FROM SERVER-->
     <div *ngIf="registrationSuccess" class="mail-sent">
-      {{lang.text.SignUp.emailSent}}
+      {{lang.text.SignUp.emailSent}}<br>
+      <a routerLink="/choose-level">{{lang.text.SignUp.tryAgain}}</a>
     </div>
   </div>
 </div>

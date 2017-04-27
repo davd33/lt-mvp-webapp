@@ -41,6 +41,7 @@ export const lang_en = {
   SignUp: {
     title: 'Sign up',
     emailSent: 'Email sent, you will be notified when our App is ready for use.',
+    tryAgain: 'Try again!',
     errors: {
       emailAlreadyExists: 'Your email is already in our database.',
     },
