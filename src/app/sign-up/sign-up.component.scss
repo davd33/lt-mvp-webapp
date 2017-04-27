@@ -64,17 +64,19 @@ $border-size: 0;
 
       .comment {
         textarea {
-          background: $forth-color;
-          color: $third-color;
-          font-family: $primary-font;
-          font-size: 2em;
+          margin-top: 3em;
+          background: rgba(0,0,0,.2);
+          width: 50%;
+          height: 5em;
+          color: white;
+
+          font-family: "Noto Sans", sans-serif;
+          font-size: 1em;
           outline: none;
           text-align: left;
-
-          box-shadow: 0 1px 4px -1px $second-color inset;
-          text-shadow: 1px 1px 1px $third-color;
-
           border: 0;
+
+          box-shadow: 0 1px 4px -1px black inset;
 
           &::placeholder {
             font-style: italic;

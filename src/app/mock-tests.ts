@@ -45,31 +45,31 @@ export const LT_LIST: any[] = [
       }, {
         'value': 'me',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'I come... in German!',
       }, {
         'value': ' aus Frankreich. Ich möcht',
       }, {
         'value': 'e',
         'isInput': true,
-        'explanation': ''
+        'explanation': 'I would like... subjunctive of want.'
       }, {
         'value': ' in Deutschland studieren! Leider hab',
       }, {
         'value': 'e',
         'isInput': true,
-        'explanation': ''
+        'explanation': 'First person.'
       }, {
         'value': ' ich soweit kein cooles App gefund',
       }, {
         'value': 'en',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'Found!',
       }, {
         'value': ' um Lückentexte zu üb',
       }, {
         'value': 'en',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'Infinitive of this verb.',
       }, {
         'value': '!',
       }
@@ -85,28 +85,28 @@ export const LT_LIST: any[] = [
       }, {
         'value': 'in',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'I wanted to...',
         'complete': true
       }, {
         'value': ' Deutschland studieren, aber ',
       }, {
         'value': 'im',
         'isInput': true,
-        'explanation': '',
+        'explanation': '\'in dem\'',
         'complete': true
       }, {
         'value': ' Internet gab es leider kein cooles App um ',
       }, {
         'value': 'die',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'Plural preposition.',
         'complete': true
       }, {
         'value': ' blöde Lückentexte ',
       }, {
         'value': 'zu',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'um...zu',
         'complete': true
       }, {
         'value': ' üben!',
@@ -123,25 +123,25 @@ export const LT_LIST: any[] = [
       }, {
         'value': 'e',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'I wanted...',
       }, {
         'value': ' in Deutschland studier',
       }, {
         'value': 'en',
         'isInput': true,
-        'explanation': ''
+        'explanation': 'Infinitive of this verb.'
       }, {
         'value': ', aber im Internet g',
       }, {
         'value': 'ab',
         'isInput': true,
-        'explanation': ''
+        'explanation': 'Geben... preterit.'
       }, {
         'value': ' es leider kein App um die blöde Lückentexte zu üb',
       }, {
         'value': 'en',
         'isInput': true,
-        'explanation': '',
+        'explanation': 'Infinitive of this verb.',
       }, {
         'value': '!',
       }

@@ -46,7 +46,7 @@ export const lang_en = {
       emailAlreadyExists: 'Your email is already in our database.',
     },
     email: {
-      label: 'Sign up:',
+      label: 'Sign up',
       placeholder: 'my@email.com'
     },
     textarea: {
