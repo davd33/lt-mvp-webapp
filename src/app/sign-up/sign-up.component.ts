@@ -56,11 +56,15 @@ export class SignUpComponent implements OnInit, AfterViewInit {
           this.registrationSuccess = true;
         })
         .catch(e => {
-          let msg = e.json().message;
-          if (msg.includes(`Email already exists`)) {
-            this.error = this.lang.text.SignUp.errors.emailAlreadyExists;
+          if (typeof e === 'string') {
+            console.log(e);
           } else {
-            console.log(`another error has happened`);
+            let msg = e.json().message;
+            if (msg.includes(`Email already exists`)) {
+              this.error = this.lang.text.SignUp.errors.emailAlreadyExists;
+            } else {
+              console.log(e);
+            }
           }
         });
     }
