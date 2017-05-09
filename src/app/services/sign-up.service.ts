@@ -8,7 +8,9 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class SignUpService {
 
-  private frontAPIUrl = `http://${environment.signUp.frontAPIHost}:${environment.signUp.frontAPIPort}/api/registration`;
+  private frontAPIUrl =
+    `http://${environment.signUp.frontAPIHost}:` +
+    `${environment.signUp.frontAPIPort}/api/registration`;
 
   constructor(private http: Http) {
   }

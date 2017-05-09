@@ -18,6 +18,11 @@ export const lang_en = {
     prep: 'Prepositions',
     verbs: 'Verbs'
   },
+  DeleteUser: {
+    title: 'Unsubscribe',
+    userNotExist: 'User does not exist.',
+    userDeleted: `Our heart has been broken, you're not with us anymore :(`
+  },
   RunLt1: {
     title: 'Test running'
   },
@@ -40,7 +45,7 @@ export const lang_en = {
   },
   SignUp: {
     title: 'Sign up',
-    emailSent: 'Email sent, you will be notified when our App is ready for use.',
+    emailSent: `Email sent, we'll be happy to notify you when our app is out.`,
     tryAgain: 'Try again!',
     errors: {
       emailAlreadyExists: 'Your email is already in our database.',

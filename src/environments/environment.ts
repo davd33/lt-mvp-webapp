@@ -8,5 +8,9 @@ export const environment = {
   signUp: {
     frontAPIHost: '192.168.1.105',
     frontAPIPort: '4242'
+  },
+  deleteUser: {
+    frontAPIHost: '192.168.1.105',
+    frontAPIPort: '4242'
   }
 };

@@ -26,6 +26,8 @@ import {BgImgAnimService} from './services/bg-img-anim.service';
 
 // needed for angular material
 import 'hammerjs';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+import {DeleteUserService} from "./services/delete-user.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import 'hammerjs';
     ChooseLevelComponent,
     ChooseTrainingComponent,
     CookiesInfoComponent,
-    MenuComponent
+    MenuComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,10 @@ import 'hammerjs';
         component: CookiesInfoComponent
       },
       {
+        path: 'delete-user/:user/:token',
+        component: DeleteUserComponent
+      },
+      {
         path: '',
         redirectTo: '/index',
         pathMatch: 'full'
@@ -90,7 +97,8 @@ import 'hammerjs';
     Title,
     LangService,
     RecaptchaService,
-    BgImgAnimService
+    BgImgAnimService,
+    DeleteUserService
   ],
   bootstrap: [AppComponent]
 })
