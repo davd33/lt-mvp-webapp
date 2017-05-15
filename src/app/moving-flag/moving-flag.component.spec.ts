@@ -4,15 +4,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { MovingFlagComponent } from './moving-flag.component';
+import {TEST_MODULE} from '../conf.test';
 
 describe('MovingFlagComponent', () => {
   let component: MovingFlagComponent;
   let fixture: ComponentFixture<MovingFlagComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MovingFlagComponent ]
-    })
+    TestBed.configureTestingModule(TEST_MODULE)
     .compileComponents();
   }));
 

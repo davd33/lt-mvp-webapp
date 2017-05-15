@@ -4,15 +4,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { IndexComponent } from './index.component';
+import {TEST_MODULE} from '../conf.test';
 
 describe('IndexComponent', () => {
   let component: IndexComponent;
   let fixture: ComponentFixture<IndexComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ IndexComponent ]
-    })
+    TestBed.configureTestingModule(TEST_MODULE)
     .compileComponents();
   }));
 

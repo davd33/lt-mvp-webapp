@@ -4,15 +4,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ChooseLevelComponent } from './choose-level.component';
+import {TEST_MODULE} from '../conf.test';
 
 describe('ChooseLevelComponent', () => {
   let component: ChooseLevelComponent;
   let fixture: ComponentFixture<ChooseLevelComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ChooseLevelComponent ]
-    })
+    TestBed.configureTestingModule(TEST_MODULE)
     .compileComponents();
   }));
 

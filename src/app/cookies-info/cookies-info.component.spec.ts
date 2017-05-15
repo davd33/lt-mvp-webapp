@@ -4,15 +4,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { CookiesInfoComponent } from './cookies-info.component';
+import {TEST_MODULE} from '../conf.test';
 
 describe('CookiesInfoComponent', () => {
   let component: CookiesInfoComponent;
   let fixture: ComponentFixture<CookiesInfoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CookiesInfoComponent ]
-    })
+    TestBed.configureTestingModule(TEST_MODULE)
     .compileComponents();
   }));
 

@@ -4,15 +4,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { MenuComponent } from './menu.component';
+import {TEST_MODULE} from '../conf.test';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MenuComponent ]
-    })
+    TestBed.configureTestingModule(TEST_MODULE)
     .compileComponents();
   }));
 
