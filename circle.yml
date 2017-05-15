@@ -1,13 +1,12 @@
 machine:
+  node:
+    version: 7.9.0
   services:
     - docker
-
-dependencies:
-  post:
-    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$CIRCLE_SHA1 .
 
 deployment:
   prod:
     branch: master
     commands:
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$CIRCLE_SHA1 .
       - ./deploy.sh
