@@ -28,7 +28,7 @@ make_task_def() {
 			"name": "lt-mvp-webapp",
 			"image": "%s.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:%s",
 			"essential": true,
-			"memory": 200,
+			"memory": 500,
 			"cpu": 10,
 			"portMappings": [
 				{
