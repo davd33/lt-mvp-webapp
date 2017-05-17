@@ -7,7 +7,7 @@
     "start": "ng serve --host 0.0.0.0",
     "startProd": "ng serve --env=prod --host 0.0.0.0",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
