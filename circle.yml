@@ -8,5 +8,5 @@ deployment:
   prod:
     branch: master
     commands:
-      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$CIRCLE_SHA1 .
+      - docker build --rm=false -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$CIRCLE_SHA1 .
       - ./deploy.sh
