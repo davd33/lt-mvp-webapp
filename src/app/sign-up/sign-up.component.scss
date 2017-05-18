@@ -94,10 +94,10 @@ $border-size: 0;
 
         input[type="email"] {
           display: inline-block;
-          width: calc(100% - 1.6em);
+          width: calc(100% - .4em);
           border: $border-size solid $primary-color;
 
-          padding: .2em 1.4em .2em .2em;
+          padding: .2em .2em .2em .2em;
 
           background: $forth-color;
           color: $third-color;
