@@ -8,9 +8,7 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class SignUpService {
 
-  private frontAPIUrl =
-    `http://${environment.signUp.frontAPIHost}:` +
-    `${environment.signUp.frontAPIPort}/api/registration`;
+  private frontAPIUrl = `${environment.frontAPIHost}/registration`;
 
   constructor(private http: Http) {
   }
@@ -25,16 +23,6 @@ export class SignUpService {
           comment: comment
         }
       )
-      .toPromise()
-      .then(res => {
-        return res.json();
-      })
-      .catch(this.handleError);
-  }
-
-  signedUpStudents(): any {
-    return this.http
-      .get(`${this.frontAPIUrl}/count`)
       .toPromise()
       .then(res => {
         return res.json();

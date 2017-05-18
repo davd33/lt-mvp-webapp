@@ -8,9 +8,7 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class DeleteUserService {
 
-  private deleteUserUrl =
-    'http://' + environment.deleteUser.frontAPIHost + ':' +
-    environment.deleteUser.frontAPIPort + '/api/registration/delete';
+  private deleteUserUrl = `${environment.frontAPIHost}/registration/delete`;
 
   constructor(private http: Http) { }
 
