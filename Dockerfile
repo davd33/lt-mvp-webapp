@@ -13,4 +13,4 @@ RUN npm install zone.js@0.8.7 > install-pkgs.zonejs.log
 # Bundle app source
 COPY . /usr/src/app
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "startProd" ]
