@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/lt-mvp-webapp
     docker:
     - image: circleci/node:7.10.0
     steps:
