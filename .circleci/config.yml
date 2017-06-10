@@ -2,14 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: ~/lt-mvp-webapp
-    command: |
-        apt-get -y -qq update
-        apt-get -y -qq install python3.4-dev
-        curl -O https://bootstrap.pypa.io/get-pip.py
-        python3.4 get-pip.py --user
-        pip install awscli --upgrade --user
     docker:
-      - image: docker:1.13.1-git
+      - image: davd33/circleci2:0.1
     steps:
       - checkout
       - setup_remote_docker
