@@ -3,9 +3,9 @@ jobs:
   build:
     working_directory: ~/lt-mvp-webapp
     docker:
-    - image: circleci/node:7.10.0
+      - image: circleci/node:7.10.0
     steps:
-    - checkout
-    - run: |
-      docker build --rm=false -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$CIRCLE_SHA1 .
-      ./deploy.sh
+      - checkout
+      - run: |
+          docker build --rm=false -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$CIRCLE_SHA1 .
+          ./deploy.sh
