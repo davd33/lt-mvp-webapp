@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  frontAPIHost: 'http://www.lucken-test.com/FrontAPI'
+  frontAPIHost: 'http://front.lucken-test.com:4242/FrontAPI'
 };
