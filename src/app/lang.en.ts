@@ -21,7 +21,8 @@ export const lang_en = {
   DeleteUser: {
     title: 'Unsubscribe',
     userNotExist: 'User does not exist.',
-    userDeleted: `Our heart has been broken, you're not with us anymore :(`
+    userDeleted: `Our heart's broken, you're not with us anymore :(`,
+    deleting: `You're being removed from our contacts...`
   },
   RunLt1: {
     title: 'Test running'
