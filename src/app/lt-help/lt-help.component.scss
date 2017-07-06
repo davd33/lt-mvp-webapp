@@ -1,0 +1,56 @@
+@import "../common";
+
+button {
+  background: transparent;
+  border: 0;
+  color: $flashy-color;
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: .7em;
+  right: 1em;
+  cursor: pointer;
+}
+
+.validate-entry {
+  position: absolute;
+  top: 4.3em;
+  left: 6em;
+}
+
+.pass-entry {
+  position: absolute;
+  top: 6.4em;
+  left: 6em;
+}
+
+.background {
+  position: fixed;
+  background: $lt-modal-bg-color;
+  padding: 2em;
+  width: 60%;
+  left: 12%;
+  border: 1px solid $second-color;
+  border-radius: 5px;
+  box-shadow: inset 2px 0 10px -2px $second-color, 0 0 10px -2px $second-color;
+
+  h4 {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+
+    li {
+      text-align: left;
+    }
+  }
+
+  img {
+    transform: scale(.6);
+  }
+}

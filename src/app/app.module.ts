@@ -28,6 +28,7 @@ import {BgImgAnimService} from './services/bg-img-anim.service';
 import 'hammerjs';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import {DeleteUserService} from "./services/delete-user.service";
+import { LtHelpComponent } from './lt-help/lt-help.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {DeleteUserService} from "./services/delete-user.service";
     ChooseTrainingComponent,
     CookiesInfoComponent,
     MenuComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    LtHelpComponent
   ],
   imports: [
     BrowserModule,
