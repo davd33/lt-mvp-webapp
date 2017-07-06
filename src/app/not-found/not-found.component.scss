@@ -1,0 +1,19 @@
+@import "../common";
+
+.page-not-found-container {
+  display: table;
+  width: 100%;
+  height: calc(100% - 4.5em);
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: auto;
+
+  text-align: center;
+  font-size: 2em;
+  font-family: $normal-font;
+  text-shadow: 1px 1px 1px $second-color;
+}
