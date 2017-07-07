@@ -1,10 +1,12 @@
-<div *ngIf="test" class="lt-container">
+<div *ngIf="test" class="lt-top">
+  <app-moving-flag [explanation]="flagExplanation"
+                   [color]="getFlagColor()"></app-moving-flag>
 
   <div class="success-bar" [ngStyle]="{width: successBarSize()}">
   </div>
+</div>
 
-  <app-moving-flag [explanation]="flagExplanation"
-                   [color]="getFlagColor()"></app-moving-flag>
+<div *ngIf="test" class="lt-container">
 
   <div class="lt-text">
     <form [formGroup]="testForm" novalidate>
