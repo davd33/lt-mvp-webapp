@@ -31,4 +31,5 @@ button {
   border: 1px solid $second-color;
   border-radius: 5px;
   box-shadow: inset 2px 0 10px -2px $second-color, 0 0 10px -2px $second-color;
+  z-index: 2;
 }
