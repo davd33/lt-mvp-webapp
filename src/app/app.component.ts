@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 import {LangService} from './services/lang.service';
 import {BgImgAnimService} from './services/bg-img-anim.service';
+import {KeyboardService} from "./services/keyboard.service";
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public lang: LangService,
+    private keyboard: KeyboardService,
     private bgImgAnim: BgImgAnimService
   ) {
   }
@@ -29,5 +31,10 @@ export class AppComponent implements OnInit {
       .subscribe(value => {
         this.bgImgBlur = value;
       });
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.keyboard.obs.next(event);
   }
 }

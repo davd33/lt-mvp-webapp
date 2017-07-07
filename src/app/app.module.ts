@@ -29,6 +29,7 @@ import 'hammerjs';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import {DeleteUserService} from "./services/delete-user.service";
 import { LtHelpComponent } from './lt-help/lt-help.component';
+import {KeyboardService} from "./services/keyboard.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { LtHelpComponent } from './lt-help/lt-help.component';
     CookiesInfoComponent,
     MenuComponent,
     DeleteUserComponent,
-    LtHelpComponent
+    LtHelpComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +101,8 @@ import { LtHelpComponent } from './lt-help/lt-help.component';
     LangService,
     RecaptchaService,
     BgImgAnimService,
-    DeleteUserService
+    DeleteUserService,
+    KeyboardService
   ],
   bootstrap: [AppComponent]
 })
