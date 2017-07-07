@@ -1,4 +1,16 @@
 <div class="mf-container" [ngStyle]="{'background': color}">
   {{explanation}}
-  <app-lt-help></app-lt-help>
+  <app-lt-help>
+    <div *ngIf="color !== 'red'; else explanationBlock">
+      <h4>Commands</h4>
+      <ul>
+        <li> ↹ tab</li>
+        <li> ↲ enter</li>
+        <li class="validate-entry"> ⎬ go to next input</li>
+      </ul>
+    </div>
+    <ng-template #explanationBlock>
+      {{explanation}}
+    </ng-template>
+  </app-lt-help>
 </div>

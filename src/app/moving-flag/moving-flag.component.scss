@@ -8,6 +8,26 @@
   transition: all .2s;
   line-height: 1.5em;
   padding: 1em 0;
+
+  h4 {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+
+    li {
+      text-align: left;
+    }
+  }
+}
+
+.validate-entry {
+  position: absolute;
+  top: 4.3em;
+  left: 6em;
 }
 
 @media only screen and (min-height: 768px) {
