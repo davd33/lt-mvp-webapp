@@ -1,12 +1,17 @@
+$dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
+
 $primary-color: #ffcc00;
 $newspaper-filter-color: rgba(255, 204, 0, .2);
-$menu-newspaper-filter-color: rgba(255, 204, 0, .5);
+$menu-newspaper-filter-color: rgba(255, 204, 0, .5) $dotted-img;
 $lt-modal-bg-color: rgba(58, 47, 12, 0.95);
+$choose-li-a-color: rgba(255,255,255,.4);
 $second-color: black;
 $third-color: white;
 $forth-color: #ba0c02;
 $fifth-color: #314573;
 $flashy-color: yellow;
+
+$primary-background: #ffcc00 $dotted-img;
 
 $logo-font: 'Monofett', cursive;
 $app-title-font: 'Monofett', cursive;
@@ -23,7 +28,6 @@ $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
   width: 100%;
   font-size: 1.3em;
   background: $menu-newspaper-filter-color;
-  z-index: 1000;
 }
 
 .background-container {
