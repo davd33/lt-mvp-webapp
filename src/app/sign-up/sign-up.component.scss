@@ -18,6 +18,8 @@ $border-size: 0;
 
   .su-sub-container {
 
+    font-family: $normal-font;
+
     display: table-cell;
     vertical-align: middle;
 
@@ -70,8 +72,8 @@ $border-size: 0;
           height: 5em;
           color: white;
 
-          font-family: "Noto Sans", sans-serif;
-          font-size: 1em;
+          font-family: $normal-font;
+          font-size: 1.5em;
           outline: none;
           text-align: left;
           border: 0;

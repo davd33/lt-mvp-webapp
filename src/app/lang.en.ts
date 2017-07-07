@@ -63,6 +63,7 @@ export const lang_en = {
     workingWith: 'Working with:'
   },
   SignUp: {
+    slide: 'Slide to send!',
     title: 'Sign up',
     emailSent: `Email sent, we'll be happy to notify you when our app is out.`,
     tryAgain: 'Try again!',
