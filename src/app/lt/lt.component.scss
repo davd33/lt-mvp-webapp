@@ -29,7 +29,7 @@ $untouchedTxtColor: white;
     position: fixed;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1;
   }
 
   .lt-text {
@@ -107,12 +107,12 @@ $untouchedTxtColor: white;
   }
 
   .success-bar {
-    position: fixed;
+    position: absolute;
     width: 0;
     height: 2px;
     background: $third-color;
     transition: width .5s;
-    z-index: 1000;
+    top: 1.7em;
   }
 }
 
