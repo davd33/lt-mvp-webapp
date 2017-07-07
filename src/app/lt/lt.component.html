@@ -23,13 +23,9 @@
           <label>
             <input type="text" #thisInput autocomplete="off"
 
-                   (keydown.enter)="controlChanged($event, thisInput, i, w.explanation)"
-                   (keydown.tab)="controlChanged($event, thisInput, i, w.explanation)"
-                   (keydown.shift.tab)="controlChanged($event, thisInput, i, w.explanation)"
-                   (keydown.space)="controlChanged($event, thisInput, i, w.explanation)"
-
+                   (change)="controlChanged($event, thisInput, i, w.explanation)"
+                   (keydown)="navigate($event, thisInput)"
                    (click)="onInputClick(thisInput, w.explanation)"
-                   (blur)="blurInput()"
 
                    [ngClass]="{
                         'incomplete-word-input': !w.complete,

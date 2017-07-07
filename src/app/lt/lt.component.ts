@@ -5,7 +5,7 @@ import {
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 import {LtService} from '../services/lt.service';
-import {LangService} from "../services/lang.service";
+import {LangService} from '../services/lang.service';
 
 @Component({
   selector: 'app-lt',
@@ -130,7 +130,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.inputChildren.forEach((obj) => {
       if (!this.inputObj[obj.nativeElement.id]) {
         this.inputObj[obj.nativeElement.id] = {
-          status: "untouched",
+          status: 'untouched',
           explanation: this.defaultFlagExplanation
         };
       }
@@ -240,12 +240,27 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   isInputInvalid(thisInput: any) {
-    let status = this.getStatusValue(thisInput);
+    const status = this.getStatusValue(thisInput);
 
     if (status) {
       return 'invalid' === status;
     } else {
       return false;
+    }
+  }
+
+  /**
+   * Navigate to the next or the previous input when
+   * tab key is down.
+   *
+   * @param event
+   * @param thisInput
+   */
+  navigate(event: any, thisInput: any) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      let nextInput = event.shiftKey ? this.findPreviousInvalidInputEntry(thisInput) : this.findNextInvalidInputEntry(thisInput);
+      this.focusInput(nextInput, this.getExplanationByElementRef(nextInput));
     }
   }
 
@@ -262,48 +277,50 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     const entryInput = this.getInputEntry(thisInput);
 
+    this.blurInput(thisInput);
+
     // save explanation entry
     if (this.getExplanation(thisInput) === this.defaultFlagExplanation) {
       this.setExplanation(thisInput, explanation);
     }
 
-    if (event.key === 'Enter' || (event.key === 'Tab' && !event.shiftKey)) {
-
-      if (entryInput.nativeElement.value.trim() !== '') {
-        this.triesCnt++;
-      }
-
-      if (this.testForm.controls['test']['controls'][index].valid) {
-
-        this.rightAnswersCnt++;
-
-        this.setStatusValue(thisInput, 'valid');
-
-        try {
-          this.renderer.setAttribute(entryInput.nativeElement, 'disabled', 'disabled');
-        } catch (e) {
-        }
-      } else if (entryInput.nativeElement.value.trim() !== '') {
-        this.setStatusValue(thisInput, 'invalid');
-      }
+    // count user tries
+    if (entryInput.nativeElement.value.trim() !== '') {
+      this.triesCnt++;
     }
 
-    try {
-      let nextInput = this.findNextInvalidInputEntry(thisInput);
-      if (event.key === 'Tab' && event.shiftKey) {
-        nextInput = this.findPreviousInvalidInputEntry(thisInput);
+    if (this.testForm.controls['test']['controls'][index].valid) { // user hit
+
+      // count user hits
+      this.rightAnswersCnt++;
+
+      this.setStatusValue(thisInput, 'valid');
+
+      try {
+        this.renderer.setAttribute(entryInput.nativeElement, 'disabled', 'disabled');
+      } catch (e) {
       }
+    } else if (entryInput.nativeElement.value.trim() !== '') { // user fail
+      this.setStatusValue(thisInput, 'invalid');
+    }
+
+    // navigate to next invalid input
+    try {
+      const nextInput = this.findNextInvalidInputEntry(thisInput);
 
       this.focusInput(nextInput, this.getExplanationByElementRef(nextInput));
     } catch (e) {
     }
 
+    // global test success
     if (this.testForm.valid) {
       setTimeout(() => {
         this.ltSuccess.emit({status: 'valid'});
       }, 500);
       /* wait animation of success bar .5s */
     }
+
+    this.setChangedStatus(entryInput, false);
   }
 
   /**
@@ -394,6 +411,32 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
   }
 
+  setChangedStatus(thisInput: any, newValue: boolean) {
+    this.setChangedStatusByElementRef(this.getInputEntry(thisInput), newValue);
+  }
+
+  /**
+   * Set the change status of the current input.
+   * If user has changed the value then the status is 'true'.
+   * @param elRef
+   * @param newValue
+   */
+  setChangedStatusByElementRef(elRef: ElementRef, newValue: boolean) {
+    if (elRef) {
+      this.inputObj[elRef.nativeElement.id].changed = newValue;
+    }
+  }
+
+  getChangedStatus(thisInput: any) {
+    this.getChangedStatusByElementRef(this.getInputEntry(thisInput));
+  }
+
+  getChangedStatusByElementRef(elRef: ElementRef) {
+    if (elRef) {
+      return this.inputObj[elRef.nativeElement.id].changed;
+    }
+  }
+
   getExplanation(thisInput: any) {
     return this.getExplanationByElementRef(this.getInputEntry(thisInput));
   }
@@ -430,11 +473,11 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   findNextInvalidInputEntry(thisInput: any): any {
 
-    let e: any = this.inputChildren.find((obj) => {
-      let status = this.getStatusValueByElementRef(obj);
+    const e: any = this.inputChildren.find((obj) => {
+      const status = this.getStatusValueByElementRef(obj);
 
-      let sameInput = obj.nativeElement.id === thisInput.id;
-      let greaterId = (!this.isLastInputChild(thisInput)) ? obj.nativeElement.id > thisInput.id : true;
+      const sameInput = obj.nativeElement.id === thisInput.id;
+      const greaterId = (!this.isLastInputChild(thisInput)) ? obj.nativeElement.id > thisInput.id : true;
 
       return status !== 'valid' && !sameInput && greaterId;
     });
@@ -449,12 +492,12 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   findPreviousInvalidInputEntry(thisInput: any): any {
 
-    let inputs = this.inputChildren.toArray().reverse();
-    let e: any = inputs.find((obj) => {
-      let status = this.getStatusValueByElementRef(obj);
+    const inputs = this.inputChildren.toArray().reverse();
+    const e: any = inputs.find((obj) => {
+      const status = this.getStatusValueByElementRef(obj);
 
-      let sameInput = obj.nativeElement.id === thisInput.id;
-      let lowerId = (!this.isFirstInputChild(thisInput)) ? obj.nativeElement.id < thisInput.id : true;
+      const sameInput = obj.nativeElement.id === thisInput.id;
+      const lowerId = (!this.isFirstInputChild(thisInput)) ? obj.nativeElement.id < thisInput.id : true;
 
       return status !== 'valid' && !sameInput && lowerId;
     });
@@ -475,7 +518,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     if (status) {
       return status;
     } else {
-      return "untouched";
+      return 'untouched';
     }
   }
 
@@ -516,12 +559,17 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    * @param explanation
    */
   onInputClick(thisInput: any, explanation: string) {
-    let entry = this.getInputEntry(thisInput);
+    const entry = this.getInputEntry(thisInput);
     this.focusInput(entry, explanation);
   }
 
-  blurInput() {
+  blurInput(thisInput: any) {
     this.inputFocused.blured = true;
+  }
+
+  entryChanged(thisInput: any) {
+    console.log(`do we get that?`);
+    this.setChangedStatus(this.getInputEntry(thisInput), true);
   }
 
   setInputFocused(elRef: ElementRef, explanation: string) {
@@ -538,17 +586,17 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   changeFlagExplanation() {
     if (this.inputFocused) {
-      let status = this.getStatusValueByElementRef(this.inputFocused);
+      const status = this.getStatusValueByElementRef(this.inputFocused);
 
       if (status === 'invalid' && !this.inputFocused.blured) {
-        this.flagColor = "red";
+        this.flagColor = 'red';
         this.flagExplanation = this.inputFocused.explanation;
       } else {
-        this.flagColor = "green";
+        this.flagColor = 'green';
         this.flagExplanation = this.defaultFlagExplanation;
       }
     } else {
-      this.flagColor = "green";
+      this.flagColor = 'green';
       this.flagExplanation = this.defaultFlagExplanation;
     }
   }
