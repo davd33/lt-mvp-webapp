@@ -58,7 +58,9 @@
         font-family: $primary-font;
         font-size: 3em;
         transition: all .2s;
-        width: 4em;
+        width: 1.2em;
+        display: block;
+        margin: 0 auto;
         background: $choose-li-a-color;
         border-radius: 50%;
         text-shadow: 1px 1px 1px $second-color;
