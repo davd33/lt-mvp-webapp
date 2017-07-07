@@ -1,6 +1,7 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
 
 import {flagAnim} from './moving-flag.animation';
+import {LangService} from "../services/lang.service";
 
 @Component({
   selector: 'app-moving-flag',
@@ -15,7 +16,7 @@ export class MovingFlagComponent implements OnInit {
   @Input() explanation;
   @Input() color;
 
-  constructor() { }
+  constructor(public lang: LangService) { }
 
   ngOnInit() {
   }

@@ -28,7 +28,25 @@ export const lang_en = {
     title: 'Test running'
   },
   Lt: {
-    flagExplanation: 'Fill the words correctly.'
+    flagExplanation: 'Fill in the inputs with the correct words.'
+  },
+  LtHelp: {
+    more: 'read more'
+  },
+  MovingFlag: {
+    cmds: 'commands',
+    enter: 'enter',
+    tab: 'tab',
+    nextInput: 'go to next input'
+  },
+  Misc: {
+    symbols: {
+      tab: '↹',
+      enter: '↲',
+      brackets: {
+        curvedToRight: '⎬'
+      }
+    }
   },
   Menu: {
     home: 'Home',

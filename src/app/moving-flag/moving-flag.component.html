@@ -2,11 +2,13 @@
   {{explanation}}
   <app-lt-help>
     <div *ngIf="color !== 'red'; else explanationBlock">
-      <h4>Commands</h4>
+      <h4>{{lang.text.MovingFlag.cmds}}</h4>
       <ul>
-        <li> ↹ tab</li>
-        <li> ↲ enter</li>
-        <li class="validate-entry"> ⎬ go to next input</li>
+        <li> {{lang.text.Misc.symbols.tab}} {{lang.text.MovingFlag.tab}}</li>
+        <li> {{lang.text.Misc.symbols.enter}} {{lang.text.MovingFlag.enter}}</li>
+        <li class="validate-entry">
+          {{lang.text.Misc.symbols.brackets.curvedToRight}} {{lang.text.MovingFlag.nextInput}}
+        </li>
       </ul>
     </div>
     <ng-template #explanationBlock>
