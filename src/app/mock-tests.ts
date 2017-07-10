@@ -12,6 +12,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `Germany is a neutral name. When you want to say that you live or do something in a particular country (or city) that requires the neutral article in German, you simply use the preposition 'in'.`,
+          example: 'Ich lebe in Deutschland.',
           table: {
             gender: 'N',
             declination: 'D',
@@ -27,6 +28,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The declination form of indefinite neutral accusative articles is 'ein' (das App).`,
+          example: `Ich habe kein Auto`,
           table: {
             gender: 'N',
             declination: 'A',
@@ -41,6 +43,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The adjective (cool) is before the substantive (App). It then needs an ending form: the declination form of indefinite article nominative neutral is 'es'.`,
+          example: `Ich will ein neues Auto`,
           table: {
             gender: 'N',
             declination: 'A',
@@ -55,6 +58,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `Use the form um[...]zu, they are best friends and they are always together.`,
+          example: `Ich will ein Auto, um nach Deutschland zu fahren.`,
           table: {
             plural: false,
             type: 'um [...] zu'
@@ -78,6 +82,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The declination form of the first person in singular for the verb 'kommen' it's komm-e-.`,
+          example: `Ich komme aus Frankreich.`,
           table: {
             pronoun: 'I',
             time: 'present',
@@ -92,6 +97,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The declination form of the first person in singular for the verb 'möchten'(would like) is möcht-e-`,
+          example: `Ich möchte Deutsch lernen.`,
           table: {
             pronoun: 'I',
             time: 'subjunctive',
@@ -106,6 +112,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The declination form of the first person in singular for the verb 'haben' (have) is hab-e-`,
+          example: `Ich habe viel Glück.`,
           table: {
             pronoun: 'I',
             time: 'present',
@@ -120,6 +127,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The past form of the verb 'finden' (find) is gefunden, `,
+          example: `Ich habe dich gefunden!`,
           table: {
             time: 'past participle',
             plural: false,
@@ -133,6 +141,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The verb translate an general action, like: 'To do'.`,
+          example: `Du mußt trainieren, um Deutsch zu lernen.`,
           table: {
             time: 'infinitive',
             plural: false,
@@ -156,6 +165,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `'Deutschland' is a neutral name. When you want to say that you live or do something in a particular country (or city) that requires the neutral article in German, you simple use the preposition 'in'.`,
+          example: `Ich bin in Deutschland.`,
           table: {
             gender: 'N',
             declination: 'D',
@@ -171,6 +181,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `Internet is a neutral name (das). The preposition 'in' can be used in dative or accusative form. Since there is no idea of movement in our phrase the right form to be used in this case is the dative: 'in dem'.`,
+          example: `Im Auto find ich nicht die Schlüssel`,
           table: {
             gender: 'N',
             declination: 'D',
@@ -186,6 +197,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `We are searching for a preposition that designate a plural substantive: 'Lückentexte'.`,
+          example: `Ich gebe die Orangen.`,
           table: {
             gender: 'M',
             declination: 'N',
@@ -200,7 +212,8 @@ export const LT_LIST: any[] = [
         'value': 'zu',
         'isInput': true,
         'explanation': {
-          info: `The final clause is to be completed. The form 'um [...] zu' answers to the question 'To what purpose?'. Example: "Ich lerne fleißig Deutsch, um in Deutschland zu studieren."`,
+          info: `The final clause is to be completed. The form 'um [...] zu' answers to the question 'To what purpose?'.`,
+          example: `Ich lerne fleißig Deutsch, um in Deutschland zu studieren.`,
           table: {
             plural: false,
             type: 'um [...] zu'
@@ -223,7 +236,8 @@ export const LT_LIST: any[] = [
         'value': 'e',
         'isInput': true,
         'explanation': {
-          info: `The first singular person of the verb 'want'. The verb is conjugated in the past. Example: "Ich wollte lernen" ("I wanted to learn").`,
+          info: `The first singular person of the verb 'want'. The verb is conjugated in the past.`,
+          example: `Ich wollte lernen.`,
           table: {
             pronoun: 'I',
             time: 'preterit',
@@ -237,7 +251,8 @@ export const LT_LIST: any[] = [
         'value': 'en',
         'isInput': true,
         'explanation': {
-          info: `Infinitive of the verb 'study'. This verb precise the action that the main verb asks for. Example: "I want what? I want to study".`,
+          info: `Infinitive of the verb 'study'. This verb precise the action that the main verb asks for.`,
+          example: `Ich will studieren.`,
           table: {
             time: 'infinitive',
             type: 'verb'
@@ -250,6 +265,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The third singular person of the verb 'give' in the past (preterit).`,
+          example: `Es gab ein Konzert.`,
           table: {
             pronoun: 'it',
             time: 'preterit',
@@ -264,6 +280,7 @@ export const LT_LIST: any[] = [
         'isInput': true,
         'explanation': {
           info: `The verb translate an general action, like: 'To do'.`,
+          example: `Du willst Deutsch lernen, um in Deutschland zu studieren.`,
           table: {
             time: 'infinitive',
             type: 'verb'

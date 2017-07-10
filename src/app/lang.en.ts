@@ -40,7 +40,8 @@ export const lang_en = {
     nextInput: 'go to next input',
     explanation: {
       info: 'info',
-      table: 'table of knowledge'
+      table: 'table of knowledge',
+      example: 'example'
     }
   },
   Misc: {

@@ -12,6 +12,10 @@
       </ul>
     </div>
     <ng-template #explanationBlock>
+      <div *ngIf="explanation.example">
+        <h4>{{lang.text.MovingFlag.explanation.example}}</h4>
+        <div class="example">{{explanation.example}}</div>
+      </div>
       <h4>{{lang.text.MovingFlag.explanation.table}}</h4>
       <div style="overflow-x:auto;">
         <table>
