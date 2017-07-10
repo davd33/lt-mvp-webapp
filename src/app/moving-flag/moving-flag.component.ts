@@ -22,9 +22,7 @@ export class MovingFlagComponent implements OnInit {
   }
 
   explanationTableKeys(): string[] {
-    return Object.keys(this.explanation).filter(obj => {
-      return obj !== 'info';
-    });
+    return Object.keys(this.explanation.table);
   }
 
 }
