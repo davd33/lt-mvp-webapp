@@ -22,10 +22,12 @@ button {
 }
 
 .background {
+  overflow: auto;
   position: fixed;
   background: $lt-modal-bg-color;
   padding: 2em;
   width: 60%;
+  max-height: 70%;
   top: 5%;
   left: calc(20% - 2em);
   border: 1px solid $second-color;

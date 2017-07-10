@@ -10,7 +10,19 @@
   padding: 1em 0;
 
   h4 {
-    margin: 0;
+    margin: 1em 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:before {
+      content: '• ';
+    }
+
+    &:after {
+      content: ' •';
+    }
   }
 
   ul {
@@ -23,15 +35,28 @@
     }
   }
 
+  .info {
+    text-align: justify;
+    margin: .4em 0;
+  }
+
   .example {
     margin: .5em 0;
     font-size: 1.4em;
     font-style: italic;
     color: yellow;
+
+    &:before {
+      content: '“ ';
+    }
+
+    &:after {
+      content: ' ”';
+    }
   }
 
   table {
-    margin: 1em auto;
+    margin: 1em auto 0;
     border-collapse: separate;
     width: 100%;
     border-radius: 10px;
