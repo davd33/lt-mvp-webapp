@@ -1,5 +1,5 @@
 <div *ngIf="test" class="lt-top">
-  <app-moving-flag [explanation]="flagExplanation"
+  <app-moving-flag [explanation]="flagExplanation" [answer]="flagIsAnswer"
                    [color]="getFlagColor()"></app-moving-flag>
 
   <div class="success-bar" [ngStyle]="{width: successBarSize()}">
@@ -33,6 +33,7 @@
                         'incomplete-word-input': !w.complete,
                         'shake shake-constant': shakeIt && isInputInvalid(thisInput),
                         'wrong-answer': isInputInvalid(thisInput),
+                        'valid-answer': isInputValid(thisInput),
                         'valid': luckenInputStatus(thisInput) === 'valid',
                         'invalid': luckenInputStatus(thisInput) === 'invalid'
                      }"

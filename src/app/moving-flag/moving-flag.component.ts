@@ -15,6 +15,7 @@ export class MovingFlagComponent implements OnInit {
 
   @Input() explanation;
   @Input() color;
+  @Input() answer: boolean;
 
   constructor(public lang: LangService) { }
 

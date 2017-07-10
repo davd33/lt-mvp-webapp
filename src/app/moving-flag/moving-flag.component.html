@@ -1,7 +1,7 @@
 <div class="mf-container" [ngStyle]="{'background': color}">
   {{explanation.info.split('.')[0]}}.
   <app-lt-help>
-    <div *ngIf="color !== 'red'; else explanationBlock">
+    <div *ngIf="!answer; else explanationBlock">
       <h4>{{lang.text.MovingFlag.cmds}}</h4>
       <ul>
         <li> {{lang.text.Misc.symbols.tab}} {{lang.text.MovingFlag.tab}}</li>

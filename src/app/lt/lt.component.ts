@@ -54,6 +54,11 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   flagExplanation: {};
 
   /**
+   * Is the flag gonna display an answer or the commands?
+   */
+  flagIsAnswer: boolean;
+
+  /**
    * Form group for the test.
    */
   testForm: FormGroup;
@@ -111,8 +116,9 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   ngOnInit() {
     this.getLt();
 
-    this.defaultFlagExplanation = {info:this.lang.text.Lt.flagExplanation};
+    this.defaultFlagExplanation = {info: this.lang.text.Lt.flagExplanation};
     this.flagExplanation = this.defaultFlagExplanation;
+    this.flagIsAnswer = false;
 
     this.shakeInterval = setInterval(() => {
       this.doShakeIt();
@@ -239,6 +245,16 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     });
   }
 
+  isInputValid(thisInput: any) {
+    const status = this.getStatusValue(thisInput);
+
+    if (status) {
+      return 'valid' === status;
+    } else {
+      return false;
+    }
+  }
+
   isInputInvalid(thisInput: any) {
     const status = this.getStatusValue(thisInput);
 
@@ -297,7 +313,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.setStatusValue(thisInput, 'valid');
 
       try {
-        this.renderer.setAttribute(entryInput.nativeElement, 'disabled', 'disabled');
+        this.renderer.setAttribute(entryInput.nativeElement, 'readonly', '');
       } catch (e) {
       }
     } else if (entryInput.nativeElement.value.trim() !== '') { // user fail
@@ -334,6 +350,18 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       elRef.nativeElement.focus();
       this.setInputFocused(elRef, explanation);
       this.selectInput(elRef);
+      this.changeFlagExplanation();
+    }
+  }
+
+  /**
+   * Display explanation for given input.
+   * @param elRef
+   * @param explanation
+   */
+  focusValidInput(elRef: ElementRef, explanation: string) {
+    if (elRef) {
+      this.setInputFocused(elRef, explanation);
       this.changeFlagExplanation();
     }
   }
@@ -559,17 +587,17 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    * @param explanation
    */
   onInputClick(thisInput: any, explanation: string) {
-    const entry = this.getInputEntry(thisInput);
-    this.focusInput(entry, explanation);
+    const status = this.getStatusValue(thisInput);
+
+    if ('valid' === status) {
+      this.focusValidInput(this.getInputEntry(thisInput), explanation);
+    } else {
+      this.focusInput(this.getInputEntry(thisInput), explanation);
+    }
   }
 
   blurInput(thisInput: any) {
     this.inputFocused.blured = true;
-  }
-
-  entryChanged(thisInput: any) {
-    console.log(`do we get that?`);
-    this.setChangedStatus(this.getInputEntry(thisInput), true);
   }
 
   setInputFocused(elRef: ElementRef, explanation: string) {
@@ -585,18 +613,19 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   changeFlagExplanation() {
-    if (this.inputFocused) {
-      const status = this.getStatusValueByElementRef(this.inputFocused);
+    const status = this.getStatusValueByElementRef(this.inputFocused);
 
-      if (status === 'invalid' && !this.inputFocused.blured) {
-        this.flagColor = 'red';
-        this.flagExplanation = this.inputFocused.explanation;
-      } else {
-        this.flagColor = 'green';
-        this.flagExplanation = this.defaultFlagExplanation;
-      }
+    if (this.inputFocused && status === 'invalid') {
+      this.flagColor = 'red';
+      this.flagIsAnswer = true;
+      this.flagExplanation = this.inputFocused.explanation;
+    } else if (this.inputFocused && status === 'valid') {
+      this.flagColor = 'green';
+      this.flagIsAnswer = true;
+      this.flagExplanation = this.inputFocused.explanation;
     } else {
       this.flagColor = 'green';
+      this.flagIsAnswer = false;
       this.flagExplanation = this.defaultFlagExplanation;
     }
   }
