@@ -13,18 +13,20 @@
     </div>
     <ng-template #explanationBlock>
       <h4>{{lang.text.MovingFlag.explanation.table}}</h4>
-      <table>
-        <thead>
-        <tr>
-          <th *ngFor="let k of explanationTableKeys()">{{k}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td *ngFor="let k of explanationTableKeys()">{{explanation[k]}}</td>
-        </tr>
-        </tbody>
-      </table>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+          <tr>
+            <th *ngFor="let k of explanationTableKeys()">{{k}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td *ngFor="let k of explanationTableKeys()">{{explanation[k]}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
       <h4>{{lang.text.MovingFlag.explanation.info}}</h4>
       <div>{{explanation.info}}</div>
     </ng-template>
