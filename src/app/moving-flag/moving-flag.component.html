@@ -1,5 +1,5 @@
 <div class="mf-container" [ngStyle]="{'background': color}">
-  {{explanation}}
+  {{explanation.info.split('.')[0]}}.
   <app-lt-help>
     <div *ngIf="color !== 'red'; else explanationBlock">
       <h4>{{lang.text.MovingFlag.cmds}}</h4>
@@ -12,7 +12,21 @@
       </ul>
     </div>
     <ng-template #explanationBlock>
-      {{explanation}}
+      <h4>{{lang.text.MovingFlag.explanation.table}}</h4>
+      <table>
+        <thead>
+        <tr>
+          <th *ngFor="let k of explanationTableKeys()">{{k}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td *ngFor="let k of explanationTableKeys()">{{explanation[k]}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <h4>{{lang.text.MovingFlag.explanation.info}}</h4>
+      <div>{{explanation.info}}</div>
     </ng-template>
   </app-lt-help>
 </div>

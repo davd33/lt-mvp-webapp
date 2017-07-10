@@ -21,4 +21,10 @@ export class MovingFlagComponent implements OnInit {
   ngOnInit() {
   }
 
+  explanationTableKeys(): string[] {
+    return Object.keys(this.explanation).filter(obj => {
+      return obj !== 'info';
+    });
+  }
+
 }

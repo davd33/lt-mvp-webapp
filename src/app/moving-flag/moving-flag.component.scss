@@ -22,6 +22,29 @@
       text-align: left;
     }
   }
+
+  table {
+    margin: 1em auto;
+    border-collapse: separate;
+    width: 100%;
+    border-radius: 10px;
+
+    tbody {
+      background: rgba(255,255,255,.1);
+    }
+
+    th {
+      text-transform: uppercase;
+    }
+
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 10px;
+    }
+
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+  }
 }
 
 .validate-entry {

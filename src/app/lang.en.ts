@@ -37,7 +37,11 @@ export const lang_en = {
     cmds: 'commands',
     enter: 'enter',
     tab: 'tab',
-    nextInput: 'go to next input'
+    nextInput: 'go to next input',
+    explanation: {
+      info: 'info',
+      table: 'table of knowledge'
+    }
   },
   Misc: {
     symbols: {

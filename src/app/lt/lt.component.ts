@@ -45,13 +45,13 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    * Basic flag explanation.
    * @type {string}
    */
-  defaultFlagExplanation: string;
+  defaultFlagExplanation: {};
 
   /**
    * Flag explanation value.
    * @type {string}
    */
-  flagExplanation: string;
+  flagExplanation: {};
 
   /**
    * Form group for the test.
@@ -111,7 +111,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   ngOnInit() {
     this.getLt();
 
-    this.defaultFlagExplanation = this.lang.text.Lt.flagExplanation;
+    this.defaultFlagExplanation = {info:this.lang.text.Lt.flagExplanation};
     this.flagExplanation = this.defaultFlagExplanation;
 
     this.shakeInterval = setInterval(() => {
