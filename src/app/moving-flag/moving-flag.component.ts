@@ -22,8 +22,21 @@ export class MovingFlagComponent implements OnInit {
   ngOnInit() {
   }
 
+  getFirstSentence(text: string) {
+    return text.replace(/(\.) .*$/, '$1');
+  }
+
   explanationTableKeys(): string[] {
     return Object.keys(this.explanation.table);
+  }
+
+  getExplanationValue(explanationValue): string {
+    let value = this.lang.text.LtHelp.table[explanationValue];
+
+    if (typeof explanationValue === 'boolean')
+      value = this.lang.text.LtHelp.table[explanationValue.toString()];
+
+    return value;
   }
 
 }

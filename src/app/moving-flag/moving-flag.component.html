@@ -1,5 +1,5 @@
 <div class="mf-container" [ngStyle]="{'background': color}">
-  {{explanation.info.split('.')[0]}}.
+  {{getFirstSentence(explanation.info)}}
   <app-lt-help>
     <div *ngIf="!answer; else explanationBlock">
       <h4>{{lang.text.MovingFlag.cmds}}</h4>
@@ -26,7 +26,7 @@
           </thead>
           <tbody>
           <tr>
-            <td *ngFor="let k of explanationTableKeys()">{{explanation.table[k]}}</td>
+            <td *ngFor="let k of explanationTableKeys()">{{getExplanationValue(explanation.table[k])}}</td>
           </tr>
           </tbody>
         </table>

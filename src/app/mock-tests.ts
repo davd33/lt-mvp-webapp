@@ -61,7 +61,7 @@ export const LT_LIST: any[] = [
           example: `Ich will ein Auto, um nach Deutschland zu fahren.`,
           table: {
             plural: false,
-            type: 'um [...] zu'
+            type: 'preposition'
           }
         },
         'complete': true
@@ -216,7 +216,7 @@ export const LT_LIST: any[] = [
           example: `Ich lerne fleißig Deutsch, um in Deutschland zu studieren.`,
           table: {
             plural: false,
-            type: 'um [...] zu'
+            type: 'preposition'
           }
         },
         'complete': true

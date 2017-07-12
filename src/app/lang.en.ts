@@ -31,7 +31,20 @@ export const lang_en = {
     flagExplanation: 'Fill in the inputs with the correct words.'
   },
   LtHelp: {
-    more: 'read more'
+    more: 'read more',
+    table: {
+      'D': 'Dative',
+      'A': 'Accusative',
+      'N': 'Nominative',
+      'G': 'Genitive',
+      'preposition': 'Preposition',
+      'article': 'Article',
+      'adjective': 'Adjective',
+      'indefinite article': 'Indefinite Article',
+      'verb': 'Verb',
+      'false': 'No',
+      'true': 'Yes'
+    }
   },
   MovingFlag: {
     cmds: 'commands',
