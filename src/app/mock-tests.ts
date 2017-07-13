@@ -11,7 +11,7 @@ export const LT_LIST: any[] = [
         'value': 'in',
         'isInput': true,
         'explanation': {
-          info: `Germany is a neutral name. When you want to say that you live or do something in a particular country (or city) that requires the neutral article in German, you simply use the preposition 'in'.`,
+          info: `Germany is a neutral name. When you want to say that you live or do something in a particular country (or city) \`that requires the neutral article in German, you simply use the preposition 'in'.\``,
           example: 'Ich lebe in Deutschland.',
           table: {
             gender: 'N',

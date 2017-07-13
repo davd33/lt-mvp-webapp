@@ -39,4 +39,21 @@ export class MovingFlagComponent implements OnInit {
     return value;
   }
 
+  getInfo() {
+    let res = [];
+
+    // highlight sentence
+    res = this.explanation.info.split(/(`.*`)/);
+
+    return res;
+  }
+
+  isHighlight(part: string) {
+    return /^`.*`$/.test(part);
+  }
+
+  highlight(part: string) {
+    return part.replace(/`(.*)`/, "$1");
+  }
+
 }

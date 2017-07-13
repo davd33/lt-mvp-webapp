@@ -38,6 +38,17 @@
   .info {
     text-align: justify;
     margin: .4em 0;
+
+    .highlight {
+      background: rgba(243, 72, 72, 0.62);
+      border-radius: 2px;
+      color: white;
+      padding: 0 0.2em;
+    }
+
+    .part {
+      display: inline;
+    }
   }
 
   .example {

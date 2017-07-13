@@ -32,7 +32,12 @@
         </table>
       </div>
       <h4>{{lang.text.MovingFlag.explanation.info}}</h4>
-      <div class="info">{{explanation.info}}</div>
+      <div class="info">
+        <div *ngFor="let part of getInfo()" class="part">
+          <span *ngIf="isHighlight(part); else normalPart" class="highlight">{{highlight(part)}}</span>
+          <ng-template #normalPart>{{part}}</ng-template>
+        </div>
+      </div>
     </ng-template>
   </app-lt-help>
 </div>
