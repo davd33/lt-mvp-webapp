@@ -8,6 +8,6 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          TAG=${CIRCLE_BRANCH}_0.1.$CIRCLE_BUILD_NUM
+          export TAG=${CIRCLE_BRANCH}_0.1.$CIRCLE_BUILD_NUM
           docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/lt-mvp-webapp:$TAG .
-          TAG=$TAG ./deploy.sh
+          ./deploy.sh
