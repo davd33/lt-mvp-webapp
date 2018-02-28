@@ -2,7 +2,6 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 import {rtSimple} from '../router.animations';
-import {SignUpService} from '../services/sign-up.service';
 import {LangService} from '../services/lang.service';
 
 @Component({
@@ -15,10 +14,7 @@ export class IndexComponent implements OnInit {
 
   @HostBinding('@rtSimple') hostAnim = '';
 
-  studentSignedUp = 0;
-
-  constructor(private signedUpService: SignUpService,
-              private titleService: Title,
+  constructor(private titleService: Title,
               private lang: LangService) {
   }
 

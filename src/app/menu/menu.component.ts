@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.menuList = [
       [this.lang.text.Menu.home, '/index'],
-      [this.lang.text.Menu.signUp, '/sign-up'],
       [this.lang.text.Menu.start, '/choose-level'],
     ];
   }

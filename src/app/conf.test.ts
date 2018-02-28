@@ -7,7 +7,6 @@ import {ChooseLevelComponent} from './choose-level/choose-level.component';
 import {IndexComponent} from './index/index.component';
 import {MovingFlagComponent} from './moving-flag/moving-flag.component';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {SignUpComponent} from './sign-up/sign-up.component';
 import {RunLt1Component} from './run-lt-1/run-lt-1.component';
 import {LtComponent} from './lt/lt.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +16,6 @@ import {MatSliderModule} from '@angular/material';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
 
 import {LtService} from './services/lt.service';
-import {SignUpService} from './services/sign-up.service';
 import {Title} from '@angular/platform-browser';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
@@ -26,10 +24,6 @@ import {DeleteUserService} from './services/delete-user.service';
 import {AppComponent} from './app.component';
 
 const TEST_ROUTES = RouterTestingModule.withRoutes([
-  {
-    path: 'sign-up',
-    component: SignUpComponent
-  },
   {
     path: 'run-lt-1/:level/:training',
     component: RunLt1Component
@@ -70,7 +64,6 @@ export const TEST_MODULE = {
     AppComponent,
     LtComponent,
     RunLt1Component,
-    SignUpComponent,
     NotFoundComponent,
     MovingFlagComponent,
     IndexComponent,
@@ -91,7 +84,6 @@ export const TEST_MODULE = {
   ],
   providers: [
     LtService,
-    SignUpService,
     Title,
     LangService,
     RecaptchaService,

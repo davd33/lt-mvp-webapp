@@ -14,12 +14,10 @@ import {ChooseLevelComponent} from './choose-level/choose-level.component';
 import {IndexComponent} from './index/index.component';
 import {MovingFlagComponent} from './moving-flag/moving-flag.component';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {SignUpComponent} from './sign-up/sign-up.component';
 import {RunLt1Component} from './run-lt-1/run-lt-1.component';
 import {LtComponent} from './lt/lt.component';
 
 import {LtService} from './services/lt.service';
-import {SignUpService} from './services/sign-up.service';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
 import {BgImgAnimService} from './services/bg-img-anim.service';
@@ -36,7 +34,6 @@ import {KeyboardService} from "./services/keyboard.service";
     AppComponent,
     LtComponent,
     RunLt1Component,
-    SignUpComponent,
     NotFoundComponent,
     MovingFlagComponent,
     IndexComponent,
@@ -55,10 +52,6 @@ import {KeyboardService} from "./services/keyboard.service";
     BrowserAnimationsModule,
     MatSliderModule,
     RouterModule.forRoot([
-      {
-        path: 'sign-up',
-        component: SignUpComponent
-      },
       {
         path: 'run-lt-1/:level/:training',
         component: RunLt1Component
@@ -96,7 +89,6 @@ import {KeyboardService} from "./services/keyboard.service";
   ],
   providers: [
     LtService,
-    SignUpService,
     Title,
     LangService,
     RecaptchaService,
