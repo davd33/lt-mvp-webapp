@@ -1,0 +1,31 @@
+<div class="background-container"></div>
+<div class="background-container2"></div>
+
+<div class="index-container" #topSection>
+
+  <!--APP TITLE-->
+  <div class="title">
+    <a href="/">
+      <span>{{lang.text.App.title1}}</span>
+      <span>{{lang.text.App.title2}}</span>
+    </a>
+  </div>
+
+  <div class="text-container">
+    <h2>{{lang.text.Index.slogan1}}<br> <em>{{lang.text.Index.slogan2}}</em>{{lang.text.Index.slogan3}}</h2>
+    <hr>
+    <a routerLink="/choose-level">{{lang.text.Index.startLink}}</a>
+  </div>
+</div>
+<<<<<<< HEAD
+=======
+
+<div class="footer">
+  {{lang.text.Index.workingWith}}
+  <img src="assets/img/flags/de.png">
+  <img src="assets/img/flags/fr.png">
+  <img src="assets/img/flags/co.png">
+</div>
+
+<div class="footer-background"></div>
+>>>>>>> 6182c15... fix bugs versions

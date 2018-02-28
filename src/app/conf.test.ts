@@ -13,7 +13,7 @@ import {LtComponent} from './lt/lt.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdSliderModule} from '@angular/material';
+import {MatSliderModule} from '@angular/material';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
 
 import {LtService} from './services/lt.service';
@@ -87,7 +87,7 @@ export const TEST_MODULE = {
     HttpModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MdSliderModule,
+    MatSliderModule,
   ],
   providers: [
     LtService,
