@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
-import {MdSliderModule} from "@angular/material";
+import {MatSliderModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {MenuComponent} from './menu/menu.component';
@@ -27,7 +27,7 @@ import {BgImgAnimService} from './services/bg-img-anim.service';
 // needed for angular material
 import 'hammerjs';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
-import {DeleteUserService} from "./services/delete-user.service";
+import {DeleteUserService} from './services/delete-user.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import {DeleteUserService} from "./services/delete-user.service";
     HttpModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MdSliderModule,
+    MatSliderModule,
     RouterModule.forRoot([
       {
         path: 'sign-up',

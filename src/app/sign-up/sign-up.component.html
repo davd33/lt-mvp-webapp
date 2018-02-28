@@ -31,10 +31,10 @@
         <div class="captcha" *ngIf="signUpForm.valid">
           <div [@sliderAnim]="">
             <div>Slide to send!</div>
-            <md-slider
+            <mat-slider
               (change)="sliderChange($event)"
               [value]="sliderValue">
-            </md-slider>
+            </mat-slider>
           </div>
         </div>
       </form>
