@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
-    "start": "ls ; ls node_modules/@angular/cli/ ; find node_modules -type f -name 'ng' ; ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0",
+    "start": "ls ; ls node_modules/@angular/cli/ ; find node_modules -type f -name 'ng' ; ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --port 80",
     "startProd": "./node_modules/@angular/cli/bin/ng serve --env=prod --host 0.0.0.0",
     "build": "./node_modules/@angular/cli/bin/ng build",
     "test": "./node_modules/@angular/cli/bin/ng test --single-run",
