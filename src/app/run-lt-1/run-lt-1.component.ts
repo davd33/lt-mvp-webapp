@@ -49,7 +49,7 @@ export class RunLt1Component implements OnDestroy, OnInit {
   }
 
   gotoSignUp() {
-    this.router.navigate(['sign-up']);
+    window.location.href = 'https://luckentests.launchaco.com/';
   }
 
   setError(event: any) {
