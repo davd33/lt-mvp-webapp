@@ -5,13 +5,15 @@ import {lang_en} from '../lang.en';
 @Injectable()
 export class LangService {
 
+  static langList = {
+    en: lang_en
+  };
+
   private _lang = 'en';
   private _text;
 
   static lang(lang: string) {
-    if (lang && lang === 'en') {
-      return lang_en;
-    }
+    return this.langList[lang] || lang_en;
   }
 
   constructor() { }

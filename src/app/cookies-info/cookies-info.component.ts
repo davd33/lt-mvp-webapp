@@ -9,7 +9,7 @@ import {LangService} from '../services/lang.service';
 })
 export class CookiesInfoComponent implements OnInit {
 
-  constructor(private lang: LangService) { }
+  constructor(public lang: LangService) { }
 
   ngOnInit() {
   }

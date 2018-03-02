@@ -26,7 +26,7 @@ export class ChooseTrainingComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private titleService: Title,
-              private lang: LangService) {
+              public lang: LangService) {
   }
 
   ngOnInit() {

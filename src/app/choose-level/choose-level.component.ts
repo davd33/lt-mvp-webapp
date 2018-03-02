@@ -5,16 +5,10 @@ import {Title} from '@angular/platform-browser';
 import {rtSimple} from '../router.animations';
 import {LangService} from '../services/lang.service';
 
-declare const require: any;
-
 @Component({
   selector: 'app-choose-level',
   templateUrl: './choose-level.component.html',
-  styles: [`
-    .choose-level-container ul li a.comming-soon:hover::after {
-      content: "${LangService.lang('en').ChooseLevel.comeSoon}";
-    }
-  `, require('./choose-level.component.scss')],
+  styleUrls: ['./choose-level.component.scss'],
   animations: [
     rtSimple()
   ]

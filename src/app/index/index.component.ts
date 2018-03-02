@@ -15,7 +15,7 @@ export class IndexComponent implements OnInit {
   @HostBinding('@rtSimple') hostAnim = '';
 
   constructor(private titleService: Title,
-              private lang: LangService) {
+              public lang: LangService) {
   }
 
   ngOnInit() {

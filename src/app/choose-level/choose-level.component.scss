@@ -1,5 +1,9 @@
 @import "../common";
 
+.choose-level-container ul li a.comming-soon:hover::after {
+  content: "comming soon";
+}
+
 .choose-level-container {
 
   display: table;
