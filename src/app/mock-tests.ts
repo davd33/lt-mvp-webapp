@@ -1,7 +1,7 @@
 
 export const LT_LIST: any[] = [
   {
-    'title': 'Cooles App',
+    'title': 'Coole App',
     'type': 'Prepositions',
     'level': 'A2',
     'text': [
@@ -24,13 +24,13 @@ export const LT_LIST: any[] = [
       }, {
         'value': ' Deutschland studieren! Leider habe ich soweit k',
       }, {
-        'value': 'ein',
+        'value': 'eine',
         'isInput': true,
         'explanation': {
-          info: `The declination form of indefinite neutral accusative articles is 'ein' (das App).`,
-          example: `Ich habe kein Auto`,
+          info: `The declination form of indefinite female accusative articles is 'eine' (die App).`,
+          example: `Ich habe keine Katze.`,
           table: {
-            gender: 'N',
+            gender: 'F',
             declination: 'A',
             plural: false,
             type: 'indefinite article'
@@ -39,13 +39,13 @@ export const LT_LIST: any[] = [
       }, {
         'value': ' cool',
       }, {
-        'value': 'es',
+        'value': 'e',
         'isInput': true,
         'explanation': {
-          info: `The adjective (cool) is before the substantive (App). It then needs an ending form: the declination form of indefinite article nominative neutral is 'es'.`,
-          example: `Ich will ein neues Auto`,
+          info: `The adjective (cool) is before the substantive (App). It then needs an ending form: the declination form of indefinite article nominative female is 'e'.`,
+          example: `Ich sehe eine schöne Katze.`,
           table: {
-            gender: 'N',
+            gender: 'F',
             declination: 'A',
             plural: false,
             type: 'adjective'
@@ -71,7 +71,7 @@ export const LT_LIST: any[] = [
     ]
   },
   {
-    'title': 'Cooles App',
+    'title': 'Coole App',
     'type': 'Verbs',
     'level': 'A2',
     'text': [
@@ -121,7 +121,7 @@ export const LT_LIST: any[] = [
           }
         }
       }, {
-        'value': ' ich soweit kein cooles App gefund',
+        'value': ' ich soweit keine coole App gefund',
       }, {
         'value': 'en',
         'isInput': true,
@@ -191,7 +191,7 @@ export const LT_LIST: any[] = [
         },
         'complete': true
       }, {
-        'value': ' Internet gab es leider kein cooles App um ',
+        'value': ' Internet gab es leider keine coole App um ',
       }, {
         'value': 'die',
         'isInput': true,
@@ -207,7 +207,7 @@ export const LT_LIST: any[] = [
         },
         'complete': true
       }, {
-        'value': ' blöde Lückentexte ',
+        'value': ' blöden Lückentexte ',
       }, {
         'value': 'zu',
         'isInput': true,
@@ -274,7 +274,7 @@ export const LT_LIST: any[] = [
           }
         }
       }, {
-        'value': ' es leider kein App um die blöde Lückentexte zu üb',
+        'value': ' es leider kein App um die blöden Lückentexte zu üb',
       }, {
         'value': 'en',
         'isInput': true,
