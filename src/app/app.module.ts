@@ -2,7 +2,7 @@ import {BrowserModule, Title} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {MatSliderModule} from '@angular/material';
 
@@ -45,9 +45,9 @@ import {KeyboardService} from './services/keyboard.service';
     LtHelpComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'lt-web-mvp-2018-webapp' }),
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSliderModule,
