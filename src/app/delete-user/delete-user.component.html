@@ -1,0 +1,11 @@
+<div class="background-container">
+</div>
+
+<div class="menu">
+  <app-menu></app-menu>
+</div>
+
+<div class="delete-user-container">
+  <div *ngIf="!message">{{lang.text.DeleteUser.deleting}}</div>
+  <div *ngIf="message">{{message}}</div>
+</div>
