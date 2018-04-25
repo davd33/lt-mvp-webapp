@@ -1,5 +1,4 @@
 import {RouterTestingModule} from '@angular/router/testing';
-import {DeleteUserComponent} from './delete-user/delete-user.component';
 import {MenuComponent} from './menu/menu.component';
 import {CookiesInfoComponent} from './cookies-info/cookies-info.component';
 import {ChooseTrainingComponent} from './choose-training/choose-training.component';
@@ -20,7 +19,6 @@ import {Title} from '@angular/platform-browser';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
 import {BgImgAnimService} from './services/bg-img-anim.service';
-import {DeleteUserService} from './services/delete-user.service';
 import {AppComponent} from './app.component';
 
 const TEST_ROUTES = RouterTestingModule.withRoutes([
@@ -45,10 +43,6 @@ const TEST_ROUTES = RouterTestingModule.withRoutes([
     component: CookiesInfoComponent
   },
   {
-    path: 'delete-user/:user/:token',
-    component: DeleteUserComponent
-  },
-  {
     path: '',
     redirectTo: '/index',
     pathMatch: 'full'
@@ -70,8 +64,7 @@ export const TEST_MODULE = {
     ChooseLevelComponent,
     ChooseTrainingComponent,
     CookiesInfoComponent,
-    MenuComponent,
-    DeleteUserComponent
+    MenuComponent
   ],
   imports: [
     TEST_ROUTES,
@@ -87,7 +80,6 @@ export const TEST_MODULE = {
     Title,
     LangService,
     RecaptchaService,
-    BgImgAnimService,
-    DeleteUserService
+    BgImgAnimService
   ],
 };
