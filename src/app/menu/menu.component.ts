@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
     this.menuList = [
       [this.lang.text.Menu.home, '/index'],
       [this.lang.text.Menu.start, '/choose-level'],
+      [this.lang.text.Menu.random, '/lt/random'],
     ];
   }
 

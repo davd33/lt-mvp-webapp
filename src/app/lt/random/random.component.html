@@ -1,0 +1,23 @@
+<div class="background-container">
+</div>
+
+<div class="menu">
+  <app-menu></app-menu>
+</div>
+
+<!--LUCKEN TEST-->
+<div class="run-lt-container">
+  <div class="run-lt-sub-container">
+    <div *ngIf="!loadTestError">
+      <app-lt
+        [isRandom]="true"
+        (loadTestError)="setError($event)"
+        (ltSuccess)="gotoSignUp()">
+      </app-lt>
+    </div>
+
+    <div *ngIf="loadTestError" class="load-test-error">
+      {{loadTestError}}
+    </div>
+  </div>
+</div>

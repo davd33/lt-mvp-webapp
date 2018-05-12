@@ -107,6 +107,11 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   @Input() training: string;
 
+  /**
+   * If the LT should be randomly pulled from the store.
+   */
+  @Input() isRandom: boolean;
+
   constructor(private renderer: Renderer2,
               private ltService: LtService,
               private lang: LangService,
@@ -176,7 +181,15 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   getLt() {
     let error: string;
 
-    if (this.level === 'A2') {
+    if (!this.level || !this.training) {
+      if (this.isRandom) {
+        this.ltService.getRandomLT()
+          .then(lt => {
+            this.test = lt;
+            this.buildForm();
+          });
+      }
+    } else if (this.level === 'A2') {
       if (this.training === 'prep') {
         this.ltService.getTestA2Prep()
           .then(lt => {
@@ -275,7 +288,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   navigate(event: any, thisInput: any) {
     if (event.key === 'Tab') {
       event.preventDefault();
-      let nextInput = event.shiftKey ? this.findPreviousInvalidInputEntry(thisInput) : this.findNextInvalidInputEntry(thisInput);
+      const nextInput = event.shiftKey ? this.findPreviousInvalidInputEntry(thisInput) : this.findNextInvalidInputEntry(thisInput);
       this.focusInput(nextInput, this.getExplanationByElementRef(nextInput));
     }
   }

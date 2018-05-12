@@ -69,7 +69,8 @@ export const lang_en = {
   Menu: {
     home: 'Home',
     signUp: 'Sign up',
-    start: 'Start training'
+    start: 'Start training',
+    random: 'Random'
   },
   Index: {
     slogan1: 'For the first time',

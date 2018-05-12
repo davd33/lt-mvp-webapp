@@ -21,11 +21,12 @@ import {LtService} from './services/lt.service';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
 import {BgImgAnimService} from './services/bg-img-anim.service';
+import { LtHelpComponent } from './lt-help/lt-help.component';
+import {KeyboardService} from './services/keyboard.service';
+import { RandomComponent } from './lt/random/random.component';
 
 // needed for angular material
 import 'hammerjs';
-import { LtHelpComponent } from './lt-help/lt-help.component';
-import {KeyboardService} from './services/keyboard.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {KeyboardService} from './services/keyboard.service';
     CookiesInfoComponent,
     MenuComponent,
     LtHelpComponent,
+    RandomComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lt-web-mvp-2018-webapp' }),
@@ -68,6 +70,10 @@ import {KeyboardService} from './services/keyboard.service';
       {
         path: 'cookies-info',
         component: CookiesInfoComponent
+      },
+      {
+        path: 'lt/random',
+        component: RandomComponent
       },
       {
         path: '',

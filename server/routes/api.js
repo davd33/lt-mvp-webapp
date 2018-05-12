@@ -15,13 +15,13 @@ const es = new elasticsearch.Client({
 /**
  * send back a random list of lucken tests
  */
-router.get('/lt/randoms', (req, res) => {
+router.get('/lt/random', (req, res) => {
 
   es
     .search({
       index: 'lt',
       body: {
-        "size": 10,
+        "size": 1,
         "query": {
           "function_score": {
             "functions": [
