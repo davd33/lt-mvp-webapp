@@ -6,46 +6,11 @@
   </div>
 </div>
 
-<div *ngIf="test" class="lt-container">
+<!--<form [formGroup]="testForm" novalidate>-->
 
-  <div class="lt-text">
-    <form [formGroup]="testForm" novalidate>
-      <ng-container *ngFor="let w of test.text; let i = index;">
-
-        <!--TEXT-->
-        <ng-container *ngIf="!w.isInput">
-          <div *ngFor="let ww of getArray(w.value)" class="word"
-               [ngClass]="{'point': isPoint(ww), 'word-no-margin': wordNoMargin(ww)}">
-            {{ww}}
-          </div>
-        </ng-container>
-
-        <!--INPUTS FOR THE USER TO FILL IN-->
-        <div formGroupName="test" *ngIf="w.isInput" class="input-div">
-          <label>
-            <input type="text" #thisInput autocomplete="off"
-
-                   (change)="controlChanged($event, thisInput, i, w.explanation)"
-                   (keydown)="navigate($event, thisInput)"
-                   (click)="onInputClick(thisInput, w.explanation)"
-
-                   [ngClass]="{
-                        'incomplete-word-input': !w.complete,
-                        'shake shake-constant': shakeIt && isInputInvalid(thisInput),
-                        'wrong-answer': isInputInvalid(thisInput),
-                        'valid-answer': isInputValid(thisInput),
-                        'valid': luckenInputStatus(thisInput) === 'valid',
-                        'invalid': luckenInputStatus(thisInput) === 'invalid'
-                     }"
-
-                   [name]="i"
-                   [id]="i"
-                   [size]="w.value.length"
-                   [maxlength]="w.value.length"
-                   [formControlName]="i">
-          </label>
-        </div>
-      </ng-container>
-    </form>
+  <div *ngIf="test" class="lt-container">
+    <div class="lt-text" #formTag>
+    </div>
   </div>
-</div>
+
+<!--</form>-->

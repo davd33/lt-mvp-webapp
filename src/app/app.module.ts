@@ -27,6 +27,7 @@ import { RandomComponent } from './lt/random/random.component';
 
 // needed for angular material
 import 'hammerjs';
+import { LtInputComponent } from './lt/lt-input/lt-input.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import 'hammerjs';
     MenuComponent,
     LtHelpComponent,
     RandomComponent,
+    LtInputComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lt-web-mvp-2018-webapp' }),
@@ -86,6 +88,7 @@ import 'hammerjs';
       }
     ])
   ],
+  entryComponents: [LtInputComponent],
   providers: [
     LtService,
     Title,

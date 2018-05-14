@@ -7,8 +7,8 @@ import {catchError} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
 
 export const LT_EXPLANATIONS = {
-  NOUN: {
-    info: `You need to write a Noun here.`,
+  VERB: {
+    info: `Hint: `,
     example: `Das Auto`,
     table: {
       gender: 'Neutral',
@@ -39,14 +39,20 @@ export class LtService {
         )
         .subscribe(lt => {
           // complete lt with explanation
-          lt = lt.hits.hits[0]._source;
-          lt.text.forEach(word => {
+          let lt_test = lt.es_resp.hits.hits[0]._source;
+
+          lt_test.text.forEach(word => {
             if (word.isInput) {
+              const token = JSON.parse(word.token);
               word['complete'] = true;
-              word['explanation'] = LT_EXPLANATIONS.NOUN;
+              word['explanation'] = LT_EXPLANATIONS.VERB;
+              word['explanation'].info = 'Hint: ' + token.lemma_;
             }
-          })
-          res(lt);
+          });
+          res({
+            test: lt_test,
+            allText: lt.entire_text
+          });
         });
     });
   }

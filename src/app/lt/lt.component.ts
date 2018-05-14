@@ -1,11 +1,13 @@
 import {
   Component, OnInit, Output, EventEmitter, ViewChildren,
-  Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef, QueryList
+  Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef, QueryList,
+  ComponentFactoryResolver, ViewChild, ViewContainerRef
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 import {LtService} from '../services/lt.service';
 import {LangService} from '../services/lang.service';
+import {LtInputComponent} from './lt-input/lt-input.component';
 
 @Component({
   selector: 'app-lt',
@@ -18,6 +20,9 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    * Our test.
    */
   test: any;
+
+  testAllText: string;
+  testAllTextAppended = false;
 
   /**
    * Counter of tries: a try is counted when the user
@@ -112,10 +117,16 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   @Input() isRandom: boolean;
 
+  @ViewChild('formTag') formEltRef: ElementRef;
+  @ViewChild('formTag', {read: ViewContainerRef}) formEltViewRef: ViewContainerRef
+
+  private ltInputList: any;
+
   constructor(private renderer: Renderer2,
               private ltService: LtService,
               private lang: LangService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private factoryResolver: ComponentFactoryResolver) {
   }
 
   ngOnInit() {
@@ -138,18 +149,62 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked() {
-    this.inputChildren.forEach((obj) => {
-      if (!this.inputObj[obj.nativeElement.id]) {
-        this.inputObj[obj.nativeElement.id] = {
-          status: 'untouched',
-          explanation: this.defaultFlagExplanation
-        };
-      }
-    });
 
-    if (!this.inputFocused) {
-      this.focusInput(this.inputChildren.first, ``);
+    // this.inputChildren.forEach((obj) => {
+    //   if (!this.inputObj[obj.nativeElement.id]) {
+    //     this.inputObj[obj.nativeElement.id] = {
+    //       status: 'untouched',
+    //       explanation: this.defaultFlagExplanation
+    //     };
+    //   }
+    // });
+    //
+    // if (!this.inputFocused) {
+    //   this.focusInput(this.inputChildren.first, ``);
+    // }
+
+    const ltInputFactory = this.factoryResolver.resolveComponentFactory(LtInputComponent)
+
+    if (this.formEltRef && !this.testAllTextAppended) {
+
+      // create wiki DOM element
+      let wikiHTML = document.createElement('div')
+      wikiHTML.innerHTML = this.testAllText
+
+      // insert wiki page
+      this.formEltRef.nativeElement.appendChild(wikiHTML)
+      console.log(this.formEltRef)
+
+      // find lt-input elements
+      this.ltInputList = this.searchAppLTInput(wikiHTML, [])
+
+      // insert lt-input components
+      this.ltInputList.forEach(ltInput => {
+        let parent = ltInput.parentElement
+
+        const ltInputCmp = ltInputFactory.create(this.formEltViewRef.parentInjector)
+        this.formEltViewRef.insert(ltInputCmp.hostView)
+
+        ltInput.parentNode.removeChild(ltInput)
+      })
+
+      this.testAllTextAppended = true
     }
+  }
+
+  searchAppLTInput(rootElt, ltInputList) {
+    let nodes = rootElt.childNodes
+
+    for (let c = 0; c < nodes.length; c++) {
+      let node = nodes[c]
+      if (node.localName === 'app-lt-input') {
+        ltInputList.push(node)
+      } else {
+        this.searchAppLTInput(node, ltInputList)
+      }
+    }
+
+    return ltInputList
   }
 
   /**
@@ -167,15 +222,6 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   /**
-   * Whether margin should be applied to an empty word.
-   * @param ww
-   * @returns {boolean}
-   */
-  wordNoMargin(ww: string) {
-    return ww.length === 0;
-  }
-
-  /**
    * Get lt test according to level and training chosen.
    */
   getLt() {
@@ -185,7 +231,8 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       if (this.isRandom) {
         this.ltService.getRandomLT()
           .then(lt => {
-            this.test = lt;
+            this.test = lt.test;
+            this.testAllText = lt.allText;
             this.buildForm();
           });
       }
@@ -591,6 +638,16 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   isPoint(str: string) {
     return str.length === 1 && str.match(/[!?,.:;]/);
+  }
+
+  insertHTMLString(that, value) {
+    // w.isInput ? this.innerHTML : this.innerHTML + w.value
+    let parent = that.parentNode;
+    let helper = document.createElement('div');
+    helper.innerHTML = value;
+    while (helper.firstChild) {
+      parent.insertBefore(helper.firstChild, that);
+    }
   }
 
   /**
