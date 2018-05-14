@@ -35,7 +35,9 @@ $untouchedTxtColor: white;
 
 .lt-container {
 
-  font-size: 2em;
+  font-size: 1.2em;
+  color: $third-color;
+  text-shadow: 0 0 1px $second-color;
   font-family: $lt-font;
   line-height: 2em;
 
@@ -148,6 +150,6 @@ $untouchedTxtColor: white;
   /* desktops */
 
   .lt-container {
-    font-size: 2em;
+    font-size: 1.2em;
   }
 }
