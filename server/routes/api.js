@@ -37,7 +37,15 @@ router.get('/lt/random', (req, res) => {
     })
     .then(function (body) {
 
-      res.send(body);
+      let entireText = ''
+      body.hits.hits[0]._source.text.forEach(v => {
+        entireText += v.isInput ? `<lt-input>${v.value}</lt-input>` : v.value
+      })
+
+      res.send({
+        es_resp: body,
+        entire_text: entireText
+      });
 
     })
     .catch(function (error) {
