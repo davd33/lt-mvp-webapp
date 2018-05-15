@@ -28,6 +28,8 @@ import { RandomComponent } from './lt/random/random.component';
 // needed for angular material
 import 'hammerjs';
 import { LtInputComponent } from './lt/lt-input/lt-input.component';
+import { LtWordComponent } from './lt/lt-word/lt-word.component';
+import { LtHtmlElementComponent } from './lt/lt-html-element/lt-html-element.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { LtInputComponent } from './lt/lt-input/lt-input.component';
     LtHelpComponent,
     RandomComponent,
     LtInputComponent,
+    LtWordComponent,
+    LtHtmlElementComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lt-web-mvp-2018-webapp' }),
@@ -88,7 +92,11 @@ import { LtInputComponent } from './lt/lt-input/lt-input.component';
       }
     ])
   ],
-  entryComponents: [LtInputComponent],
+  entryComponents: [
+    LtInputComponent,
+    LtWordComponent,
+    LtHtmlElementComponent
+  ],
   providers: [
     LtService,
     Title,

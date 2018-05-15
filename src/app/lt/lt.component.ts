@@ -1,13 +1,15 @@
 import {
   Component, OnInit, Output, EventEmitter, ViewChildren,
   Input, Renderer2, OnDestroy, AfterViewChecked, ElementRef, QueryList,
-  ComponentFactoryResolver, ViewChild, ViewContainerRef
+  ComponentFactoryResolver, ViewChild, ViewContainerRef, isDevMode
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 import {LtService} from '../services/lt.service';
 import {LangService} from '../services/lang.service';
 import {LtInputComponent} from './lt-input/lt-input.component';
+import {LtWordComponent} from './lt-word/lt-word.component';
+import {LtHtmlElementComponent} from './lt-html-element/lt-html-element.component';
 
 @Component({
   selector: 'app-lt',
@@ -117,10 +119,12 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   @Input() isRandom: boolean;
 
-  @ViewChild('formTag') formEltRef: ElementRef;
+  @ViewChild('formTag') formEltRef: ElementRef
   @ViewChild('formTag', {read: ViewContainerRef}) formEltViewRef: ViewContainerRef
 
-  private ltInputList: any;
+  private ltInputFactory: any
+  private ltWordFactory: any
+  private ltHtmlEltFactory: any
 
   constructor(private renderer: Renderer2,
               private ltService: LtService,
@@ -163,7 +167,9 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
     //   this.focusInput(this.inputChildren.first, ``);
     // }
 
-    const ltInputFactory = this.factoryResolver.resolveComponentFactory(LtInputComponent)
+    this.ltInputFactory = this.factoryResolver.resolveComponentFactory(LtInputComponent)
+    this.ltWordFactory = this.factoryResolver.resolveComponentFactory(LtWordComponent)
+    this.ltHtmlEltFactory = this.factoryResolver.resolveComponentFactory(LtHtmlElementComponent)
 
     if (this.formEltRef && !this.testAllTextAppended) {
 
@@ -171,40 +177,52 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       let wikiHTML = document.createElement('div')
       wikiHTML.innerHTML = this.testAllText
 
-      // insert wiki page
-      this.formEltRef.nativeElement.appendChild(wikiHTML)
-      console.log(this.formEltRef)
-
-      // find lt-input elements
-      this.ltInputList = this.searchAppLTInput(wikiHTML, [])
-
       // insert lt-input components
-      this.ltInputList.forEach(ltInput => {
-        let parent = ltInput.parentElement
-
-        const ltInputCmp = ltInputFactory.create(this.formEltViewRef.parentInjector)
-        this.formEltViewRef.insert(ltInputCmp.hostView)
-
-        ltInput.parentNode.removeChild(ltInput)
-      })
+      this.insertLTComponents(wikiHTML, this.formEltViewRef)
 
       this.testAllTextAppended = true
     }
   }
 
-  searchAppLTInput(rootElt, ltInputList) {
+  private createComponent(factory:any, eltViewRef) {
+    return factory.create(eltViewRef.parentInjector)
+  }
+
+  insertLTComponents(rootElt, viewRef) {
     let nodes = rootElt.childNodes
+    const ELEMENT_NODE = 1,
+          ATTRIBUTE_NODE = 2,
+          TEXT_NODE = 3,
+          COMMENT_NODE = 8
 
     for (let c = 0; c < nodes.length; c++) {
       let node = nodes[c]
-      if (node.localName === 'app-lt-input') {
-        ltInputList.push(node)
-      } else {
-        this.searchAppLTInput(node, ltInputList)
-      }
-    }
 
-    return ltInputList
+      if (node.localName === 'app-lt-input') {
+        const ltCmp = this.createComponent(this.ltInputFactory, viewRef)
+        viewRef.insert(ltCmp.hostView)
+      }
+
+      else if (node.nodeType === TEXT_NODE) {
+        const ltCmp = this.createComponent(this.ltWordFactory, viewRef)
+        ltCmp.instance.innerHTML = node.data
+        viewRef.insert(ltCmp.hostView)
+      }
+
+      else if (node.nodeType === ELEMENT_NODE) {
+        const ltCmp = this.createComponent(this.ltHtmlEltFactory, viewRef)
+
+        ltCmp.instance.element = document.createElement(node.nodeName)
+        viewRef.insert(ltCmp.hostView)
+        this.insertLTComponents(node, ltCmp.instance.eltViewRef)
+      }
+
+      else if (node.nodeType === COMMENT_NODE && isDevMode())
+        console.log('--- COMMENT NODE ---')
+
+      else if (node.nodeType === ATTRIBUTE_NODE && isDevMode())
+        console.log('--- ATTRIBUTE NODE ---')
+    }
   }
 
   /**
