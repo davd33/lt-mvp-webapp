@@ -119,6 +119,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
    */
   @Input() isRandom: boolean;
 
+  @ViewChild('loader') loaderEltRef: ElementRef
   @ViewChild('formTag') formEltRef: ElementRef
   @ViewChild('formTag', {read: ViewContainerRef}) formEltViewRef: ViewContainerRef
 
@@ -181,6 +182,17 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.insertLTComponents(wikiHTML, this.formEltViewRef)
 
       this.testAllTextAppended = true
+
+      // loading the test takes minimum 2s - UX
+      setTimeout(() => {
+        this.formEltRef.nativeElement.parentNode.classList.remove('invisible')
+        this.formEltRef.nativeElement.parentNode.classList.add('visible')
+
+        if (this.loaderEltRef) {
+          let loader = this.loaderEltRef.nativeElement
+          loader.parentNode.removeChild(loader)
+        }
+      }, 2000)
     }
   }
 

@@ -9,8 +9,9 @@
 <!--<form [formGroup]="testForm" novalidate>-->
 
   <div *ngIf="test" class="lt-container">
-    <div class="lt-text">
-      <div #formTag>Loading...</div>
+    <div #loader class="loader"></div>
+    <div class="lt-text invisible">
+      <div #formTag></div>
     </div>
   </div>
 

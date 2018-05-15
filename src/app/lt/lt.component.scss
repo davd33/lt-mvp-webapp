@@ -46,8 +46,16 @@ $untouchedTxtColor: white;
   width: 100%;
   height: calc(100% - 4.2em);
 
+  .invisible {
+    display: none;
+  }
+
   .lt-text {
     padding: 2%;
+
+    .visible {
+      display: block;
+    }
 
     .point {
       margin: -0.2em 0;
