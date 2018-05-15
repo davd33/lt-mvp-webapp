@@ -200,6 +200,7 @@ export class LtComponent implements OnInit, AfterViewChecked, OnDestroy {
 
       if (node.localName === 'app-lt-input') {
         const ltCmp = this.createComponent(this.ltInputFactory, viewRef)
+        ltCmp.instance.value = node.innerText
         viewRef.insert(ltCmp.hostView)
       }
 

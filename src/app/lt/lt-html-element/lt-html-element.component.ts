@@ -6,7 +6,7 @@ import {
 @Component({
   selector: 'app-lt-html-element',
   templateUrl: './lt-html-element.component.html',
-  styleUrls: ['./lt-html-element.component.css']
+  styleUrls: ['./lt-html-element.component.scss']
 })
 export class LtHtmlElementComponent implements OnInit, AfterViewChecked {
 

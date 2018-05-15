@@ -3,7 +3,7 @@ import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angul
 @Component({
   selector: 'app-lt-word',
   templateUrl: './lt-word.component.html',
-  styleUrls: ['./lt-word.component.css']
+  styleUrls: ['./lt-word.component.scss']
 })
 export class LtWordComponent implements OnInit, AfterViewChecked {
 
