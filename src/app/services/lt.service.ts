@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, isDevMode} from '@angular/core';
 
 import {LT_LIST} from '../mock-tests';
 import {HttpClient} from '@angular/common/http';
@@ -22,7 +22,7 @@ export class LtService {
 
   private hostname = location.hostname;
   private protocol = location.protocol;
-  private port = location.port;
+  private port = isDevMode() ? '8080' : location.port;
 
   private url = `${this.protocol}//${this.hostname}${this.port ? ':' + this.port : ''}/api`;
 

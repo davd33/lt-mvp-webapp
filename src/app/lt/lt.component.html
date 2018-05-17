@@ -1,18 +1,21 @@
-<div *ngIf="test" class="lt-top">
-  <app-moving-flag [explanation]="flagExplanation" [answer]="flagIsAnswer"
+<div *ngIf="isReady()" class="lt-top">
+  <app-moving-flag [explanation]="getFlagExplanation()" [answer]="getFlagIsAnswer()"
                    [color]="getFlagColor()"></app-moving-flag>
 
   <div class="success-bar" [ngStyle]="{width: successBarSize()}">
   </div>
 </div>
 
-<!--<form [formGroup]="testForm" novalidate>-->
+<h1 *ngIf="isReady()">
+  {{test.title}}
+</h1>
 
-  <div *ngIf="test" class="lt-container">
-    <div #loader class="loader"></div>
-    <div class="lt-text invisible">
-      <div #formTag></div>
-    </div>
+<div class="lt-container">
+  <div class="lt-text invisible">
+    <div #formTag></div>
   </div>
+</div>
 
-<!--</form>-->
+<div>
+  <div #loader class="loader"></div>
+</div>

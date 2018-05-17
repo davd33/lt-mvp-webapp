@@ -30,6 +30,7 @@ import 'hammerjs';
 import { LtInputComponent } from './lt/lt-input/lt-input.component';
 import { LtWordComponent } from './lt/lt-word/lt-word.component';
 import { LtHtmlElementComponent } from './lt/lt-html-element/lt-html-element.component';
+import {LtInputsService} from './services/lt-inputs.service';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { LtHtmlElementComponent } from './lt/lt-html-element/lt-html-element.com
   ],
   providers: [
     LtService,
+    LtInputsService,
     Title,
     LangService,
     RecaptchaService,

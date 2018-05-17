@@ -22,6 +22,20 @@ $normal-font: 'Dosis', cursive;
 
 $monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
 
+$lt-font: "Nova Mono", sans-serif;
+
+$score-perfect: #009625;
+$score-good: #443f1a;
+$score-mediocre: #e27926;
+$score-bad: #b74747;
+$score-aweful: #b74747;
+
+$invalidBgColor: transparent;
+$invalidTxtColor: darkred;
+$validBgColor: transparent;
+$validTxtColor: green;
+$untouchedTxtColor: white;
+
 .menu {
   position: fixed;
   top: 0;
