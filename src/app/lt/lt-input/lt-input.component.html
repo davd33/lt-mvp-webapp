@@ -1,12 +1,13 @@
 <div class="container">
   <div class="input-div">
-    <input type="text" #input autocomplete="off"
+    <form [formGroup]="formInputGroup" novalidate>
+      <input type="text" #input autocomplete="off"
 
-           (change)="controlChanged($event, input, i, explanation)"
-           (keydown)="navigate($event, input)"
-           (click)="onInputClick(input, explanation)"
+             (change)="controlChanged($event, input, i, explanation)"
+             (keydown)="navigate($event, input)"
+             (click)="onInputClick(input, explanation)"
 
-           [ngClass]="{
+             [ngClass]="{
                         'shake shake-constant': shakeItOrNot(input),
                         'wrong-answer': isInputInvalid(input),
                         'valid-answer': isInputValid(input),
@@ -14,8 +15,10 @@
                         'invalid': luckenInputStatus(input) === 'invalid'
                      }"
 
-           [name]="i"
-           [id]="i"
-           [size]="value.length">
+             [name]="i"
+             [formControlName]="i"
+             [id]="i"
+             [size]="value.length">
+    </form>
   </div>
 </div>

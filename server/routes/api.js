@@ -38,20 +38,19 @@ router.get('/lt/random', (req, res) => {
     })
     .then(function (body) {
 
-      let explanation = JSON.stringify({
-        info: `The verb translate an general action, like: 'To do'.`,
-        example: `Du mußt trainieren, um Deutsch zu lernen.`,
-        table: {
-          time: 'infinitive',
-          plural: false,
-          type: 'verb'
-        }
-      })
-
       let entireText = ''
       body.hits.hits[0]._source.text.forEach((v, i) => {
+
         entireText += v.isInput ? `
-          <app-lt-input explanation="${escapeHTML(explanation)}" index="${i}">
+          <app-lt-input explanation="${escapeHTML(JSON.stringify({
+            example: `Du mußt trainieren, um Deutsch zu lernen.`,
+            table: {
+              time: 'infinitive',
+              plural: false,
+              type: 'verb'
+            },
+            info: v.value
+          }))}" index="${i}">
             ${v.value}
           </app-lt-input>` :
           v.value

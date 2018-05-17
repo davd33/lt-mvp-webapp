@@ -10,7 +10,7 @@ import {
   ViewContainerRef,
   isDevMode,
   AfterViewChecked,
-  ChangeDetectorRef
+  ChangeDetectorRef, OnDestroy
 } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
@@ -27,7 +27,7 @@ import * as escapeStringRegexp from 'escape-string-regexp'
   templateUrl: './lt.component.html',
   styleUrls: ['./lt.component.scss']
 })
-export class LtComponent implements OnInit, AfterViewChecked {
+export class LtComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   /**
    * Our test.
@@ -103,6 +103,10 @@ export class LtComponent implements OnInit, AfterViewChecked {
     })
   }
 
+  ngOnDestroy() {
+    this.ltInputsSvc.destroy()
+  }
+
   ngAfterViewChecked() {
 
     if (this.ltInputsSvc.isReady() && this.formEltRef) {
@@ -125,7 +129,8 @@ export class LtComponent implements OnInit, AfterViewChecked {
    *  - a regex to match the right answer
    */
   private buildForm() {
-    const testGroup: FormGroup = this.fb.group({});
+    let formGroups: any = {}
+
     for (let w = 0; w < this.test.text.length; w++) {
       const word = this.test.text[w];
 
@@ -137,14 +142,13 @@ export class LtComponent implements OnInit, AfterViewChecked {
           Validators.pattern(`^\\s*${escapeStringRegexp(word.value)}\\s*$`)
         ]);
 
-        testGroup.addControl(`${w}`, control);
+        let fg: FormGroup = formGroups[w] = this.fb.group({});
+        fg.addControl(`${w}`, control)
       }
     }
 
     // build our form
-    this.testForm = this.fb.group({
-      'test': testGroup
-    });
+    this.testForm = this.fb.group(formGroups);
   }
 
   private static createComponent(factory: any, eltViewRef) {
@@ -165,9 +169,10 @@ export class LtComponent implements OnInit, AfterViewChecked {
 
       if (node.localName === 'app-lt-input') {
         const ltCmp = LtComponent.createComponent(this.ltInputFactory, viewRef)
-        ltCmp.instance.value = node.innerText
+        ltCmp.instance.value = node.innerText.trim()
         ltCmp.instance.explanation = JSON.parse(node.attributes.explanation.value)
         ltCmp.instance.i = node.attributes.index.value
+        ltCmp.instance.formInputGroup = this.testForm.controls[node.attributes.index.value]
         viewRef.insert(ltCmp.hostView)
 
         this.expectedNInputs += 1

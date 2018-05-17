@@ -6,13 +6,13 @@ import {LtInputsService} from '../../services/lt-inputs.service';
   templateUrl: './lt-input.component.html',
   styleUrls: ['./lt-input.component.scss']
 })
-export class LtInputComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class LtInputComponent implements OnInit, OnDestroy {
 
   value = ''
   explanation: any
   i: number
 
-  done = false
+  formInputGroup
 
   /**
    * Shake the wrong answers.
@@ -104,14 +104,6 @@ export class LtInputComponent implements OnInit, OnDestroy, AfterViewChecked {
       return false
 
     return this.shakeIt && this.isInputInvalid(input)
-  }
-
-  ngAfterViewChecked() {
-
-    if (!this.done && this.inputChild) {
-      this.inputChild.nativeElement.value = this.value
-      this.done = true
-    }
   }
 
   /**

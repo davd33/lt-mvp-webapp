@@ -234,7 +234,10 @@ export class LtInputsService {
       const status = this.getStatusValueByElementRef(obj);
 
       const sameInput = obj.nativeElement.id === input.id;
-      const greaterId = (!this.isLastInputChild(input)) ? obj.nativeElement.id > input.id : true;
+      const greaterId =
+        (!this.isLastInputChild(input)) ?
+          parseInt(obj.nativeElement.id) === (parseInt(input.id)+2) :
+          true
 
       return status !== 'valid' && !sameInput && greaterId;
     });
@@ -254,7 +257,10 @@ export class LtInputsService {
       const status = this.getStatusValueByElementRef(obj);
 
       const sameInput = obj.nativeElement.id === input.id;
-      const lowerId = (!this.isFirstInputChild(input)) ? obj.nativeElement.id < input.id : true;
+      const lowerId =
+        (!this.isFirstInputChild(input)) ?
+          parseInt(obj.nativeElement.id) === (parseInt(input.id) - 2) :
+          true;
 
       return status !== 'valid' && !sameInput && lowerId;
     });
@@ -340,7 +346,7 @@ export class LtInputsService {
       this.triesCnt++;
     }
 
-    if (this.testForm.controls['test']['controls'][index].valid) { // user hit
+    if (this.testForm.controls[index].valid) { // user hit
 
       // count user hits
       this.rightAnswersCnt++;
@@ -492,6 +498,25 @@ export class LtInputsService {
         this.createInputObjects()
       }
     })()
+  }
+
+  public destroy() {
+    this.ltSuccess = undefined
+    this.ready = false
+    this.initiated = false
+    this.inputsReady = false
+    this.inputs = []
+    this.expectedNInputs = undefined
+    this.test = undefined
+    this.inputFocused = undefined
+    this.inputObj = {}
+    this.triesCnt = 0
+    this.rightAnswersCnt = 0
+    this.defaultFlagExplanation = undefined
+    this.flagColor = 'green'
+    this.flagExplanation = undefined
+    this.flagIsAnswer = undefined
+    this.testForm = undefined
   }
 
   public init(
