@@ -6,17 +6,13 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 
 import {LangService} from '../services/lang.service';
-import {rtSimple} from '../router.animations';
 
 @Component({
   selector: 'app-choose-training',
   templateUrl: './choose-training.component.html',
-  styleUrls: ['./choose-training.component.scss'],
-  animations: [rtSimple()]
+  styleUrls: ['./choose-training.component.scss']
 })
 export class ChooseTrainingComponent implements OnInit {
-
-  @HostBinding('@rtSimple') hostAnim = '';
 
   /**
    * Level chosen by the user.

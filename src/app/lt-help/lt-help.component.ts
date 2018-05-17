@@ -5,8 +5,7 @@ import {LangService} from "../services/lang.service";
 @Component({
   selector: 'app-lt-help',
   templateUrl: './lt-help.component.html',
-  styleUrls: ['./lt-help.component.scss'],
-  animations: [helpAnim()]
+  styleUrls: ['./lt-help.component.scss']
 })
 export class LtHelpComponent implements OnInit {
 

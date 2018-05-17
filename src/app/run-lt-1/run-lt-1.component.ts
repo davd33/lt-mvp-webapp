@@ -5,19 +5,15 @@ import {Title} from '@angular/platform-browser';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import {rtSimple} from '../router.animations';
 import {LangService} from '../services/lang.service';
 import {BgImgAnimService} from '../services/bg-img-anim.service';
 
 @Component({
   selector: 'app-run-lt-1',
   templateUrl: './run-lt-1.component.html',
-  styleUrls: ['./run-lt-1.component.scss'],
-  animations: [rtSimple()]
+  styleUrls: ['./run-lt-1.component.scss']
 })
 export class RunLt1Component implements OnDestroy, OnInit {
-
-  @HostBinding('@rtSimple') hostAnim = '';
 
   level: string;
   training: string;
