@@ -20,6 +20,8 @@ import {LtWordComponent} from './lt-word/lt-word.component';
 import {LtHtmlElementComponent} from './lt-html-element/lt-html-element.component';
 import {LtInputsService} from '../services/lt-inputs.service';
 
+import * as escapeStringRegexp from 'escape-string-regexp'
+
 @Component({
   selector: 'app-lt',
   templateUrl: './lt.component.html',
@@ -132,7 +134,7 @@ export class LtComponent implements OnInit, AfterViewChecked {
         control.setValue('');
         control.setValidators([
           Validators.required,
-          Validators.pattern(`^\\s*${word.value}\\s*$`)
+          Validators.pattern(`^\\s*${escapeStringRegexp(word.value)}\\s*$`)
         ]);
 
         testGroup.addControl(`${w}`, control);
