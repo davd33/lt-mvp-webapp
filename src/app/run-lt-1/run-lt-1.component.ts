@@ -6,7 +6,6 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import {LangService} from '../services/lang.service';
-import {BgImgAnimService} from '../services/bg-img-anim.service';
 
 @Component({
   selector: 'app-run-lt-1',
@@ -23,14 +22,11 @@ export class RunLt1Component implements OnDestroy, OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private titleService: Title,
-    private lang: LangService,
-    private bgImgAnim: BgImgAnimService
+    private lang: LangService
   ) {
   }
 
   ngOnDestroy() {
-    this.bgImgAnim.startAnim();
-    this.bgImgAnim.animChangeBlur('0');
   }
 
   ngOnInit() {
@@ -39,9 +35,6 @@ export class RunLt1Component implements OnDestroy, OnInit {
     );
     this.getLevelParam();
     this.getTrainingParam();
-
-    this.bgImgAnim.stopAnim();
-    this.bgImgAnim.animChangeBlur('15px');
   }
 
   gotoSignUp() {

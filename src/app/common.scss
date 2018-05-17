@@ -1,15 +1,9 @@
 $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
 
-$primary-color: #ffcc00;
-$newspaper-filter-color: rgba(255, 204, 0, .2);
-$menu-newspaper-filter-color: rgba(255, 204, 0, .5) $dotted-img;
-$lt-modal-bg-color: rgba(58, 47, 12, 0.95);
-$choose-li-a-color: rgba(255,255,255,.4);
-$second-color: black;
-$third-color: white;
-$forth-color: #ba0c02;
-$fifth-color: #314573;
-$flashy-color: yellow;
+$color-1: white;
+$color-2: black;
+$color-3: #222;
+$color-4: pink;
 
 $primary-background: #ffcc00 $dotted-img;
 
@@ -20,7 +14,10 @@ $primary-font: 'Dosis', cursive;
 $big-links-font: "Monoton", sans-serif;
 $normal-font: 'Dosis', cursive;
 
-$monoton-link-anim: MonotonLinkAnim 1s ease-out infinite alternate;
+$font-big: 3em;
+$font-medium: 1.2em;
+
+$monoton-link-anim: MonotonLinkAnim 1s ease-out infinite;
 
 $lt-font: "Nova Mono", sans-serif;
 
@@ -35,41 +32,6 @@ $invalidTxtColor: darkred;
 $validBgColor: transparent;
 $validTxtColor: green;
 $untouchedTxtColor: white;
-
-.menu {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  font-size: 1.3em;
-  background: $menu-newspaper-filter-color;
-}
-
-.background-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-
-  background: $newspaper-filter-color;
-}
-
-.img-bg {
-  position: fixed;
-  top: -170%;
-  left: -80%;
-  z-index: -1;
-  animation: imgBgAnim 20s infinite alternate;
-}
-
-.img-bg-stop-anim {
-  animation-play-state: paused;
-}
-
-@media only screen and (min-width: 768px) {
-  .img-bg {
-    top: 0;
-  }
-}
 
 .loader,
 .loader:before,
@@ -131,24 +93,12 @@ $untouchedTxtColor: white;
 
 @keyframes MonotonLinkAnim {
   0% {
-    text-shadow: 1px 1px 0 white;
-  }
-  25% {
-    text-shadow: 5px 1px 0 white;
-  }
-  100% {
-    text-shadow: 1px 1px 0 white;
-  }
-}
-
-@keyframes imgBgAnim {
-  0% {
-    transform: translate(-20%, -15%);
+    text-shadow: 1px 1px 0 $color-2;
   }
   75% {
-    transform: translate(-20%, -15%);
+    text-shadow: 2px 1px 0 $color-2;
   }
   100% {
-    transform: translate(-20%, -15%);
+    text-shadow: 1px 1px 0 $color-2;
   }
 }

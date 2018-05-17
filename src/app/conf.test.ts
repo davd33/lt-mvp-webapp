@@ -18,7 +18,6 @@ import {LtService} from './services/lt.service';
 import {Title} from '@angular/platform-browser';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
-import {BgImgAnimService} from './services/bg-img-anim.service';
 import {AppComponent} from './app.component';
 
 const TEST_ROUTES = RouterTestingModule.withRoutes([
@@ -79,7 +78,6 @@ export const TEST_MODULE = {
     LtService,
     Title,
     LangService,
-    RecaptchaService,
-    BgImgAnimService
+    RecaptchaService
   ],
 };

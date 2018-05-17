@@ -1,19 +1,24 @@
-<div class="background-container"></div>
-<div class="background-container2"></div>
+<div class="background-container">
 
-<div class="index-container" #topSection>
+  <div class="index-container" #topSection>
 
-  <!--APP TITLE-->
-  <div class="title">
-    <a href="/">
+    <!--APP TITLE-->
+    <div class="title">
       <span>{{lang.text.App.title1}}</span>
       <span>{{lang.text.App.title2}}</span>
-    </a>
-  </div>
+    </div>
 
-  <div class="text-container">
-    <h2>{{lang.text.Index.slogan1}}<br> <em>{{lang.text.Index.slogan2}}</em>{{lang.text.Index.slogan3}}</h2>
-    <hr>
-    <a routerLink="/choose-level">{{lang.text.Index.startLink}}</a>
+    <div class="text-container">
+      <h2>
+        {{lang.text.Index.slogan1}}
+        <br>
+        <em>{{lang.text.Index.slogan2}}</em>
+        {{lang.text.Index.slogan3}}
+      </h2>
+    </div>
   </div>
+</div>
+
+<div class="start-link">
+  <a routerLink="/choose-level">{{lang.text.Index.startLink}}</a>
 </div>

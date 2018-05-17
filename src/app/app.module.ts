@@ -20,7 +20,6 @@ import {LtComponent} from './lt/lt.component';
 import {LtService} from './services/lt.service';
 import {LangService} from './services/lang.service';
 import {RecaptchaService} from './services/recaptcha.service';
-import {BgImgAnimService} from './services/bg-img-anim.service';
 import { LtHelpComponent } from './lt-help/lt-help.component';
 import {KeyboardService} from './services/keyboard.service';
 import { RandomComponent } from './lt/random/random.component';
@@ -104,7 +103,6 @@ import {LtInputsService} from './services/lt-inputs.service';
     Title,
     LangService,
     RecaptchaService,
-    BgImgAnimService,
     KeyboardService
   ],
   bootstrap: [AppComponent]

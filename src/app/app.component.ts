@@ -1,7 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 
 import {LangService} from './services/lang.service';
-import {BgImgAnimService} from './services/bg-img-anim.service';
 import {KeyboardService} from "./services/keyboard.service";
 
 @Component({
@@ -11,26 +10,13 @@ import {KeyboardService} from "./services/keyboard.service";
 })
 export class AppComponent implements OnInit {
 
-  bgImgStopped = false;
-  bgImgBlur = '';
-
   constructor(
     public lang: LangService,
-    private keyboard: KeyboardService,
-    private bgImgAnim: BgImgAnimService
+    private keyboard: KeyboardService
   ) {
   }
 
   ngOnInit() {
-    this.bgImgAnim.animStopped
-      .subscribe(value => {
-        this.bgImgStopped = value;
-      });
-
-    this.bgImgAnim.blur
-      .subscribe(value => {
-        this.bgImgBlur = value;
-      });
   }
 
   @HostListener('document:keypress', ['$event'])
