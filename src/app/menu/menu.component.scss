@@ -1,1 +1,98 @@
 @import "../common";
+
+.container {
+
+  .menu-container {
+
+    .menu {
+      margin: 0 5%;
+
+      a {
+        text-decoration: none;
+        color: $color-2;
+        font-family: $normal-font;
+        font-size: $font-medium-big;
+      }
+    }
+  }
+
+  .menu-list {
+    display: flex;
+    justify-content: center;
+
+    background: $color-1;
+    border-bottom: 20px solid $color-5;
+
+    .menu-button {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+
+  .container {
+
+    .menu-container {
+
+      .menu-button {
+        width: 20%;
+        display: block;
+        text-align: center;
+      }
+
+      .menu {
+        display: none;
+      }
+    }
+
+    .menu-list {
+      justify-content: left;
+    }
+
+    .menu-list-pane {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80%;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+
+      color: $color-4;
+      text-shadow: 1px 1px 0 $color-2;
+      box-shadow: -1px 0 2px $color-2;
+      background: $color-1-99;
+
+      animation: displayIn .2s ease-in-out;
+
+      .menu {
+        display: block;
+      }
+    }
+
+    .menu-list-pane-out {
+      animation: displayOut .2s ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes displayOut {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-100%)
+  }
+}
+
+@keyframes displayIn {
+  0% {
+    transform: translateX(-100%)
+  }
+  100% {
+    transform: translateX(0)
+  }
+}

@@ -1,9 +1,11 @@
 $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
 
 $color-1: white;
+$color-1-99: rgba(255,255,255,0.99);
 $color-2: black;
 $color-3: #222;
 $color-4: pink;
+$color-5: #444;
 
 $primary-background: #ffcc00 $dotted-img;
 
@@ -15,9 +17,10 @@ $big-links-font: "Monoton", sans-serif;
 $normal-font: 'Dosis', cursive;
 
 $font-big: 3em;
+$font-medium-big: 2em;
 $font-medium: 1.2em;
 
-$monoton-link-anim: MonotonLinkAnim 1s ease-out infinite;
+$monoton-link-anim: MonotonLinkAnim 500ms ease-out infinite alternate;
 
 $lt-font: "Nova Mono", sans-serif;
 
@@ -95,10 +98,7 @@ $untouchedTxtColor: white;
   0% {
     text-shadow: 1px 1px 0 $color-2;
   }
-  75% {
-    text-shadow: 2px 1px 0 $color-2;
-  }
   100% {
-    text-shadow: 1px 1px 0 $color-2;
+    text-shadow: -1px 1px 0 $color-2;
   }
 }
