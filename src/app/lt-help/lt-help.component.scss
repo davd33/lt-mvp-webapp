@@ -9,7 +9,7 @@ button {
   border: 0;
   background: transparent;
   font-size: $font-medium;
-  box-shadow: 0 0 32px 20px white inset;
+  box-shadow: 0 0 32px 20px $color-lighter inset, 1px 0 5px -3px $color-dark;
   transition: background 200ms ease-in-out;
 
   &:hover {
@@ -27,14 +27,18 @@ button {
   padding: 20px;
   box-sizing: border-box;
 
-  background: $color-darker-alpha-80;
+  background: $color-dark-alpha-80;
   color: $color-light;
   font-size: $font-medium;
-  border: 5px solid $color-dark;
-  border-radius: 10px;
-  box-shadow: 0 0 10px $color-darker inset, 0 0 10px $color-darker;
+  border: 1px solid $color-dark;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 0px $color-darker inset, 0 0 2px $color-darker;
 
   z-index: 2;
+  transform-origin: top;
+  perspective-origin: top;
+  animation: flyIn 150ms ease-in-out forwards;
 
   .close {
     position: absolute;
@@ -44,15 +48,24 @@ button {
   }
 }
 
-.title-bg {
-  width: calc(80% - 10px);
-  height: 60px;
+.need-help-out {
+  animation: fallsDown 150ms ease-out forwards;
+}
 
-  position: fixed;
-  top: calc(10% + 6px);
-  left: calc(10% + 5px);
-  z-index: 1;
+@keyframes fallsDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
 
-  background: $color-darker;
-  box-shadow: 0 0 14px 2px white inset;
+@keyframes flyIn {
+  0% {
+    transform: perspective(200px) rotateX(-90deg);
+  }
+  100% {
+    transform: perspective(200px) rotateX(0);
+  }
 }

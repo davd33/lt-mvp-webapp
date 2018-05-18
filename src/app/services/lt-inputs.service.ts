@@ -5,6 +5,8 @@ import {LangService} from './lang.service';
 @Injectable()
 export class LtInputsService {
 
+  private FLAG_COLOR = '#ccc'
+
   /**
    * Event emitted when lucken text is successfully filled.
    */
@@ -54,7 +56,7 @@ export class LtInputsService {
    * Color of the flag displaying messages and errors.
    * @type {string}
    */
-  private flagColor = 'green';
+  private flagColor = this.FLAG_COLOR;
 
   /**
    * Flag explanation value.
@@ -212,11 +214,11 @@ export class LtInputsService {
       this.flagIsAnswer = true;
       this.flagExplanation = this.inputFocused.explanation;
     } else if (this.inputFocused && status === 'valid') {
-      this.flagColor = 'green';
+      this.flagColor = this.FLAG_COLOR;
       this.flagIsAnswer = true;
       this.flagExplanation = this.inputFocused.explanation;
     } else {
-      this.flagColor = 'green';
+      this.flagColor = this.FLAG_COLOR;
       this.flagIsAnswer = false;
       this.flagExplanation = this.defaultFlagExplanation;
     }
@@ -514,7 +516,7 @@ export class LtInputsService {
     this.triesCnt = 0
     this.rightAnswersCnt = 0
     this.defaultFlagExplanation = undefined
-    this.flagColor = 'green'
+    this.flagColor = this.FLAG_COLOR
     this.flagExplanation = undefined
     this.flagIsAnswer = undefined
     this.testForm = undefined

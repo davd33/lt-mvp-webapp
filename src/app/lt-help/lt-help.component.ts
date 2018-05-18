@@ -8,7 +8,9 @@ import {LangService} from "../services/lang.service";
 })
 export class LtHelpComponent implements OnInit {
 
-  needHelp = false;
+  needHelp = {
+    In: false, Out: false
+  }
 
   constructor(public lang: LangService) { }
 
@@ -16,7 +18,15 @@ export class LtHelpComponent implements OnInit {
   }
 
   toggleHelp() {
-    this.needHelp = !this.needHelp;
+    if (this.needHelp.In) {
+      this.needHelp.Out = true
+      setTimeout(() => {
+        this.needHelp.Out = false
+        this.needHelp.In = false
+      }, 150)
+    } else {
+      this.needHelp.In = true
+    }
   }
 
 }
