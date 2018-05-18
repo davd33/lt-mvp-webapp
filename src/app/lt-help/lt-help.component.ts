@@ -11,6 +11,7 @@ export class LtHelpComponent implements OnInit {
   needHelp = {
     In: false, Out: false
   }
+  needHelpTimeout
 
   constructor(public lang: LangService) { }
 
@@ -20,11 +21,15 @@ export class LtHelpComponent implements OnInit {
   toggleHelp() {
     if (this.needHelp.In) {
       this.needHelp.Out = true
-      setTimeout(() => {
-        this.needHelp.Out = false
-        this.needHelp.In = false
-      }, 150)
+
+      if (!this.needHelpTimeout) {
+        this.needHelpTimeout = setTimeout(() => {
+          this.needHelp.Out = false
+          this.needHelp.In = false
+        }, 150)
+      }
     } else {
+      if (this.needHelpTimeout) clearTimeout(this.needHelpTimeout)
       this.needHelp.In = true
     }
   }

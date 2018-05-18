@@ -29,10 +29,13 @@ export class MenuComponent implements OnInit {
   toggleMenuListPane() {
     if (this.classes._menuListPane) {
       this.classes._menuListPaneOut = true
-      this.sideNavClosingTimeout = setTimeout(() => {
-        this.classes._menuListPane = false
-        this.classes._menuListPaneOut = false
-      }, 200)
+
+      if (!this.sideNavClosingTimeout) {
+        this.sideNavClosingTimeout = setTimeout(() => {
+          this.classes._menuListPane = false
+          this.classes._menuListPaneOut = false
+        }, 200)
+      }
     } else {
       if (this.sideNavClosingTimeout) clearTimeout(this.sideNavClosingTimeout)
       this.classes._menuListPane = true
