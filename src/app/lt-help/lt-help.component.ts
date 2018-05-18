@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {helpAnim} from './lt-help.animations';
 import {LangService} from "../services/lang.service";
 
 @Component({

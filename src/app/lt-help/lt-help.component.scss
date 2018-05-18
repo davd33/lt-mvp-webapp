@@ -1,1 +1,58 @@
 @import "../common";
+
+:host {
+  align-self: center;
+}
+
+button {
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  font-size: $font-medium;
+  box-shadow: 0 0 32px 20px white inset;
+  transition: background 200ms ease-in-out;
+
+  &:hover {
+    background: $color-lighter;
+  }
+}
+
+.background {
+  position: fixed;
+  width: 80%;
+  height: 80vh;
+  top: 10vh;
+  left: 10%;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: $color-darker-alpha-80;
+  color: $color-light;
+  font-size: $font-medium;
+  border: 5px solid $color-dark;
+  border-radius: 10px;
+  box-shadow: 0 0 10px $color-darker inset, 0 0 10px $color-darker;
+
+  z-index: 2;
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+  }
+}
+
+.title-bg {
+  width: calc(80% - 10px);
+  height: 60px;
+
+  position: fixed;
+  top: calc(10% + 6px);
+  left: calc(10% + 5px);
+  z-index: 1;
+
+  background: $color-darker;
+  box-shadow: 0 0 14px 2px white inset;
+}

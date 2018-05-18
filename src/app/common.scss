@@ -1,11 +1,15 @@
 $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
 
-$color-1: white;
-$color-1-99: rgba(255,255,255,0.99);
-$color-2: black;
-$color-3: #222;
-$color-4: pink;
-$color-5: #444;
+$color-lighter: white;
+$color-lighter-alpha-99: rgba(255,255,255,.99);
+$color-darker: black;
+$color-darker-alpha-80: rgba(0,0,0,.80);
+$color-dark: #222;
+$color-dark-alpha-99: rgba(34,34,34,.99);
+$color-flashy: pink;
+$color-gray: #444;
+$color-light: honeydew;
+$color-lt-input-valid: green;
 
 $primary-background: #ffcc00 $dotted-img;
 
@@ -19,6 +23,7 @@ $normal-font: 'Dosis', cursive;
 $font-big: 3em;
 $font-medium-big: 2em;
 $font-medium: 1.2em;
+$font-medium-small: 1em;
 
 $monoton-link-anim: MonotonLinkAnim 500ms ease-out infinite alternate;
 
@@ -96,9 +101,9 @@ $untouchedTxtColor: white;
 
 @keyframes MonotonLinkAnim {
   0% {
-    text-shadow: 1px 1px 0 $color-2;
+    text-shadow: 1px 1px 0 $color-darker;
   }
   100% {
-    text-shadow: -1px 1px 0 $color-2;
+    text-shadow: -1px 1px 0 $color-darker;
   }
 }

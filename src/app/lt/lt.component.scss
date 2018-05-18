@@ -1,1 +1,34 @@
 @import "../common";
+
+h1 {
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  margin-top: 0;
+  box-sizing: border-box;
+  z-index: -10;
+
+  text-align: right;
+  text-shadow: 2px 2px 0 $color-lighter;
+
+  background: $color-light;
+
+  .hr {
+    width: 100%;
+    height: 2em;
+
+    position: absolute;
+    top: calc(100% - 2em);
+    left: 0;
+    z-index: -1;
+
+    background-color: $color-light;
+    box-shadow: 0 -15px 5px -19px black inset;
+  }
+}
+
+.lt-container {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}

@@ -9,7 +9,7 @@
 
       a {
         text-decoration: none;
-        color: $color-2;
+        color: $color-darker;
         font-family: $normal-font;
         font-size: $font-medium-big;
       }
@@ -20,11 +20,16 @@
     display: flex;
     justify-content: center;
 
-    background: $color-1;
-    border-bottom: 20px solid $color-5;
+    background: $color-lighter;
+    border-bottom: 20px solid $color-gray;
 
     .menu-button {
       display: none;
+
+      button {
+        background: transparent;
+        border: 0;
+      }
     }
   }
 }
@@ -36,9 +41,13 @@
     .menu-container {
 
       .menu-button {
-        width: 20%;
-        display: block;
-        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: left;
+
+        button {
+          font-size: $font-medium-big;
+        }
       }
 
       .menu {
@@ -48,6 +57,9 @@
 
     .menu-list {
       justify-content: left;
+      animation: displayInFlip .2s ease-in-out;
+      transform-origin: top center;
+      perspective: 50px;
     }
 
     .menu-list-pane {
@@ -61,15 +73,39 @@
       flex-direction: column;
       justify-content: start;
 
-      color: $color-4;
-      text-shadow: 1px 1px 0 $color-2;
-      box-shadow: -1px 0 2px $color-2;
-      background: $color-1-99;
+      box-shadow: -1px 0 2px $color-darker;
+      background: $color-dark-alpha-99;
 
       animation: displayIn .2s ease-in-out;
 
+      .menu-button {
+        width: 100%;
+        display: flex;
+        justify-content: right;
+
+        button {
+          background: transparent;
+          border: 0;
+          cursor: pointer;
+
+          &:after {
+            content: 'X';
+            font-size: $font-medium-small;
+            color: $color-darker;
+            text-shadow: 1px 1px 0 $color-flashy;
+          }
+        }
+      }
+
       .menu {
         display: block;
+        width: 100%;
+        margin: 0;
+        padding: 5px 20px;
+        box-sizing: border-box;
+
+        color: $color-darker;
+        text-shadow: 1px 1px 0 $color-flashy;
       }
     }
 
@@ -81,18 +117,27 @@
 
 @keyframes displayOut {
   0% {
-    transform: translateX(0)
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%)
+    transform: translateX(-100%);
   }
 }
 
 @keyframes displayIn {
   0% {
-    transform: translateX(-100%)
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(0)
+    transform: translateX(0);
+  }
+}
+
+@keyframes displayInFlip {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

@@ -1,5 +1,5 @@
 <div class="mf-container" [ngStyle]="{'background': color}">
-  {{getFirstSentence(explanation.info)}}
+  <div class="test-hint">{{getFirstSentence(explanation.info)}}</div>
   <app-lt-help>
     <div *ngIf="!answer; else explanationBlock">
       <h4>{{lang.text.MovingFlag.cmds}}</h4>

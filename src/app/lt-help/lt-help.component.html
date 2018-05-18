@@ -2,7 +2,8 @@
   <i class="fa fa-info-circle" aria-hidden="true"></i> <span class="flash-hover">{{lang.text.LtHelp.more}}</span>
 </button>
 
-<div *ngIf="needHelp" class="background" [@help]="''">
+<div *ngIf="needHelp" class="background">
   <ng-content></ng-content>
   <div class="close" (click)="toggleHelp()"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
 </div>
+<div class="title-bg" *ngIf="needHelp"></div>

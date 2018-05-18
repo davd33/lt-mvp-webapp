@@ -1,1 +1,28 @@
 @import "../../common";
+
+:host {
+  display: inline-block;
+  margin: 0 .1em;
+}
+
+.container {
+
+  .input-div {
+
+    form {
+
+      .valid-answer {
+        border: 0;
+        text-decoration: underline;
+        color: $color-lt-input-valid;
+        font-weight: bold;
+        background: transparent;
+      }
+
+      input {
+        z-index: -5;
+      }
+    }
+  }
+}
+

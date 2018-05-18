@@ -355,6 +355,7 @@ export class LtInputsService {
 
       try {
         renderer.setAttribute(entryInput.nativeElement, 'readonly', '');
+        renderer.setAttribute(entryInput.nativeElement, 'disabled', 'disabled');
       } catch (e) {
       }
     } else if (entryInput.nativeElement.value.trim() !== '') { // user fail

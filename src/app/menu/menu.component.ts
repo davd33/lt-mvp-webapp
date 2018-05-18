@@ -11,6 +11,8 @@ export class MenuComponent implements OnInit {
 
   menuList: any;
 
+  sideNavClosingTimeout
+
   classes = {
     _menuListPane: false,
     _menuListPaneOut: false
@@ -21,19 +23,20 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.menuList = [
       [this.lang.text.Menu.home, '/index'],
-      [this.lang.text.Menu.start, '/choose-level'],
-      [this.lang.text.Menu.random, '/lt/random'],
     ];
   }
 
   toggleMenuListPane() {
     if (this.classes._menuListPane) {
       this.classes._menuListPaneOut = true
-      setTimeout(() => {
+      this.sideNavClosingTimeout = setTimeout(() => {
         this.classes._menuListPane = false
         this.classes._menuListPaneOut = false
       }, 200)
-    } else this.classes._menuListPane = true;
+    } else {
+      if (this.sideNavClosingTimeout) clearTimeout(this.sideNavClosingTimeout)
+      this.classes._menuListPane = true
+    }
   }
 
   getMenuContainerClasses() {

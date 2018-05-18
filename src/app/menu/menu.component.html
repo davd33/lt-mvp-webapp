@@ -3,7 +3,7 @@
   <div class="menu-container" [ngClass]="getMenuContainerClasses()">
 
     <div class="menu-button">
-      <button (click)="toggleMenuListPane()">{{classes._menuListPane ? 'Close' : 'Menu'}}</button>
+      <button (click)="toggleMenuListPane()">{{classes._menuListPane ? '' : 'Menu'}}</button>
     </div>
 
     <div class="menu" *ngFor="let menu of menuList">

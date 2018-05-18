@@ -6,12 +6,9 @@ import {LangService} from "../services/lang.service";
 @Component({
   selector: 'app-moving-flag',
   templateUrl: './moving-flag.component.html',
-  styleUrls: ['moving-flag.component.scss'],
-  animations: [flagAnim()]
+  styleUrls: ['moving-flag.component.scss']
 })
 export class MovingFlagComponent implements OnInit {
-
-  @HostBinding('@flag') hostAnim = '';
 
   @Input() explanation;
   @Input() color;
