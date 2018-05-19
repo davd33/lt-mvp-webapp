@@ -67,7 +67,7 @@ export class LtInputComponent implements OnInit, OnDestroy {
   }
 
   onInputClick(input, explanation) {
-    this.ltInputsSvc.onInputClick(input, explanation)
+    this.ltInputsSvc.ltHoleClicked(input, explanation)
   }
 
   luckenInputStatus(input) {

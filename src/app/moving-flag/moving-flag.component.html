@@ -1,5 +1,8 @@
-<div class="mf-container" [ngStyle]="{'background': color}">
+<div #mfContainer class="mf-container" [ngStyle]="{'background': color}">
+
+  <div class="close" (click)="closeHelpPanel()">X</div>
   <div class="test-hint">{{getFirstSentence(explanation.info)}}</div>
+
   <app-lt-help>
     <div *ngIf="!answer; else explanationBlock">
       <h4>{{lang.text.MovingFlag.cmds}}</h4>

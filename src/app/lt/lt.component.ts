@@ -180,7 +180,7 @@ export class LtComponent implements OnInit, OnDestroy, AfterViewChecked {
 
       else if (node.nodeType === TEXT_NODE) {
         const ltCmp = LtComponent.createComponent(this.ltWordFactory, viewRef)
-        ltCmp.instance.innerHTML = node.data
+        ltCmp.instance.txt = node.data
         viewRef.insert(ltCmp.hostView)
       }
 

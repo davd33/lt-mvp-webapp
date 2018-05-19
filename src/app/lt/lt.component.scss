@@ -29,6 +29,8 @@ h1 {
 
 .lt-container {
   width: 90%;
-  display: block;
+  display: flex;
   margin: 0 auto;
+
+  font-family: $font-family-sans-serif-lt-text;
 }

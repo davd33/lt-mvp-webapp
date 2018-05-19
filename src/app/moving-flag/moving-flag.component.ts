@@ -1,7 +1,8 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
 
 import {flagAnim} from './moving-flag.animation';
 import {LangService} from "../services/lang.service";
+import {LtInputsService} from '../services/lt-inputs.service';
 
 @Component({
   selector: 'app-moving-flag',
@@ -14,9 +15,25 @@ export class MovingFlagComponent implements OnInit {
   @Input() color;
   @Input() answer: boolean;
 
-  constructor(public lang: LangService) { }
+  @ViewChild('mfContainer') mfContainerChild: ElementRef
+
+  constructor(public lang: LangService,
+              private ltInputsSvc: LtInputsService) { }
 
   ngOnInit() {
+    this.ltInputsSvc.onHelpNeeded().subscribe(value => {
+      if (value.activate) {
+        this.mfContainerChild.nativeElement.classList.toggle('active')
+      }
+    })
+  }
+
+  closeHelpPanel() {
+    this.mfContainerChild.nativeElement.classList.toggle('deactivating')
+    setTimeout(() => {
+      this.mfContainerChild.nativeElement.classList.toggle('active')
+      this.mfContainerChild.nativeElement.classList.toggle('deactivating')
+    }, 300)
   }
 
   getFirstSentence(text: string) {

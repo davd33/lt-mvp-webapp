@@ -5,24 +5,15 @@ import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angul
   templateUrl: './lt-word.component.html',
   styleUrls: ['./lt-word.component.scss']
 })
-export class LtWordComponent implements OnInit, AfterViewChecked {
+export class LtWordComponent implements OnInit {
 
-  innerHTML: string = ''
-
-  @ViewChild('content') content: ElementRef
-
-  done = false
+  txt: string = ''
+  words: string[] = []
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  ngAfterViewChecked() {
-    if (!this.done) {
-      this.content.nativeElement.innerHTML = this.innerHTML
-      this.done = true
-    }
+    this.words = this.txt.split(' ')
   }
 
 }

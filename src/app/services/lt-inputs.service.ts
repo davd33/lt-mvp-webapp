@@ -1,9 +1,12 @@
 import {ElementRef, EventEmitter, Injectable, Renderer2} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {LangService} from './lang.service';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class LtInputsService {
+
+  private onHelpNeededObservable: Subject<any> = new Subject()
 
   private FLAG_COLOR = '#ccc'
 
@@ -204,6 +207,12 @@ export class LtInputsService {
    */
   private selectInput(elRef: ElementRef) {
     elRef.nativeElement.select();
+  }
+
+  private emitHelpNeededMsg() {
+    this.onHelpNeededObservable.next({
+      activate: true
+    })
   }
 
   private changeFlagExplanation() {
@@ -407,7 +416,7 @@ export class LtInputsService {
    * @param input
    * @param explanation
    */
-  public onInputClick(input: any, explanation: any) {
+  public ltHoleClicked(input: any, explanation: any) {
 
     const status = this.getStatusValue(input);
 
@@ -415,6 +424,7 @@ export class LtInputsService {
       this.focusValidInput(this.getInputEntry(input), explanation);
     } else {
       this.focusInput(this.getInputEntry(input), explanation);
+      if ('invalid' === status) this.emitHelpNeededMsg()
     }
   }
 
@@ -436,6 +446,10 @@ export class LtInputsService {
     } else {
       return false;
     }
+  }
+
+  public onHelpNeeded() {
+    return this.onHelpNeededObservable
   }
 
   /**
@@ -520,6 +534,7 @@ export class LtInputsService {
     this.flagExplanation = undefined
     this.flagIsAnswer = undefined
     this.testForm = undefined
+    this.onHelpNeededObservable = new Subject()
   }
 
   public init(

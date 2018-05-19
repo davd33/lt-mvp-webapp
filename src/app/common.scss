@@ -13,14 +13,11 @@ $color-darkgray: #ccc;
 $color-light: honeydew;
 $color-lt-input-valid: green;
 
-$primary-background: #ffcc00 $dotted-img;
-
-$logo-font: 'Monofett', cursive;
-$app-title-font: 'Monofett', cursive;
-$titles-font: 'Noto Serif', serif;
-$primary-font: 'Dosis', cursive;
-$big-links-font: "Monoton", sans-serif;
-$normal-font: 'Dosis', cursive;
+$font-family-cursive-boldest: 'Monofett', cursive;
+$font-family-serif-1: 'Noto Serif', serif;
+$font-family-sans-serif-big: "Monoton", sans-serif;
+$font-family-cursive-text: 'Dosis', cursive;
+$font-family-sans-serif-lt-text: "Nova Mono", sans-serif;
 
 $font-bigger: 6em;
 $font-big: 3em;
@@ -28,21 +25,8 @@ $font-medium-big: 2em;
 $font-medium: 1.2em;
 $font-medium-small: 1em;
 
-$monoton-link-anim: MonotonLinkAnim 500ms ease-out infinite alternate;
+$font-family-sans-serif-big-animation: MonotonLinkAnim 500ms ease-out infinite alternate;
 
-$lt-font: "Nova Mono", sans-serif;
-
-$score-perfect: #009625;
-$score-good: #443f1a;
-$score-mediocre: #e27926;
-$score-bad: #b74747;
-$score-aweful: #b74747;
-
-$invalidBgColor: transparent;
-$invalidTxtColor: darkred;
-$validBgColor: transparent;
-$validTxtColor: green;
-$untouchedTxtColor: white;
 
 .loader,
 .loader:before,

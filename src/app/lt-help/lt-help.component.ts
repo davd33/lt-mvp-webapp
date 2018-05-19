@@ -8,34 +8,9 @@ import {LangService} from "../services/lang.service";
 })
 export class LtHelpComponent implements OnInit {
 
-  needHelp = {
-    In: false, Out: false
-  }
-  needHelpTimeout
-
   constructor(public lang: LangService) { }
 
   ngOnInit() {
-  }
-
-  toggleHelp() {
-    if (this.needHelp.In) {
-      this.needHelp.Out = true
-
-      if (!this.needHelpTimeout) {
-        this.needHelpTimeout = setTimeout(() => {
-          this.needHelp.Out = false
-          this.needHelp.In = false
-          this.needHelpTimeout = undefined
-        }, 150)
-      }
-    } else {
-      if (this.needHelpTimeout) {
-        clearTimeout(this.needHelpTimeout)
-        this.needHelpTimeout = undefined
-      }
-      this.needHelp.In = true
-    }
   }
 
 }

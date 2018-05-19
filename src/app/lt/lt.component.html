@@ -1,9 +1,5 @@
 <div *ngIf="isReady()" class="lt-top">
-  <app-moving-flag [explanation]="getFlagExplanation()" [answer]="getFlagIsAnswer()"
-                   [color]="getFlagColor()"></app-moving-flag>
-
-  <div class="success-bar" [ngStyle]="{width: successBarSize()}">
-  </div>
+  <div class="success-bar" [ngStyle]="{width: successBarSize()}"></div>
 </div>
 
 <h1 *ngIf="isReady()">
@@ -20,3 +16,8 @@
 <div>
   <div #loader class="loader"></div>
 </div>
+
+<app-moving-flag *ngIf="isReady()"
+                 [explanation]="getFlagExplanation()"
+                 [answer]="getFlagIsAnswer()"
+                 [color]="getFlagColor()"></app-moving-flag>
