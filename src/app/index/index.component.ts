@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 import {LangService} from '../services/lang.service';
@@ -10,6 +10,8 @@ import {LangService} from '../services/lang.service';
 })
 export class IndexComponent implements OnInit {
 
+  @ViewChild('titleBig') titleChild: ElementRef
+
   constructor(private titleService: Title,
               public lang: LangService) {
   }
@@ -17,5 +19,6 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle(this.lang.text.Global.title);
   }
+
 
 }

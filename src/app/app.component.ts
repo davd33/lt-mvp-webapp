@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 
 import {LangService} from './services/lang.service';
 import {KeyboardService} from "./services/keyboard.service";
+import {MouseService} from './services/mouse.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,17 @@ export class AppComponent implements OnInit {
 
   constructor(
     public lang: LangService,
-    private keyboard: KeyboardService
+    private keyboard: KeyboardService,
+    private mouse: MouseService
   ) {
   }
 
   ngOnInit() {
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: MouseEvent) {
+    this.mouse.obs.next(event)
   }
 
   @HostListener('document:keypress', ['$event'])

@@ -1,12 +1,12 @@
 $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
 
 $color-lighter: white;
-$color-lighter-alpha-99: rgba(255,255,255,.99);
+$color-lighter-alpha-99: transparentize($color-lighter, .99);
 $color-darker: black;
-$color-darker-alpha-80: rgba(0,0,0,.80);
+$color-darker-alpha-80: transparentize($color-darker, .80);
 $color-dark: #222;
-$color-dark-alpha-99: rgba(34,34,34,.99);
-$color-dark-alpha-80: rgba(34,34,34,.8);
+$color-dark-alpha-99: transparentize($color-dark, .99);
+$color-dark-alpha-80: transparentize($color-dark, .80);
 $color-flashy: pink;
 $color-gray: #444;
 $color-darkgray: #ccc;
@@ -22,6 +22,7 @@ $primary-font: 'Dosis', cursive;
 $big-links-font: "Monoton", sans-serif;
 $normal-font: 'Dosis', cursive;
 
+$font-bigger: 6em;
 $font-big: 3em;
 $font-medium-big: 2em;
 $font-medium: 1.2em;

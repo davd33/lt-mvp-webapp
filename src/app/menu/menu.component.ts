@@ -34,10 +34,14 @@ export class MenuComponent implements OnInit {
         this.sideNavClosingTimeout = setTimeout(() => {
           this.classes._menuListPane = false
           this.classes._menuListPaneOut = false
+          this.sideNavClosingTimeout = undefined
         }, 200)
       }
     } else {
-      if (this.sideNavClosingTimeout) clearTimeout(this.sideNavClosingTimeout)
+      if (this.sideNavClosingTimeout) {
+        clearTimeout(this.sideNavClosingTimeout)
+        this.sideNavClosingTimeout = undefined
+      }
       this.classes._menuListPane = true
     }
   }

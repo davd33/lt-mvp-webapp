@@ -26,10 +26,14 @@ export class LtHelpComponent implements OnInit {
         this.needHelpTimeout = setTimeout(() => {
           this.needHelp.Out = false
           this.needHelp.In = false
+          this.needHelpTimeout = undefined
         }, 150)
       }
     } else {
-      if (this.needHelpTimeout) clearTimeout(this.needHelpTimeout)
+      if (this.needHelpTimeout) {
+        clearTimeout(this.needHelpTimeout)
+        this.needHelpTimeout = undefined
+      }
       this.needHelp.In = true
     }
   }
