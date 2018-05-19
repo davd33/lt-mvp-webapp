@@ -31,6 +31,7 @@ import { LtWordComponent } from './lt/lt-word/lt-word.component';
 import { LtHtmlElementComponent } from './lt/lt-html-element/lt-html-element.component';
 import {LtInputsService} from './services/lt-inputs.service';
 import {MouseService} from './services/mouse.service';
+import {WindowService} from './services/window.service';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import {MouseService} from './services/mouse.service';
     LangService,
     RecaptchaService,
     KeyboardService,
-    MouseService
+    MouseService,
+    WindowService
   ],
   bootstrap: [AppComponent]
 })
