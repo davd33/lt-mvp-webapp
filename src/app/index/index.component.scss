@@ -86,18 +86,52 @@
 
   p {
     text-align: justify;
+    border-left: 1px solid $color-darker;
+    border-right: 1px solid $color-darker;
+    box-sizing: border-box;
+    padding: 0 20px;
   }
 
-  a {
-    text-decoration: none;
-    color: $color-lighter;
+  .start-anchor-wrapper {
 
-    font-family: $font-family-sans-serif-big;
-    text-shadow: 1px 1px 0 $color-darker;
-    font-size: $font-big;
+    .start-anchor {
 
-    &:hover {
-      animation: $font-family-sans-serif-big-animation;
+      border: 1px solid $color-darker;
+      transform: rotate(45deg);
+      margin: 40px 0;
+      transition: transform 200ms ease-in-out;
+
+      &:hover {
+        transform: rotate(-45deg);
+
+        a {
+          transform: rotate(45deg)
+        }
+      }
+
+      a {
+        transform: rotate(-45deg);
+        transition: transform .2s ease-in-out;
+
+        text-decoration: none;
+        color: $color-lighter;
+
+        font-family: $font-family-sans-serif-big;
+        text-shadow: 1px 1px 0 $color-darker;
+        font-size: $font-big;
+
+        width: 4em;
+        height: 4em;
+        border: 1px solid $color-darker;
+        border-radius: 50%;
+        padding: 10px;
+        display: block;
+        line-height: 3.75em;
+
+        &:hover {
+          animation: $font-family-sans-serif-big-animation;
+        }
+      }
     }
   }
 }

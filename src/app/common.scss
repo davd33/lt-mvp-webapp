@@ -2,7 +2,7 @@ $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAAByt
 
 $color-lighter: white;
 $color-lighter-alpha-99: transparentize($color-lighter, .01);
-$color-darker: black;
+$color-darker: #111;
 $color-darker-alpha-80: transparentize($color-darker, .20);
 $color-dark: #222;
 $color-dark-alpha-99: transparentize($color-dark, .01);
