@@ -1,13 +1,14 @@
 $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
 
 $color-lighter: white;
-$color-lighter-alpha-99: transparentize($color-lighter, .99);
+$color-lighter-alpha-99: transparentize($color-lighter, .01);
 $color-darker: black;
-$color-darker-alpha-80: transparentize($color-darker, .80);
+$color-darker-alpha-80: transparentize($color-darker, .20);
 $color-dark: #222;
-$color-dark-alpha-99: transparentize($color-dark, .99);
-$color-dark-alpha-80: transparentize($color-dark, .80);
+$color-dark-alpha-99: transparentize($color-dark, .01);
+$color-dark-alpha-80: transparentize($color-dark, .20);
 $color-flashy: pink;
+$color-lightgray: #fcfcfc;
 $color-gray: #444;
 $color-darkgray: #ccc;
 $color-light: honeydew;
@@ -18,6 +19,7 @@ $font-family-serif-1: 'Noto Serif', serif;
 $font-family-sans-serif-big: "Monoton", sans-serif;
 $font-family-cursive-text: 'Dosis', cursive;
 $font-family-sans-serif-lt-text: "Nova Mono", sans-serif;
+$font-family-sans-serif-close-buttons: sans-serif;
 
 $font-bigger: 6em;
 $font-big: 3em;

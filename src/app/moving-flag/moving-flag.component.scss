@@ -1,19 +1,28 @@
 @import "../common";
 
 .mf-container {
-  box-shadow: 12px 0 4px -13px $color-darker inset;
+
+  $transformOut: translateX(100%);
+  $transformIn: translateX(0);
+
+  background: $color-lighter;
+  box-shadow: 1px 0 5px 0 $color-darker;
 
   display: none;
   flex-direction: column;
   justify-content: space-between;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
-  width: 85vw;
+  width: 100vw;
   height: 100vh;
+  padding: 5vh 5vw;
+  box-sizing: border-box;
 
-  transform: translateX(85vw);
+  transform: $transformOut;
+
+  font-family: $font-family-cursive-text;
 
   &.active {
     display: flex;
@@ -25,22 +34,22 @@
 
     @keyframes slidesOut {
       0% {
-        transform: translateX(0);
+        transform: $transformIn;
         opacity: 1;
       }
       100% {
-        transform: translateX(85vw);
+        transform: $transformOut;
         opacity: 0;
       }
     }
 
     @keyframes slidesIn {
       0% {
-        transform: translateX(85vw);
+        transform: $transformOut;
         opacity: 0;
       }
       100% {
-        transform: translateX(0);
+        transform: $transformIn;
         opacity: 1;
       }
     }
@@ -49,6 +58,15 @@
   .test-hint {
     padding: 10px;
     align-self: center;
+  }
+
+  .close {
+    width: 5vw;
+    height: 5vw;
+    font-size: 5vw;
+    text-align: center;
+    cursor: pointer;
+    font-family: $font-family-sans-serif-close-buttons;
   }
 
   h4 {
