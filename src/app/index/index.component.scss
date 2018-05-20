@@ -70,7 +70,6 @@
   align-items: center;
 
   h3, p, ul {
-    width: 80%;
     text-align: center;
 
     font-family: $font-family-cursive-text;
@@ -78,18 +77,41 @@
     color: $color-darker;
   }
 
+  h3 {
+    width: 80%;
+    background: white;
+    border-bottom: 1px solid $color-darker;
+    z-index: 5;
+    margin-top: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
   ul {
     text-align: left;
     list-style: lower-alpha;
     padding-left: 12%;
+
+    li {
+      padding-right: 20px;
+    }
   }
 
   p {
     text-align: justify;
-    border-left: 1px solid $color-darker;
-    border-right: 1px solid $color-darker;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 20px;
+  }
+
+  .below-start-link {
+    width: 80%;
+    background: white;
+    z-index: 5;
+    border: {
+      left: 1px solid $color-darker;
+      right: 1px solid $color-darker;
+      top: 1px solid $color-darker;
+    }
   }
 
   .start-anchor-wrapper {
@@ -118,10 +140,10 @@
 
         font-family: $font-family-sans-serif-big;
         text-shadow: 1px 1px 0 $color-darker;
-        font-size: $font-big;
+        font-size: 10vmin;
 
-        width: 4em;
-        height: 4em;
+        width: 39vmin;
+        height: 39vmin;
         border: 1px solid $color-darker;
         border-radius: 50%;
         padding: 10px;
