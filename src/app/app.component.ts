@@ -28,6 +28,11 @@ export class AppComponent implements OnInit {
     this.mouse.obs.next(event)
   }
 
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: MouseEvent) {
+    this.mouse.obs.next(event)
+  }
+
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     this.keyboard.obs.next(event);
