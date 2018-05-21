@@ -67,35 +67,93 @@
     text-align: center;
     cursor: pointer;
     font-family: $font-family-sans-serif-close-buttons;
+    font-weight: lighter;
+    text-shadow: -3px -1px 0 $color-lighter, 2px -1px 0 $color-lighter, 0 0 0 $color-darker;
+    color: transparent;
+    border: 1px solid $color-darker;
+    border-radius: 50%;
+    line-height: 80%;
+    box-shadow: 0 2px 5px -5px $color-darker;
+    background: transparent;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 13px 18px -15px $color-darker;
+    }
   }
 
-  h4 {
-    text-align: center;
-    text-transform: capitalize;
-  }
+  app-lt-help {
 
-  table {
+    h4 {
+      text-align: center;
+      text-transform: capitalize;
+      margin-top: 10vh;
+    }
 
-    width: 100%;
-    border-collapse: collapse;
+    .example {
 
-    thead {
-      tr {
-        background: $color-dark;
-        box-shadow: 1px 0 1px $color-darker;
+      display: flex;
+      justify-content: space-between;
 
-        th {
-          padding: 5px;
+      h4 {
+        margin: 0;
+        padding: 10px 0;
+
+        &:after {
+          content: ':';
         }
+      }
+
+      .example-text {
+        padding: 10px 0 10px 10px;
+        text-align: justify;
+        font-family: $font-family-sans-serif-lt-text;
       }
     }
 
-    tbody {
-      tr {
-        background: $color-darker;
+    .info {
+      padding: 10px;
+      background: $color-light;
+    }
 
-        td {
-          padding: 5px;
+    .table-knowledge {
+
+      table {
+
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+          tr {
+            background: $color-gray;
+            color: $color-lighter;
+
+            th {
+              padding: 10px;
+              text-align: left;
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            background: $color-lighter;
+            box-shadow: 0 19px 2px -18px $color-darker inset;
+
+            td {
+              padding: 10px;
+
+              &:first-child {
+                border-bottom-left-radius: 10px;
+              }
+
+              &:last-child {
+                border-bottom-right-radius: 10px;
+              }
+            }
+          }
         }
       }
     }

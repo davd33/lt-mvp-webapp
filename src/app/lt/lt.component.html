@@ -2,7 +2,7 @@
   <div class="success-bar" [ngStyle]="{width: successBarSize()}"></div>
 </div>
 
-<h1 *ngIf="isReady()">
+<h1 *ngIf="isReady()" #stickyTitle>
   {{test.title}}
   <div class="hr"></div>
 </h1>

@@ -8,7 +8,6 @@
              (click)="onInputClick(input, explanation)"
 
              [ngClass]="{
-                        'shake shake-constant': shakeItOrNot(input),
                         'wrong-answer': isInputInvalid(input),
                         'valid-answer': isInputValid(input),
                         'valid': luckenInputStatus(input) === 'valid',

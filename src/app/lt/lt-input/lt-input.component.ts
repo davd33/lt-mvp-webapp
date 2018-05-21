@@ -14,17 +14,6 @@ export class LtInputComponent implements OnInit, OnDestroy {
 
   formInputGroup
 
-  /**
-   * Shake the wrong answers.
-   * @type {boolean}
-   */
-  shakeIt = false;
-
-  /**
-   * Shake interval to be set and cleared.
-   */
-  shakeInterval: any;
-
   private inputAdded
 
   @ViewChild('input') inputChild: ElementRef
@@ -45,17 +34,9 @@ export class LtInputComponent implements OnInit, OnDestroy {
         this.ltInputsSvc.markReady()
       }, 0)
     }
-
-    this.shakeInterval = setInterval(() => {
-      this.doShakeIt();
-      setTimeout(() => {
-        this.doNotShakeIt();
-      }, 1000);
-    }, 3000);
   }
 
   ngOnDestroy() {
-    clearInterval(this.shakeInterval);
   }
 
   controlChanged(event, input, index, explanation) {
@@ -97,27 +78,6 @@ export class LtInputComponent implements OnInit, OnDestroy {
 
   isReady() {
     return this.ltInputsSvc.isReady()
-  }
-
-  shakeItOrNot(input) {
-    if (!this.isReady())
-      return false
-
-    return this.shakeIt && this.isInputInvalid(input)
-  }
-
-  /**
-   * Change flag to true.
-   */
-  doShakeIt() {
-    this.shakeIt = true;
-  }
-
-  /**
-   * Change flag to false.
-   */
-  doNotShakeIt() {
-    this.shakeIt = false;
   }
 
 }

@@ -15,24 +15,28 @@
       </ul>
     </div>
     <ng-template #explanationBlock>
-      <div *ngIf="explanation.example">
+      <div *ngIf="explanation.example" class="example">
         <h4>{{lang.text.MovingFlag.explanation.example}}</h4>
-        <div class="example">{{explanation.example}}</div>
+        <div class="example-text">{{explanation.example}}</div>
       </div>
-      <h4>{{lang.text.MovingFlag.explanation.table}}</h4>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-          <tr>
-            <th *ngFor="let k of explanationTableKeys()">{{k}}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td *ngFor="let k of explanationTableKeys()">{{getExplanationValue(explanation.table[k])}}</td>
-          </tr>
-          </tbody>
-        </table>
+      <div class="table-knowledge">
+        <h4>{{lang.text.MovingFlag.explanation.table}}</h4>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+            <tr>
+              <th *ngFor="let k of explanationTableKeys()">{{k}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td *ngFor="let k of explanationTableKeys()">
+                {{getExplanationValue(explanation.table[k])}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <h4>{{lang.text.MovingFlag.explanation.info}}</h4>
       <div class="info">

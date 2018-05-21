@@ -19,9 +19,12 @@
         background: transparent;
       }
 
+      .wrong-answer {
+        border-bottom: $color-dark 2px solid;
+      }
+
       input {
         z-index: -5;
-        padding: 5px;
         background: $color-lightgray;
         border: {
           top-width: 0;
@@ -29,6 +32,8 @@
           bottom: 2px solid $color-darkgray;
           left-width: 0;
         }
+        font-family: "Nova Mono", sans-serif;
+        font-size: inherit;
       }
     }
   }

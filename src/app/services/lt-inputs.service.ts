@@ -209,9 +209,10 @@ export class LtInputsService {
     elRef.nativeElement.select();
   }
 
-  private emitHelpNeededMsg() {
+  private emitHelpNeededMsg(open, input) {
     this.onHelpNeededObservable.next({
-      activate: true
+      activate: open,
+      input: input
     })
   }
 
@@ -397,7 +398,7 @@ export class LtInputsService {
    * tab key is down.
    *
    * @param event
-   * @param thisInput
+   * @param input
    */
   public navigate(event: any, input: any) {
 
@@ -424,7 +425,7 @@ export class LtInputsService {
       this.focusValidInput(this.getInputEntry(input), explanation);
     } else {
       this.focusInput(this.getInputEntry(input), explanation);
-      if ('invalid' === status) this.emitHelpNeededMsg()
+      if ('invalid' === status) this.emitHelpNeededMsg(true, input)
     }
   }
 
@@ -450,6 +451,10 @@ export class LtInputsService {
 
   public onHelpNeeded() {
     return this.onHelpNeededObservable
+  }
+
+  public closeHelpPanel(input) {
+    this.emitHelpNeededMsg(false, input)
   }
 
   /**

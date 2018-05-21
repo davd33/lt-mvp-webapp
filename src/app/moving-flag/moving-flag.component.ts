@@ -17,11 +17,15 @@ export class MovingFlagComponent implements OnInit {
 
   @ViewChild('mfContainer') mfContainerChild: ElementRef
 
+  private currentInputEl
+
   constructor(public lang: LangService,
               private ltInputsSvc: LtInputsService) { }
 
   ngOnInit() {
+
     this.ltInputsSvc.onHelpNeeded().subscribe(value => {
+      this.currentInputEl = value.input
       if (value.activate) {
         this.mfContainerChild.nativeElement.classList.toggle('active')
       }
@@ -29,6 +33,7 @@ export class MovingFlagComponent implements OnInit {
   }
 
   closeHelpPanel() {
+    this.ltInputsSvc.closeHelpPanel(this.currentInputEl)
     this.mfContainerChild.nativeElement.classList.toggle('deactivating')
     setTimeout(() => {
       this.mfContainerChild.nativeElement.classList.toggle('active')

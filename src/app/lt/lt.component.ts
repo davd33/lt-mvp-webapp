@@ -21,6 +21,7 @@ import {LtHtmlElementComponent} from './lt-html-element/lt-html-element.componen
 import {LtInputsService} from '../services/lt-inputs.service';
 
 import * as escapeStringRegexp from 'escape-string-regexp'
+import {MouseService} from '../services/mouse.service';
 
 @Component({
   selector: 'app-lt',
@@ -69,6 +70,12 @@ export class LtComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild('loader') loaderEltRef: ElementRef
   @ViewChild('formTag') formEltRef: ElementRef
   @ViewChild('formTag', {read: ViewContainerRef}) formEltViewRef: ViewContainerRef
+  @ViewChild('stickyTitle') stickyEltRef: ElementRef
+
+  private stickyTitle = {
+    isTitleSticky: false,
+    titleOffsetTop: undefined
+  }
 
   private ltInputFactory: any
   private ltWordFactory: any
@@ -78,6 +85,7 @@ export class LtComponent implements OnInit, OnDestroy, AfterViewChecked {
               private ltInputsSvc: LtInputsService,
               private cd: ChangeDetectorRef,
               private fb: FormBuilder,
+              private mouse: MouseService,
               private factoryResolver: ComponentFactoryResolver) {
   }
 
@@ -109,6 +117,24 @@ export class LtComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   ngAfterViewChecked() {
 
+    if (this.stickyEltRef) {
+      this.mouse.obs.subscribe(value => {
+
+        const stickyEl = this.stickyEltRef.nativeElement
+        if (!this.stickyTitle.isTitleSticky) {
+          this.stickyTitle.titleOffsetTop = stickyEl.offsetTop
+        }
+
+        if (value.pageY >= this.stickyTitle.titleOffsetTop) {
+          stickyEl.classList.add('sticky')
+          this.stickyTitle.isTitleSticky = true
+        } else {
+          stickyEl.classList.remove('sticky')
+          this.stickyTitle.isTitleSticky = false
+        }
+      })
+    }
+
     if (this.ltInputsSvc.isReady() && this.formEltRef) {
       setTimeout(() => { // loading the test takes minimum 2s - UX
         this.formEltRef.nativeElement.parentNode.classList.remove('invisible')
@@ -119,7 +145,7 @@ export class LtComponent implements OnInit, OnDestroy, AfterViewChecked {
           loader.parentNode.removeChild(loader)
           this.loaderRemoved = true
         }
-      }, 2000)
+      }, 2000);
     }
   }
 

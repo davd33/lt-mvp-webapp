@@ -1,17 +1,22 @@
 $dotted-img: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
 
+// light
 $color-lighter: white;
 $color-lighter-alpha-99: transparentize($color-lighter, .01);
+$color-light: #fefefe;
+// dark
 $color-darker: #111;
 $color-darker-alpha-80: transparentize($color-darker, .20);
 $color-dark: #222;
 $color-dark-alpha-99: transparentize($color-dark, .01);
 $color-dark-alpha-80: transparentize($color-dark, .20);
+// flashy
 $color-flashy: pink;
+// gray
 $color-lightgray: #fcfcfc;
 $color-gray: #444;
 $color-darkgray: #ccc;
-$color-light: honeydew;
+// lucken tests
 $color-lt-input-valid: green;
 
 $font-family-cursive-boldest: 'Monofett', cursive;

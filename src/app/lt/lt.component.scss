@@ -13,6 +13,8 @@ h1 {
 
   background: $color-light;
 
+  transition: all .2s ease-in-out;
+
   .hr {
     width: 100%;
     height: 2em;
@@ -24,6 +26,12 @@ h1 {
 
     background-color: $color-light;
     box-shadow: 0 -15px 5px -19px black inset;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    width: 100vw;
   }
 }
 

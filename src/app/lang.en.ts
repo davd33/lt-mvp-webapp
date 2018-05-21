@@ -43,7 +43,8 @@ export const lang_en = {
       'indefinite article': 'Indefinite Article',
       'verb': 'Verb',
       'false': 'No',
-      'true': 'Yes'
+      'true': 'Yes',
+      'infinitive': 'Infinitive'
     }
   },
   MovingFlag: {

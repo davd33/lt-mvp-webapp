@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 5vh;
 
   .letter {
     width: 7vw;
@@ -80,38 +81,28 @@
   h3 {
     width: 80%;
     background: white;
-    border-bottom: 1px solid $color-darker;
     z-index: 5;
     margin-top: 30px;
-    padding: 20px;
     box-sizing: border-box;
+    margin-bottom: 5vh;
   }
 
   ul {
     text-align: left;
     list-style: lower-alpha;
     padding-left: 12%;
-
-    li {
-      padding-right: 20px;
-    }
   }
 
   p {
     text-align: justify;
     box-sizing: border-box;
-    padding: 20px;
   }
 
   .below-start-link {
     width: 80%;
     background: white;
     z-index: 5;
-    border: {
-      left: 1px solid $color-darker;
-      right: 1px solid $color-darker;
-      top: 1px solid $color-darker;
-    }
+    margin-top: 5vh;
   }
 
   .start-anchor-wrapper {
