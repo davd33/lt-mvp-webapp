@@ -49,7 +49,7 @@ router.get('/lt/random', (req, res) => {
               plural: false,
               type: 'verb'
             },
-            info: v.value
+            info: `The actual answer is '${v.value}'. In fact, this is a verb, in this case an auxiliary that is conjugated in the past in preterit and so should take the form AUX mode... Yeah man!`
           }))}" index="${i}">
             ${v.value}
           </app-lt-input>` :
