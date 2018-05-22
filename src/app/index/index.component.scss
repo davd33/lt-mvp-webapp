@@ -107,27 +107,36 @@
 
   .start-anchor-wrapper {
 
+    background: transparent;
+    width: 100%;
+    height: 45vmin;
+
     .start-anchor {
 
-      border: 1px solid $color-darker;
-      transform: rotate(45deg);
-      margin: 40px 0;
-      transition: transform 200ms ease-in-out;
+      transition: all 1s ease-in-out;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      background: $color-sky;
+      height: 100%;
 
       &:hover {
-        transform: rotate(-45deg);
+
+        background: $color-flashy-2;
 
         a {
-          transform: rotate(45deg)
+          background: $color-lighter;
         }
       }
 
       a {
-        transform: rotate(-45deg);
-        transition: transform .2s ease-in-out;
+        transition: all .2s ease-in-out;
 
         text-decoration: none;
+        text-align: center;
         color: $color-lighter;
+        background: $color-flashy-2;
 
         font-family: $font-family-sans-serif-big;
         text-shadow: 1px 1px 0 $color-darker;
@@ -135,11 +144,10 @@
 
         width: 39vmin;
         height: 39vmin;
-        border: 1px solid $color-darker;
         border-radius: 50%;
         padding: 10px;
         display: block;
-        line-height: 3.75em;
+        margin-top: 15vh;
 
         &:hover {
           animation: $font-family-sans-serif-big-animation;
