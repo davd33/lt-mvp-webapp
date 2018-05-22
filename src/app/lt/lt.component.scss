@@ -3,15 +3,13 @@
 h1 {
   width: 100%;
   position: relative;
-  padding: 10px;
+  padding: 12px 12px 12px calc(3em);
   margin-top: 0;
   box-sizing: border-box;
   z-index: -10;
 
   text-align: right;
   text-shadow: 2px 2px 0 $color-lighter;
-
-  background: $color-light;
 
   transition: all .2s ease-in-out;
 
@@ -20,18 +18,12 @@ h1 {
     height: 2em;
 
     position: absolute;
-    top: calc(100% - 2em);
+    top: -2px;
     left: 0;
     z-index: -1;
 
     background-color: $color-light;
-    box-shadow: 0 -15px 5px -19px black inset;
-  }
-
-  &.sticky {
-    position: fixed;
-    top: 0;
-    width: 100vw;
+    border-bottom: 1px dashed $color-gray;
   }
 }
 

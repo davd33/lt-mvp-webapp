@@ -1,10 +1,6 @@
 <div class="container">
 
-  <div class="menu-container" [ngClass]="getMenuContainerClasses()">
-
-    <div class="menu-button">
-      <button (click)="toggleMenuListPane()">{{classes._menuListPane ? '' : 'Menu'}}</button>
-    </div>
+  <div class="menu-container">
 
     <div class="menu" *ngFor="let menu of menuList">
       <a [routerLink]="menu[1]">{{menu[0]}}</a>

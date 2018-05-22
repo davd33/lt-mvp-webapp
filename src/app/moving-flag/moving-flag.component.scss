@@ -11,6 +11,8 @@
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   position: fixed;
   top: 0;
@@ -66,21 +68,10 @@
     font-size: 5vw;
     text-align: center;
     cursor: pointer;
-    font-family: $font-family-sans-serif-close-buttons;
-    font-weight: lighter;
-    text-shadow: -3px -1px 0 $color-lighter, 2px -1px 0 $color-lighter, 0 0 0 $color-darker;
-    color: transparent;
-    border: 1px solid $color-darker;
-    border-radius: 50%;
+    color: $color-darkgray;
     line-height: 80%;
-    box-shadow: 0 2px 5px -5px $color-darker;
     background: transparent;
     transition: all .2s ease-in-out;
-
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 13px 18px -15px $color-darker;
-    }
   }
 
   app-lt-help {

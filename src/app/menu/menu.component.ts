@@ -9,14 +9,7 @@ import {LangService} from '../services/lang.service';
 })
 export class MenuComponent implements OnInit {
 
-  menuList: any;
-
-  sideNavClosingTimeout
-
-  classes = {
-    _menuListPane: false,
-    _menuListPaneOut: false
-  }
+  menuList: any
 
   constructor(private lang: LangService) { }
 
@@ -24,34 +17,6 @@ export class MenuComponent implements OnInit {
     this.menuList = [
       [this.lang.text.Menu.home, '/index'],
     ];
-  }
-
-  toggleMenuListPane() {
-    if (this.classes._menuListPane) {
-      this.classes._menuListPaneOut = true
-
-      if (!this.sideNavClosingTimeout) {
-        this.sideNavClosingTimeout = setTimeout(() => {
-          this.classes._menuListPane = false
-          this.classes._menuListPaneOut = false
-          this.sideNavClosingTimeout = undefined
-        }, 200)
-      }
-    } else {
-      if (this.sideNavClosingTimeout) {
-        clearTimeout(this.sideNavClosingTimeout)
-        this.sideNavClosingTimeout = undefined
-      }
-      this.classes._menuListPane = true
-    }
-  }
-
-  getMenuContainerClasses() {
-    return {
-      'menu-list-pane': this.classes._menuListPane,
-      'menu-list-pane-out': this.classes._menuListPaneOut,
-      'menu-list': !this.classes._menuListPane
-    }
   }
 
 }
