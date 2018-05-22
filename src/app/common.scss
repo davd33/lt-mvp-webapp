@@ -12,12 +12,14 @@ $color-dark-alpha-99: transparentize($color-dark, .01);
 $color-dark-alpha-80: transparentize($color-dark, .20);
 // flashy
 $color-flashy: pink;
-$color-flashy-2: lightcoral;
-$color-sky: lightblue;
+// sky
+$color-blue-sky: lightblue;
+$color-sky-hallo: yellow;
+$color-red-sky: lightcoral;
 // gray
 $color-lightgray: #fcfcfc;
-$color-gray: #444;
-$color-darkgray: #ccc;
+$color-darkgray: #444;
+$color-gray: #ccc;
 // lucken tests
 $color-lt-input-valid: green;
 
