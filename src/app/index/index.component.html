@@ -18,10 +18,10 @@
     </div>
   </div>
 
-  <div class="down"><i class="fa fa-arrow-down"></i></div>
+  <div class="down"><a (click)="toSlide2()"><i class="fas fa-angle-down"></i></a></div>
 </div>
 
-<div class="second-slide">
+<div class="second-slide" #slide2>
 
   <div class="title-big" #titleBig>
     <div class="letter l1">L</div>
@@ -45,19 +45,24 @@
         <a routerLink="/lt/random">{{lang.text.Index.startLink}}</a>
       </div>
     </div>
+
     <div class="below-start-link">
-      <p>
-        Our goal is to provide German learners with a training App.
-        <br>
-        It all started in Germany when we were studying German in order to pass the merciless <em>Studienkolleg</em> German
-        test. From that experience we noticed that it was a hassle training for the exams with the little books that we were
-        given. So, from that experience came out the following requirements for the App:
-      </p>
-      <ul>
-        <li>Tests are available for any kind of vocabulary.</li>
-        <li>Repeating tests should be easy.</li>
-        <li>I want to know how far I am with the learning progress!</li>
-      </ul>
+      <div class="desc1">
+        <p>
+          Our goal is to provide German learners with a training App.
+          <br>
+          It all started in Germany when we were studying German in order to pass the merciless <em>Studienkolleg</em>
+          German
+          test. From that experience we noticed that it was a hassle training for the exams with the little books that
+          we were
+          given. So, from that experience came out the following requirements for the App:
+        </p>
+      </div>
+      <div class="cols">
+        <div class="col2"><p>Tests are available for any kind of vocabulary.</p></div>
+        <div class="col2"><p>Repeating tests should be easy.</p></div>
+        <div class="col2"><p>I want to know how far I am with the learning progress!</p></div>
+      </div>
     </div>
   </div>
 </div>

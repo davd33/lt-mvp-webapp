@@ -13,6 +13,7 @@ import {WindowService} from '../services/window.service';
 export class IndexComponent implements OnInit {
 
   @ViewChild('topSection') topSectionEl: ElementRef
+  @ViewChild('slide2') slide2El: ElementRef
 
   constructor(private titleService: Title,
               public lang: LangService) {
@@ -20,6 +21,10 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle(this.lang.text.Global.title)
+  }
+
+  toSlide2() {
+    this.slide2El.nativeElement.scrollIntoView({behavior: 'smooth'})
   }
 
 

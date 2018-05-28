@@ -242,6 +242,8 @@ export class LtInputsService {
    */
   private findNextInvalidInputEntry(input: any): any {
 
+    console.log('find next')
+
     const e: any = this.inputs.find((obj) => {
       const status = this.getStatusValueByElementRef(obj);
 
@@ -250,6 +252,8 @@ export class LtInputsService {
         (!this.isLastInputChild(input)) ?
           parseInt(obj.nativeElement.id) === (parseInt(input.id)+2) :
           true
+
+      console.log(`${status} | ${sameInput} | ${obj.nativeElement.id} | ${input.id}`)
 
       return status !== 'valid' && !sameInput && greaterId;
     });
@@ -263,6 +267,8 @@ export class LtInputsService {
    * @param input
    */
   private findPreviousInvalidInputEntry(input: any): any {
+
+    console.log('find prev')
 
     const inputs = this.inputs.reverse();
     const e: any = inputs.find((obj) => {
@@ -403,6 +409,7 @@ export class LtInputsService {
   public navigate(event: any, input: any) {
 
     if (event.key === 'Tab') {
+      console.log('navigate')
       event.preventDefault();
       const nextInput = event.shiftKey ?
         this.findPreviousInvalidInputEntry(input) :
