@@ -4,7 +4,6 @@ let stop = false
 
 class Logo {
 
-  private maxRadius
   private colorObj
   private radius
 
@@ -12,10 +11,9 @@ class Logo {
   private readonly Y_REF
   private readonly LPoints
   private readonly TPoints
-  private readonly ALLPoints
-  private readonly minRadius
   private readonly startColorObj
-  private readonly randomLines
+  private readonly randomLinesL
+  private readonly randomLinesT
   private readonly COLORS
   private readonly c
   private readonly canvas
@@ -28,7 +26,7 @@ class Logo {
   constructor(c, canvas, lPoints, tPoints, radius) {
 
     this.COLORS = [
-      {r:214,g:14,b:3}, '#12283F', '#01465A', '#9CD4D3'
+      {r:46,g:17,b:45}, '#ffffff', '#820333', '#C9283E'
     ]
 
     this.X_REF = 24
@@ -36,25 +34,22 @@ class Logo {
 
     this.POINT_INTERVAL_CONSTANT = 100
     this.POINT_MOVE_CONSTANT = 2
-    this.MAX_LINE_WIDTH_FACTOR = 15
-    this.MAX_RADIUS_FACTOR = 15
+    this.MAX_LINE_WIDTH_FACTOR = 1
+    this.MAX_RADIUS_FACTOR = 0
 
     this.c = c
     this.canvas = canvas
-    this.LPoints = this.ALLPoints = this.getPoints(lPoints)
+    this.LPoints = this.getPoints(lPoints)
     this.TPoints = this.getPoints(tPoints)
 
     this.radius = radius
-    this.minRadius = radius
-    this.maxRadius = this.MAX_RADIUS_FACTOR
     this.colorObj = this.startColorObj = this.COLORS[0]
 
-    this.TPoints.forEach(p => this.ALLPoints.push(p))
-
-    this.randomLines = this.createRandomLines(this.ALLPoints, 1)
+    this.randomLinesL = this.createRandomLines(this.LPoints, 1)
+    this.randomLinesT = this.createRandomLines(this.TPoints, 1)
   }
 
-  public draw () {
+  private draw() {
 
     this.drawLetter(this.c,
       this.LPoints,
@@ -65,49 +60,64 @@ class Logo {
       this.radius,
       'rgb(' + this.colorObj.r + ',' + this.colorObj.g + ',' + this.colorObj.b + ')')
 
-    this.drawRandomLines(this.c, this.randomLines)
+    this.drawRandomLines(this.c, this.randomLinesL)
+    this.drawRandomLines(this.c, this.randomLinesT)
   }
 
-  public update (mouse) {
-    this.randomLines.forEach(line => {
+  private updateRandomLines(mouse, randomLines, points) {
+    randomLines.forEach(line => {
 
       line.maxLineWidth = (mouse.y / this.canvas.height) * this.MAX_LINE_WIDTH_FACTOR
       if (line.lineWidth < line.maxLineWidth) line.lineWidth += .5
       else if (line.lineWidth > line.minLineWidth) line.lineWidth -= .2
 
-      if ((Date.now() - line.latestUpdate) > (Math.random() * 2000)) {
-        let newLine = this.createRandomLine(this.ALLPoints, 1)
+      if ((Date.now() - line.latestUpdate) > Math.random() * (1500 - 2000) + 1500) {
+        let newLine = this.createRandomLine(points, 1)
+        let now = new Date()
         line.point1 = newLine.point1
         line.point2 = newLine.point2
         line.lineWidth = newLine.lineWidth
         line.minLineWidth = newLine.minLineWidth
         line.maxLineWidth = newLine.maxLineWidth
-        line.latestUpdate = Date.now()
+        line.latestUpdate = now.setTime(now.getTime() + (Math.random() - 0.5) * 1000)
       }
     })
+  }
 
-    this.maxRadius = (mouse.x / this.canvas.width) * this.MAX_RADIUS_FACTOR
-    if (this.radius < this.maxRadius) this.radius += 1
-    else if (this.radius > this.minRadius) this.radius -= .2
+  public update (mouse) {
+    this.updateRandomLines(mouse, this.randomLinesL, this.LPoints)
+    this.updateRandomLines(mouse, this.randomLinesT, this.TPoints)
 
-    let circlesColor = mouse.x / this.canvas.width
+    this.radius = (mouse.x / this.canvas.width) * this.MAX_RADIUS_FACTOR
+
     this.colorObj = Math.random() > 0.99 ? {
-      r: Math.abs(Math.floor(this.startColorObj.r + ((Math.random() - 0.5) * 200) * circlesColor)),
-      g: Math.abs(Math.floor(this.startColorObj.g + ((Math.random() - 0.5) * 200) * circlesColor)),
-      b: Math.abs(Math.floor(this.startColorObj.b + ((Math.random() - 0.5) * 200) * circlesColor))
+      r: Math.abs(Math.floor(this.startColorObj.r + Math.random() - 0.5)),
+      g: Math.abs(Math.floor(this.startColorObj.g + Math.random() - 0.5)),
+      b: Math.abs(Math.floor(this.startColorObj.b + Math.random() - 0.5))
     } : this.colorObj
+
+    this.draw()
+  }
+
+  private static isUpdateNeeded(date, period) {
+    return (new Date()).getTime() - date >= period
   }
 
   private drawLetter(c, points, radius, color) {
     for (let i = 0; i < points.length; i++) {
+      let point = points[i]
+      let pointRandomnessChange = Logo.isUpdateNeeded(point.latestUpdate, Math.random() * 10000)
+
       c.beginPath()
       c.arc(
-        ((Math.random() - 0.5) * this.POINT_MOVE_CONSTANT) + points[i].x,
-        ((Math.random() - 0.5) * this.POINT_MOVE_CONSTANT) + points[i].y,
+        pointRandomnessChange ? ((Math.random() - 0.5) * this.POINT_MOVE_CONSTANT) + point.x : point.x,
+        pointRandomnessChange ? ((Math.random() - 0.5) * this.POINT_MOVE_CONSTANT) + point.y : point.y,
         radius, 0, Math.PI * 2)
       c.fillStyle = color
       c.lineWidth = 1
       c.fill()
+
+      if (pointRandomnessChange) point.latestUpdate = new Date()
     }
   }
 
@@ -121,7 +131,8 @@ class Logo {
       point1 = points[Math.floor(Math.random() * (points.length - 1))]
       point2 = points[Math.floor(Math.random() * (points.length - 1))]
 
-    } while (Math.abs(point1.x - point2.x) > 5)
+    } while (Math.abs(point1.x - point2.x) > 10 &&
+             Math.abs(point1.y - point2.y) > 10)
 
     lineWidth = Math.random() * lineWidth
 
@@ -131,7 +142,7 @@ class Logo {
       lineWidth: lineWidth,
       minLineWidth: lineWidth,
       maxLineWidth: this.MAX_LINE_WIDTH_FACTOR,
-      latestUpdate: Date.now()
+      latestUpdate: new Date()
     }
   }
 
@@ -139,13 +150,22 @@ class Logo {
 
     let lines = []
 
-    for (let i = 0; i < (Math.random() * points.length * 100); i++) {
+    for (let i = 0; i < (Math.random() * points.length * 1000000 / this.canvas.width); i++) {
       let point1 = points[Math.floor(Math.random() * (points.length - 1))]
       let point2 = points[Math.floor(Math.random() * (points.length - 1))]
 
       lineWidth = Math.random() * lineWidth
 
-      if (Math.abs(point1.x - point2.x) <= 5) {
+      if (Math.abs(point1.x - point2.x) <= 10) {
+        lines.push({
+          point1: point1,
+          point2: point2,
+          lineWidth: lineWidth,
+          minLineWidth: lineWidth,
+          maxLineWidth: this.MAX_LINE_WIDTH_FACTOR,
+          latestUpdate: Date.now()
+        })
+      } else if (Math.abs(point1.y - point2.y) <= 10) {
         lines.push({
           point1: point1,
           point2: point2,
@@ -198,7 +218,8 @@ class Logo {
       for (let j = 0; j < this.POINT_INTERVAL_CONSTANT; j++) {
         points.push({
           x: lastPoint.x + intervalX * j,
-          y: lastPoint.y + intervalY * j
+          y: lastPoint.y + intervalY * j,
+          latestUpdate: Date.now()
         })
       }
 
@@ -210,8 +231,6 @@ class Logo {
 }
 
 export class LTLogo {
-
-  private stop
 
   private logos: Logo[]
 
@@ -266,7 +285,7 @@ export class LTLogo {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
       this.init()
-      this.animate()
+      LTLogo.animate(this)
     }
   }
 
@@ -286,7 +305,7 @@ export class LTLogo {
 
   private static getContext(canvasRef: ElementRef) {
 
-    let canvas = canvasRef.nativeElement;
+    let canvas = canvasRef.nativeElement
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
@@ -296,14 +315,15 @@ export class LTLogo {
     }
   }
 
-  private static animate(self) {
-    if (!stop) requestAnimationFrame((obj => {
+  private static animate(self: LTLogo) {
+    if (!stop) requestAnimationFrame(((obj: LTLogo) => {
       return () => LTLogo.animate(obj)
     })(self))
-    self.c.clearRect(0, 0, self.canvas.width, self.canvas.height)
+
+    self.c.fillStyle = 'rgba(0, 0, 0, .05)'
+    self.c.fillRect(0, 0, self.canvas.width, self.canvas.height)
 
     self.logos.forEach((logo) => {
-      logo.draw()
       logo.update(self.mouse)
     })
   }
@@ -320,7 +340,7 @@ export class LTLogo {
     LTLogo.animate(this)
   }
 
-  public doStop() {
+  public static doStop() {
     stop = true
   }
 }

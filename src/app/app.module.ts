@@ -32,6 +32,7 @@ import { LtHtmlElementComponent } from './lt/lt-html-element/lt-html-element.com
 import {LtInputsService} from './services/lt-inputs.service';
 import {MouseService} from './services/mouse.service';
 import {WindowService} from './services/window.service';
+import { Index2Component } from './index2/index2.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {WindowService} from './services/window.service';
     LtInputComponent,
     LtWordComponent,
     LtHtmlElementComponent,
+    Index2Component,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lt-web-mvp-2018-webapp' }),
@@ -65,7 +67,13 @@ import {WindowService} from './services/window.service';
       },
       {
         path: 'index',
-        component: IndexComponent
+        component: IndexComponent,
+        data: { state: 'index' }
+      },
+      {
+        path: 'index2',
+        component: Index2Component,
+        data: { state: 'index2' }
       },
       {
         path: 'choose-level',

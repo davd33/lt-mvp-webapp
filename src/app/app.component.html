@@ -1,3 +1,3 @@
-<div class="router-section">
-  <router-outlet></router-outlet>
+<div class="router-section" [@routerTransition]="getState(o)">
+  <router-outlet #o="outlet"></router-outlet>
 </div>

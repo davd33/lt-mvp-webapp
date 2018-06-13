@@ -1,10 +1,9 @@
-import {Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 import {LangService} from '../services/lang.service';
-import {MouseService} from '../services/mouse.service';
-import {WindowService} from '../services/window.service';
 import {LTLogo} from './lt-logo.canvas';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -18,8 +17,10 @@ export class IndexComponent implements OnInit, OnDestroy {
   @ViewChild('topSection') topSectionEl: ElementRef
   @ViewChild('slide2') slide2El: ElementRef
   @ViewChild('ltLogo') ltLogoEl: ElementRef
+  @ViewChild('container') containerEl: ElementRef
 
   constructor(private titleService: Title,
+              private router: Router,
               public lang: LangService) {
   }
 
@@ -30,11 +31,11 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.logoAnimation.doStop()
+    LTLogo.doStop()
   }
 
   toSlide2() {
-    this.slide2El.nativeElement.scrollIntoView({behavior: 'smooth'})
+    this.router.navigate(['/index2'])
   }
 
 

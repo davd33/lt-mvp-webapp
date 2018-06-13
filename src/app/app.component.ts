@@ -4,11 +4,13 @@ import {LangService} from './services/lang.service';
 import {KeyboardService} from "./services/keyboard.service";
 import {MouseService} from './services/mouse.service';
 import {WindowService} from './services/window.service';
+import {routerTransition} from './router.animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [ routerTransition ]
 })
 export class AppComponent implements OnInit {
 
@@ -21,6 +23,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getState(outlet) {
+    return outlet.activatedRouteData.state;
   }
 
   @HostListener('window:scroll', ['$event'])
